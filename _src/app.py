@@ -2,16 +2,16 @@
 from flask import Flask, render_template, request, redirect, url_for
 import pandas as pd
 import numpy as np
+import os
 
+app = Flask(__name__, template_folder=os.path.join(os.path.dirname(os.path.dirname(__file__)), 'templates'))
 
-
-# create a basic flask app
-app = Flask(__name__)
-
-# define the home page
 @app.route('/')
 def home():
     return render_template('index.html')
+
+if __name__ == "__main__":
+    app.run(debug=True)
 
 # define the about page
 @app.route('/about')
