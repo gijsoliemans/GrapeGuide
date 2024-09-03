@@ -29,15 +29,27 @@ def search():
     
 @app.route('/wines')
 def wines():
-    # Example product data
-    product = {
-        'name': 'Chateau Margaux',
-        'year': 2015,
-        'description': 'A full-bodied red wine with rich flavors of blackberry and plum.',
-        'price': '$250',
-        'image_url': 'https://example.com/chateau_margaux.jpg'
-    }
-    return render_template('wines.html', product=product)
+    # Example list of wines
+    wines = [
+        {
+            'name': 'Chateau Margaux',
+            'year': 2015,
+            'description': 'A full-bodied red wine with rich flavors of blackberry and plum.',
+            'price': '$250',
+            'image_url': 'https://example.com/chateau_margaux.jpg'
+        },
+        {
+            'name': 'Screaming Eagle',
+            'year': 2012,
+            'description': 'An exquisite wine with notes of dark chocolate and black currant.',
+            'price': '$3000',
+            'image_url': 'https://example.com/screaming_eagle.jpg'
+        },
+        # Add more wine dictionaries here
+    ]
+    return render_template('wines.html', wines=wines)
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+    
