@@ -10,8 +10,7 @@ app = Flask(__name__, template_folder=os.path.join(os.path.dirname(os.path.dirna
 def home():
     return render_template('index.html')
 
-if __name__ == "__main__":
-    app.run(debug=True)
+
 
 # define the about page
 @app.route('/about')
@@ -30,5 +29,15 @@ def search():
     
 @app.route('/wines')
 def wines():
-    return render_template('wines.html')
+    # Example product data
+    product = {
+        'name': 'Chateau Margaux',
+        'year': 2015,
+        'description': 'A full-bodied red wine with rich flavors of blackberry and plum.',
+        'price': '$250',
+        'image_url': 'https://example.com/chateau_margaux.jpg'
+    }
+    return render_template('wines.html', product=product)
 
+if __name__ == "__main__":
+    app.run(debug=True)
