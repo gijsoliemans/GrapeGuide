@@ -9,7 +9,7 @@
 
 ## Project Overview
 
-### Project Title: Wine Website
+### Project Title: GrapeGuid
 
 ### Project Description
 
