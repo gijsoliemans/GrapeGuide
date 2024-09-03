@@ -1,4 +1,4 @@
-# Wine Website Project
+# GrapeGuid Project
 
 ## Course Information
 
