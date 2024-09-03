@@ -3,11 +3,18 @@
 {% block title %}Wines - GrapeGuide{% endblock %}
 
 {% block content %}
-<div class="jumbotron mt-4">
-    <h1 class="display-4">Our Wines</h1>
-    <p class="lead">Explore our extensive collection of wines.</p>
-    <hr class="my-4">
-    <p>We offer a wide variety of wines to suit every taste and occasion.</p>
-    <a class="btn btn-primary btn-lg" href="/wines" role="button">See all wines</a>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ product.image_url }}" class="img-fluid" alt="{{ product.name }}">
+        </div>
+        <div class="col-md-6">
+            <h1>{{ product.name }}</h1>
+            <h2>{{ product.year }}</h2>
+            <p>{{ product.description }}</p>
+            <h3>{{ product.price }}</h3>
+            <button class="btn btn-primary">Add to Cart</button>
+        </div>
+    </div>
 </div>
 {% endblock %}
