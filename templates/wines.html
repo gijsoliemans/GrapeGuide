@@ -5,7 +5,7 @@
 {% block content %}
 <div class="container mt-4">
     <div class="row">
-        {% for wine in wines %}
+        {% for wine in data %}
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
             <div class="card h-100">
                 <img class="card-img-top" src="{{ wine.image_url }}" alt="{{ wine.name }}">
