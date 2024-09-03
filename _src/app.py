@@ -28,5 +28,7 @@ def search():
     else:
         return render_template('search.html')
     
-    
+@app.route('/wines')
+def wines():
+    return render_template('wines.html')
 
