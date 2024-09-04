@@ -29,7 +29,6 @@ def search():
         return render_template('search.html')
     
 @app.route('/wines')
-@app.route('/wines')
 def wines_page():
     return render_template('wines.html', data=wines)
 
