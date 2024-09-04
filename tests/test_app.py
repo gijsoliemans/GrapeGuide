@@ -2,7 +2,7 @@
 
 import unittest
 from app import app
-from _data.data import wines
+from data.data import wines
 class BasicTests(unittest.TestCase):
 
     def setUp(self):
