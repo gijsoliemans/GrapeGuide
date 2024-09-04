@@ -3,9 +3,9 @@ from flask import Flask, render_template, request, redirect, url_for
 import pandas as pd
 import numpy as np
 import os
-from data import wines  
+from _data.data import wines  
 
-app = Flask(__name__, template_folder=os.path.join(os.path.dirname(os.path.dirname(__file__)), 'templates'))
+app = Flask(__name__, template_folder=os.path.join(os.path.dirname(__file__), 'templates'))
 
 @app.route('/')
 def home():
@@ -28,7 +28,6 @@ def search():
     else:
         return render_template('search.html')
     
-@app.route('/wines')
 @app.route('/wines')
 def wines_page():
     return render_template('wines.html', data=wines)
