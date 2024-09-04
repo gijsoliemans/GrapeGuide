@@ -32,7 +32,9 @@ class BasicTests(unittest.TestCase):
         response = self.app.get('/wines')
         self.assertEqual(response.status_code, 200)
         for wine in wines:
-            self.assertIn(wine['name'].encode(), response.data)
+            wine_name_encoded = wine['name'].replace("'", "&#39;").encode()
+            self.assertIn(wine_name_encoded, response.data)
+
 
 if __name__ == "__main__":
     unittest.main()
