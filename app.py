@@ -32,6 +32,12 @@ def search():
 def wines_page():
     return render_template('wines.html', data=wines)
 
+@app.route('/wine/<name>')
+def wine_detail(name):
+    wine = next((wine for wine in wines if wine['name'] == name), None)
+    if wine is None:
+        return "Wine not found", 404
+    return render_template('wine_detail.html', wine=wine)
 
 if __name__ == "__main__":
     app.run(debug=True)
