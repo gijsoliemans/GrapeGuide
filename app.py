@@ -11,8 +11,6 @@ app = Flask(__name__, template_folder=os.path.join(os.path.dirname(__file__), 't
 def home():
     return render_template('index.html')
 
-
-
 # define the about page
 @app.route('/about')
 def about():
