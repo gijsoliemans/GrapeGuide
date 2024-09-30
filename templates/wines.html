@@ -8,13 +8,13 @@
         {% for wine in data %}
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
             <div class="card h-100">
-                <a href="{{ url_for('wine_detail', name=wine.name) }}">
-                    <img class="card-img-top" src="{{ wine.image_url }}" alt="{{ wine.name }}">
+                <a href="{{ url_for('wine_detail', Title=wine.Title) }}">
+                    <img class="card-img-top" src="{{ wine.image_url }}" alt="{{ wine.Title }}">
                     <div class="card-body">
-                        <h5 class="card-title">{{ wine.name }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{ wine.year }}</h6>
-                        <p class="card-text">{{ wine.description }}</p>
-                        <h6 class="card-subtitle mb-2 text-muted">${{ wine.price }}</h6>
+                        <h5 class="card-title">{{ wine.Title }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ wine.Vintage }}</h6>
+                        <p class="card-text">{{ wine.Description }}</p>
+                        <h6 class="card-subtitle mb-2 text-muted">${{ wine.Price }}</h6>
                     </div>
                 </a>
             </div>
