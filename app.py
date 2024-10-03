@@ -119,9 +119,8 @@ def wine_list():
     # Pass the data to the template, including unique filters
     return render_template(
         'wines.html',
+        filters=filters,
         data=wines_to_display,
-        page=page,
-        total_pages=total_pages,
         page_numbers=page_numbers,
         unique_countries=unique_countries,
         unique_regions=unique_regions,
