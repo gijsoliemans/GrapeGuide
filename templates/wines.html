@@ -15,6 +15,7 @@
         position: fixed; /* Fixes the sidebar to the left */
         height: 100%; /* Make the sidebar full height */
         overflow-y: auto; /* Allows scrolling if the content is too long */
+        padding-bottom: 100px; /* Temp fix so that I can see the button */
     }
 
     .content {
@@ -97,39 +98,157 @@
 <div class="sidebar">
     <h5 class="filter-title">Filters</h5>
     <form>
+        <!-- Keep basic filters outside of the advanced filters section -->
         <div class="form-group">
             <label for="country">Country</label>
-            <select id="country" class="form-control">
+            <select id="country" name="country" class="form-control">
                 <option value="">All</option>
-                <option value="USA">USA</option>
-                <option value="France">France</option>
-                <option value="Italy">Italy</option>
-                <option value="Spain">Spain</option>
-                <option value="Germany">Germany</option>
-                <option value="Australia">Australia</option>
-                <option value="Argentina">Argentina</option>
-                <option value="Chile">Chile</option>
-                <option value="South Africa">South Africa</option>
-                <!-- Add more countries as needed -->
+                {% for country in unique_countries %}
+                    <option value="{{ country }}">{{ country }}</option>
+                {% endfor %}
             </select>
         </div>
+
         <div class="form-group">
             <label for="region">Region</label>
-            <select id="region" class="form-control">
+            <select id="region" name="region" class="form-control">
                 <option value="">All</option>
-                <option value="Napa Valley">Napa Valley</option>
-                <option value="Bordeaux">Bordeaux</option>
-                <option value="Tuscany">Tuscany</option>
-                <!-- Add more regions as needed -->
+                {% for region in unique_regions %}
+                    <option value="{{ region }}">{{ region }}</option>
+                {% endfor %}
             </select>
         </div>
+        
         <div class="form-group">
-            <label for="price">Price Range</label>
-            <input type="range" id="price" class="form-control-range" min="0" max="100" step="1">
+            <label for="type">Type</label>
+            <select id="type" name="type" class="form-control">
+                <option value="">All</option>
+                {% for type in unique_types %}
+                    <option value="{{ type }}">{{ type }}</option>
+                {% endfor %}
+            </select>
         </div>
+        <!-- Price and ABV Sliders -->
+        <div class="form-group">
+            <label for="price_min">Price Range</label>
+            <input type="number" id="price_min" name="price_min" class="form-control" placeholder="Min Price">
+            <input type="number" id="price_max" name="price_max" class="form-control" placeholder="Max Price">
+        </div>
+
+        <div class="form-group">
+            <label for="abv_min">ABV Range</label>
+            <input type="number" id="abv_min" name="abv_min" class="form-control" placeholder="Min ABV">
+            <input type="number" id="abv_max" name="abv_max" class="form-control" placeholder="Max ABV">
+        </div>
+        <!-- Advanced Filters Section -->
+        <button type="button" class="btn btn-primary" onclick="toggleCollapse()">Advanced Filters ↕️ </button>
+        <div id="collapsibleFilters" style="display: none">
+            <div class="form-group">
+                <label for="grape">Grape Variety</label>
+                <select id="grape" name="grape" class="form-control">
+                    <option value="">All</option>
+                    {% for grape in unique_grapes %}
+                        <option value="{{ grape }}">{{ grape }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="style">Style</label>
+                <select id="style" name="style" class="form-control">
+                    <option value="">All</option>
+                    {% for style in unique_styles %}
+                        <option value="{{ style }}">{{ style }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="vintage">Vintage</label>
+                <select id="vintage" name="vintage" class="form-control">
+                    <option value="">All</option>
+                    {% for vintage in unique_vintages %}
+                        <option value="{{ vintage }}">{{ vintage }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="closure">Closure</label>
+                <select id="closure" name="closure" class="form-control">
+                    <option value="">All</option>
+                    {% for closure in unique_closures %}
+                        <option value="{{ closure }}">{{ closure }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="capacity">Capacity</label>
+                <select id="capacity" name="capacity" class="form-control">
+                    <option value="">All</option>
+                    {% for capacity in unique_capacities %}
+                        <option value="{{ capacity }}">{{ capacity }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="secondary_grape_varieties">Secondary Grape Varieties</label>
+                <select id="secondary_grape_varieties" name="secondary_grape_varieties" class="form-control">
+                    <option value="">All</option>
+                    {% for grape in unique_secondary_grapes %}
+                        <option value="{{ grape }}">{{ grape }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="unit">Unit</label>
+                <select id="unit" name="unit" class="form-control">
+                    <option value="">All</option>
+                    {% for unit in unique_units %}
+                        <option value="{{ unit }}">{{ unit }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="characteristics">Characteristics</label>
+                <select id="characteristics" name="characteristics" class="form-control">
+                    <option value="">All</option>
+                    {% for characteristic in unique_characteristics %}
+                        <option value="{{ characteristic }}">{{ characteristic }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="per_bottle_case_each">Per Bottle/Case/Each</label>
+                <select id="per_bottle_case_each" name="per_bottle_case_each" class="form-control">
+                    <option value="">All</option>
+                    {% for unit in unique_per_bottle_case_each %}
+                        <option value="{{ unit }}">{{ unit }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div> 
+        <br> <br> <!-- Temp fix, shouldn't be using <br> -->
         <button type="submit" class="btn btn-primary">Apply Filters</button>
     </form>
 </div>
+
+<script>
+    // JavaScript to toggle the visibility of the advanced filters section
+    function toggleCollapse() {
+        var content = document.getElementById('collapsibleFilters');
+        if (content.style.display === "none" || content.style.display === "") {
+            content.style.display = "block"; // Show content
+        } else {
+            content.style.display = "none"; // Hide content
+        }
+    }
+</script>
 
 <div class="content">
     <h1 class="mb-4 text-center">Our Wines</h1>
@@ -158,7 +277,6 @@
         </div>
         {% endfor %}
     </div>
-
     <!-- Pagination Controls -->
     <!-- Pagination -->
     <nav aria-label="Page navigation">
