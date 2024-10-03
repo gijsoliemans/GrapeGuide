@@ -96,8 +96,17 @@
 </style>
 
 <div class="sidebar">
-    <h5 class="filter-title">Filters</h5>
     <form>
+    <h5 class="filter-title">Sort</h5>
+        <div class="form-group">
+            <label for="sort">Sort by</label>
+            <select id="sort" name="sort" class="form-control">
+                <option value="default">Default</option>
+                <option value="ascending">Price ascending</option>
+                <option value="descending">Price descending</option>
+            </select>
+        </div>
+    <h5 class="filter-title">Filters</h5>
         <!-- Keep basic filters outside of the advanced filters section -->
         <div class="form-group">
             <label for="country">Country</label>

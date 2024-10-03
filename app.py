@@ -45,7 +45,9 @@ def get_unique_values(data, key):
 
 @app.route('/wines', methods=['GET'], endpoint='wines')
 def wine_list():
+
     # GET filters
+    sort = request.args.get('sort')
     filters = {
         'Country': request.args.get('country'),
         'Region': request.args.get('region'),
@@ -77,14 +79,15 @@ def wine_list():
     unique_per_bottle_case_each = get_unique_values(wines, 'Per bottle / case / each')
     unique_appellations = get_unique_values(wines, 'Appellations')
 
-    # Additional filters with slidebars
+    # Additional filters (slidebars nice to have for in the future)
     price_min = request.args.get('price_min', 0, type=float)
     price_max = request.args.get('price_max', 1000, type=float)
     abv_min = request.args.get('abv_min', 0, type=float)
     abv_max = request.args.get('abv_max', 100, type=float)
 
-    # Filter the wines dynamically
+    # Filter the wines
     filtered_wines = wines
+
     for key, value in filters.items(): # Key for example country, grape. Value for example France, Chardonnay.
         if value:
             filtered_wines = [wine for wine in filtered_wines if str(wine.get(key)) == value]
@@ -92,6 +95,16 @@ def wine_list():
     # Apply slidebar filters (price, ABV)
     filtered_wines = [wine for wine in filtered_wines if price_min <= wine.get('Price') <= price_max]
     filtered_wines = [wine for wine in filtered_wines if abv_min <= wine.get('ABV') <= abv_max]
+
+    # You need a function to get the wine price, you can't directly use wine.get('Price')
+    def get_price(wine):
+        return wine.get('Price')
+
+    # Now sort the wines
+    if sort == 'ascending':
+        filtered_wines.sort(key=get_price)
+    elif sort == 'descending':
+        filtered_wines.sort(key=get_price, reverse=True)
 
     # Pagination parameters
     page = request.args.get('page', 1, type=int)
@@ -116,7 +129,7 @@ def wine_list():
         else:  # If we are in the middle
             page_numbers = [1] + ['...'] + list(range(page - 1, page + 2)) + ['...'] + [total_pages]
 
-    # Pass the data to the template, including unique filters
+    # Pass all the data needed to build the webpage
     return render_template(
         'wines.html',
         filters=filters,
