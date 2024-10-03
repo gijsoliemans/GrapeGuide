@@ -3,10 +3,83 @@
 {% block title %}About - GrapeGuide{% endblock %}
 
 {% block content %}
-<div class="jumbotron mt-4">
+<!-- <div class="jumbotron mt-4">
     <h1 class="display-4">About GrapeGuide</h1>
     <p class="lead">Learn more about GrapeGuide and our mission to help you find the perfect wine.</p>
     <hr class="my-4">
     <p>We are dedicated to providing the best wine recommendations and information.</p>
+</div> -->
+<div class="container p-3 mt-4 text-center">
+    <h1 class="mb-5">Your Guide To Wines That Pair Perfectly</h1>
+    <h3 class="mb-5">With You And Your Food</h3>
+
+    <div class="image-container mt-5">
+        <img src="{{ url_for('static', filename='images/Overview.png') }}" class="img-fluid rounded" style="max-width: 100%; height: auto; border-radius: 15px;">
+    </div>
 </div>
+
+<div class="container p-3">
+    <h2 class="mb-5 text-center">Our Features</h2>
+
+    <!-- Feature 1: Search & Filter -->
+    <div class="feature mt-5 mb-5">
+        <div class="row align-items-center">
+            <div class="col-md-3">
+                <img src="{{ url_for('static', filename='images/Search and Filter.png') }}" class="img-fluid rounded" alt="Search & Filter" style="max-width: 100%; height: auto;">
+            </div>
+            <div class="col-md-9">
+                <h4>Search & Filter</h4>
+                <p>Our Search & Filter feature empowers users to find the ideal wine to complement their meals with ease. By utilizing the search bar, users can enter specific queries related to their preferences, allowing the system to search our extensive database for matching wines. <br><br>
+                    In addition to search queries, users can apply various filters, such as price, region, volume, ABV (alcohol by volume), and style. This enables users to narrow down their options based on individual tastes and requirements. The resulting wines displayed are carefully curated to meet the specified criteria, ensuring a seamless and personalized wine selection experience.</p>
+            </div>
+        </div>
+    </div>
+
+    <hr style="border: 1px solid #9d36add5;">
+
+    <!-- Feature 2: Food -->
+    <div class="feature mb-5 mt-5">
+        <div class="row align-items-center">
+            <div class="col-md-3">
+                <img src="{{ url_for('static', filename='images/Food.png') }}" class="img-fluid rounded" alt="Food Pairing" style="max-width: 100%; height: auto;">
+            </div>
+            <div class="col-md-9">
+                <h4>Food Pairing</h4>
+                <p>Discover the perfect wines to complement your favorite dishes. Find wines that pair perfectly with meat, fish, poultry, cheese, and vegetables. <br><br>
+                We leveraged Hugging Face's zero-shot classification to analyze wine descriptions and identify which dishes pair best with each wine. For every wine, the model assigns a relevance score to various dish categories, such as meat or fish, and the dish with the highest score is selected as the ideal pairing. This approach not only provides accurate and diverse food pairings but also enables users to filter wines based on specific dish types, enhancing the overall search experience.</p>
+            </div>
+        </div>
+    </div>
+
+    <hr style="border: 1px solid #9d36add5;">
+
+    <!-- Feature 3: Types of wines -->
+    <div class="feature mb-5 mt-5">
+        <div class="row align-items-center">
+            <div class="col-md-3">
+                <img src="{{ url_for('static', filename='images/Types.png') }}" class="img-fluid rounded" alt="Types of Wines" style="max-width: 100%; height: auto;">
+            </div>
+            <div class="col-md-9">
+                <h4>Types of Wines</h4>
+                <p>On our homepage, users can easily choose from various wine types, such as red, white, and rosé. Once a user selects a specific type of wine, they are presented with a curated list of all wines in our database that fall under the chosen category. This intuitive navigation allows users to effortlessly explore their preferred wine styles and discover new favorites.</p>
+            </div>
+        </div>
+    </div>
+
+    <hr style="border: 1px solid #9d36add5;">
+
+    <!-- Feature 4: Wine Carousel -->
+    <div class="feature mb-5 mt-5">
+        <div class="row align-items-center">
+            <div class="col-md-3">
+                <img src="{{ url_for('static', filename='images/Wine Carousel.png') }}" class="img-fluid rounded" alt="Random Wine Carousel" style="max-width: 100%; height: auto;">
+            </div>
+            <div class="col-md-9">
+                <h4>Random Wine Carousel</h4>
+                <p>On our homepage, we offer an exciting and interactive Random Wine Carousel that allows users to explore new wines in a fun and engaging way. As users click through the carousel, they are presented with a rotating selection of wines, each showcasing unique labels and characteristics. This feature is designed to inspire discovery and encourage users to try something different.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
