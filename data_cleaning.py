@@ -20,7 +20,17 @@ def clean_title(title):
 
 def clean_price(price):
     # remove the pound sign and remove "per bottle"
-    return float(price.replace('£', '').replace(' per bottle', '').strip())
+    clean_price_gbp = float(price.replace('£', '').replace(' per bottle', '').strip())
+    clean_price_usd = round(clean_price_gbp * 1.4, 2)
+    return clean_price_usd
+
+def clean_capacity(capacity):
+    if 'CL' in capacity:
+        return float(capacity.replace('CL', ''))
+    elif 'ML' in capacity:
+        return float(capacity.replace('ML', '')) / 10
+    elif 'LTR' in capacity:
+        return float(capacity.replace('LTR', '')) * 100
 
 def clean_ABV(abv):
     # remove the ABV and the % sign
@@ -32,6 +42,7 @@ def add_id(row):
 
 # apply al cleaning funcitons to the DataFrame
 df['Title'] = df['Title'].apply(clean_title)
+df['Capacity'] = df['Capacity'].apply(clean_capacity)
 df['Price'] = df['Price'].apply(clean_price)
 df['ABV'] = df['ABV'].apply(clean_ABV)
 df['ID'] = df.apply(add_id, axis=1)
