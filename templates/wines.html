@@ -97,6 +97,10 @@
 
 <div class="sidebar">
     <form>
+    <h5 class="filter-title">Search</h5>
+        <div class="form-group">
+            <input type="text" id="search" name="search">
+        </div>
     <h5 class="filter-title">Sort</h5>
         <div class="form-group">
             <label for="sort">Sort by</label>
@@ -294,7 +298,7 @@
                 <li class="page-item"><span class="page-link">{{ page }}</span></li>
             {% else %}
                 <li class="page-item {% if page == this_page %}active{% endif %}">
-                    <a class="page-link" href="{{ url_for('wines', page=page, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], unit=filters.Unit, characteristics=filters.Characteristics) }}">{{ page }}</a>
+                    <a class="page-link" href="{{ url_for('wines', page=page, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], unit=filters.Unit, characteristics=filters.Characteristics) }}">{{ page }}</a>
                 </li>
             {% endif %}
         {% endfor %}

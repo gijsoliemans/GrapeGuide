@@ -48,6 +48,8 @@ def wine_list():
 
     # GET filters
     sort = request.args.get('sort')
+    search = request.args.get('search')
+
     filters = {
         'Country': request.args.get('country'),
         'Region': request.args.get('region'),
@@ -96,6 +98,10 @@ def wine_list():
     filtered_wines = [wine for wine in filtered_wines if price_min <= wine.get('Price') <= price_max]
     filtered_wines = [wine for wine in filtered_wines if abv_min <= wine.get('ABV') <= abv_max]
 
+    # If search bar is not empty:
+    if search:
+        filtered_wines = [wine for wine in filtered_wines if search.lower() in wine.get('Title').lower()]
+
     # You need a function to get the wine price, you can't directly use wine.get('Price')
     def get_price(wine):
         return wine.get('Price')
@@ -132,6 +138,8 @@ def wine_list():
     # Pass all the data needed to build the webpage
     return render_template(
         'wines.html',
+        sort=sort,
+        search=search,
         filters=filters,
         data=wines_to_display,
         page_numbers=page_numbers,
