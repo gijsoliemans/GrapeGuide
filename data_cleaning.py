@@ -2,6 +2,7 @@ import pandas as pd
 import os
 import random
 import string
+from src.country_codes import country_codes
 
 # Construct the absolute path to the CSV file
 file_path = os.path.join(os.path.dirname(__file__), 'WineDataset.csv')
@@ -35,6 +36,8 @@ df['Price'] = df['Price'].apply(clean_price)
 df['ABV'] = df['ABV'].apply(clean_ABV)
 df['ID'] = df.apply(add_id, axis=1)
 
+# Create a column with country codes with the imported country codes
+df['CountryCode'] = df['Country'].map(country_codes)
 
 # Construct the absolute path to save the JSON file
 json_file_path = os.path.join(os.path.dirname(__file__), 'WineDataset.json')
