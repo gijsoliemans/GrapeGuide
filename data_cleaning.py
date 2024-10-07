@@ -2,6 +2,7 @@ import pandas as pd
 import os
 import random
 import string
+import re
 from src.country_codes import country_codes
 
 # Construct the absolute path to the CSV file
@@ -11,18 +12,20 @@ file_path = os.path.join(os.path.dirname(__file__), 'WineDataset.csv')
 df = pd.read_csv(file_path)
 
 df = df.dropna(subset=['Title', 'Description', 'Price','Capacity', 'Grape', 
-                       'Closure','Country', 'Unit', 'Characteristics', 'Per bottle / case / each', 
+                       'Closure','Country', 'Unit', 'Characteristics',
                        'Type', 'ABV', 'Region', 'Style', 'Vintage'])
 
+df = df.drop(columns=['Per bottle / case / each'])
+
 def clean_title(title):
-    # split on the comma and take the first part
-    return title.split(',')[0]
+    pattern = re.compile(r'\d{4}')
+    split_text = pattern.split(title, 1)
+    return split_text[0] 
 
 def clean_price(price):
     # remove the pound sign and remove "per bottle"
     clean_price_gbp = float(price.replace('£', '').replace(' per bottle', '').strip())
-    clean_price_usd = round(clean_price_gbp * 1.4, 2)
-    return clean_price_usd
+    return clean_price_gbp
 
 def clean_capacity(capacity):
     if 'CL' in capacity:
@@ -35,6 +38,14 @@ def clean_capacity(capacity):
 def clean_ABV(abv):
     # remove the ABV and the % sign
     return float(abv.replace('ABV ', '').replace('%', '').strip())
+
+def clean_vintage(year: str) -> int:
+    if len(year) < 4:
+        return np.nan
+    if len(year) > 4:
+        return int(year.split('/')[0])
+    else:
+        return int(year)
 
 def add_id(row):
     # create a unique ID of 8 random characters
