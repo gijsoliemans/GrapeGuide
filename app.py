@@ -102,15 +102,9 @@ def wine_list():
     if search:
         filtered_wines = [wine for wine in filtered_wines if search.lower() in wine.get('Title').lower()]
 
-    # You need a function to get the wine price, you can't directly use wine.get('Price')
-    def get_price(wine):
-        return wine.get('Price')
-
     # Now sort the wines
-    if sort == 'ascending':
-        filtered_wines.sort(key=get_price)
-    elif sort == 'descending':
-        filtered_wines.sort(key=get_price, reverse=True)
+    if sort == 'ascending' or sort == 'descending':
+        filtered_wines.sort(key=lambda x: x['Price'], reverse=(sort == 'descending'))
 
     # Pagination parameters
     page = request.args.get('page', 1, type=int)
