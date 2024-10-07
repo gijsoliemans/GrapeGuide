@@ -96,39 +96,24 @@
 </style>
 
 <div class="sidebar">
-    <form id="filter-form" method="GET" action="{{ url_for('wines') }}">
-        <h5 class="filter-title">Search</h5>
-        <div class="form-group">
-            <input type="text" id="search" name="search" placeholder="Search" onchange="document.getElementById('filter-form').submit();">
-        </div>
-
-        <h5 class="filter-title">Sort</h5>
-        <div class="form-group">
-            <label for="sort">Sort by</label>
-            <select id="sort" name="sort" class="form-control" onchange="document.getElementById('filter-form').submit();">
-                <option value="default" {% if request.args.get('sort') == 'default' %} selected {% endif %}>Default</option>
-                <option value="ascending" {% if request.args.get('sort') == 'ascending' %} selected {% endif %}>Price ascending</option>
-                <option value="descending" {% if request.args.get('sort') == 'descending' %} selected {% endif %}>Price descending</option>
-            </select>
-        </div>
+    <form id="filter-form" method="GET" action="{{ url_for('wines') }}">    
 
         <h5 class="filter-title">Filters</h5>
+        
+        <div class="form-group">
+            <label for="price_min">Price Range</label>
+            <input type="number" id="price_min" name="price_min" class="form-control" placeholder="Min Price" onchange="document.getElementById('filter-form').submit();"
+                   value="{{ request.args.get('price_min', '') }}">
+            <input type="number" id="price_max" name="price_max" class="form-control" placeholder="Max Price" onchange="document.getElementById('filter-form').submit();"
+                   value="{{ request.args.get('price_max', '') }}">
+        </div>
+
         <div class="form-group">
             <label for="country">Country</label>
             <select id="country" name="country" class="form-control" onchange="document.getElementById('filter-form').submit();">
                 <option value="">All</option>
                 {% for country in unique_countries %}
                     <option value="{{ country }}" {% if request.args.get('country') == country %} selected {% endif %}>{{ country }}</option>
-                {% endfor %}
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="region">Region</label>
-            <select id="region" name="region" class="form-control" onchange="document.getElementById('filter-form').submit();">
-                <option value="">All</option>
-                {% for region in unique_regions %}
-                    <option value="{{ region }}" {% if request.args.get('region') == region %} selected {% endif %}>{{ region }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -144,30 +129,47 @@
         </div>
 
         <div class="form-group">
-            <label for="price_min">Price Range</label>
-            <input type="number" id="price_min" name="price_min" class="form-control" placeholder="Min Price" onchange="document.getElementById('filter-form').submit();"
-                   value="{{ request.args.get('price_min', '') }}">
-            <input type="number" id="price_max" name="price_max" class="form-control" placeholder="Max Price" onchange="document.getElementById('filter-form').submit();"
-                   value="{{ request.args.get('price_max', '') }}">
+            <label for="grape">Grape Variety</label>
+            <select id="grape" name="grape" class="form-control" onchange="document.getElementById('filter-form').submit();">
+                <option value="">All</option>
+                {% for grape in unique_grapes %}
+                    <option value="{{ grape }}" {% if request.args.get('grape') == grape %} selected {% endif %}>{{ grape }}</option>
+                {% endfor %}
+            </select>
         </div>
 
-        <div class="form-group">
-            <label for="abv_min">ABV Range</label>
-            <input type="number" id="abv_min" name="abv_min" class="form-control" placeholder="Min ABV" onchange="document.getElementById('filter-form').submit();"
-                   value="{{ request.args.get('abv_min', '') }}">
-            <input type="number" id="abv_max" name="abv_max" class="form-control" placeholder="Max ABV" onchange="document.getElementById('filter-form').submit();"
-                   value="{{ request.args.get('abv_max', '') }}">
-        </div>
+        
 
         <!-- Advanced Filters Section -->
+
         <button type="button" class="btn btn-primary" onclick="toggleCollapse()">Advanced Filters ↕️ </button>
         <div id="collapsibleFilters" style="display: none">
             <div class="form-group">
-                <label for="grape">Grape Variety</label>
-                <select id="grape" name="grape" class="form-control" onchange="document.getElementById('filter-form').submit();">
+                <label for="vintage">Year</label>
+                <select id="vintage" name="vintage" class="form-control" onchange="document.getElementById('filter-form').submit();">
                     <option value="">All</option>
-                    {% for grape in unique_grapes %}
-                        <option value="{{ grape }}" {% if request.args.get('grape') == grape %} selected {% endif %}>{{ grape }}</option>
+                    {% for vintage in unique_vintages %}
+                        <option value="{{ vintage }}" {% if request.args.get('vintage') == vintage %} selected {% endif %}>{{ vintage }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="region">Region</label>
+                <select id="region" name="region" class="form-control" onchange="document.getElementById('filter-form').submit();">
+                    <option value="">All</option>
+                    {% for region in unique_regions %}
+                        <option value="{{ region }}" {% if request.args.get('region') == region %} selected {% endif %}>{{ region }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="secondary_grape_varieties">Secondary Grape Varieties</label>
+                <select id="secondary_grape_varieties" name="secondary_grape_varieties" class="form-control" onchange="document.getElementById('filter-form').submit();">
+                    <option value="">All</option>
+                    {% for grape in unique_secondary_grapes %}
+                        <option value="{{ grape }}" {% if request.args.get('secondary_grape_varieties') == grape %} selected {% endif %}>{{ grape }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -183,14 +185,16 @@
             </div>
 
             <div class="form-group">
-                <label for="vintage">Vintage</label>
-                <select id="vintage" name="vintage" class="form-control" onchange="document.getElementById('filter-form').submit();">
+                <label for="characteristics">Characteristics</label>
+                <select id="characteristics" name="characteristics" class="form-control" onchange="document.getElementById('filter-form').submit();">
                     <option value="">All</option>
-                    {% for vintage in unique_vintages %}
-                        <option value="{{ vintage }}" {% if request.args.get('vintage') == vintage %} selected {% endif %}>{{ vintage }}</option>
+                    {% for characteristic in unique_characteristics %}
+                        <option value="{{ characteristic }}" {% if request.args.get('characteristics') == characteristic %} selected {% endif %}>{{ characteristic }}</option>
                     {% endfor %}
                 </select>
             </div>
+
+            
 
             <div class="form-group">
                 <label for="closure">Closure</label>
@@ -213,17 +217,7 @@
             </div>
 
             <div class="form-group">
-                <label for="secondary_grape_varieties">Secondary Grape Varieties</label>
-                <select id="secondary_grape_varieties" name="secondary_grape_varieties" class="form-control" onchange="document.getElementById('filter-form').submit();">
-                    <option value="">All</option>
-                    {% for grape in unique_secondary_grapes %}
-                        <option value="{{ grape }}" {% if request.args.get('secondary_grape_varieties') == grape %} selected {% endif %}>{{ grape }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="unit">Unit</label>
+                <label for="unit">Alcohol Units</label>
                 <select id="unit" name="unit" class="form-control" onchange="document.getElementById('filter-form').submit();">
                     <option value="">All</option>
                     {% for unit in unique_units %}
@@ -233,28 +227,20 @@
             </div>
 
             <div class="form-group">
-                <label for="characteristics">Characteristics</label>
-                <select id="characteristics" name="characteristics" class="form-control" onchange="document.getElementById('filter-form').submit();">
-                    <option value="">All</option>
-                    {% for characteristic in unique_characteristics %}
-                        <option value="{{ characteristic }}" {% if request.args.get('characteristics') == characteristic %} selected {% endif %}>{{ characteristic }}</option>
-                    {% endfor %}
-                </select>
+                <label for="abv_min">Alcohol Percentage Range</label>
+                <input type="number" id="abv_min" name="abv_min" class="form-control" placeholder="Min ABV" onchange="document.getElementById('filter-form').submit();"
+                       value="{{ request.args.get('abv_min', '') }}">
+                <input type="number" id="abv_max" name="abv_max" class="form-control" placeholder="Max ABV" onchange="document.getElementById('filter-form').submit();"
+                       value="{{ request.args.get('abv_max', '') }}">
             </div>
 
-            <div class="form-group">
-                <label for="per_bottle_case_each">Per Bottle/Case/Each</label>
-                <select id="per_bottle_case_each" name="per_bottle_case_each" class="form-control" onchange="document.getElementById('filter-form').submit();">
-                    <option value="">All</option>
-                    {% for unit in unique_per_bottle_case_each %}
-                        <option value="{{ unit }}" {% if request.args.get('per_bottle_case_each') == unit %} selected {% endif %}>{{ unit }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+            
+
+            
         </div>
 
-        <button type="submit" class="btn btn-primary mt-2">Apply Filters</button>
     </form>
+    <a class="btn btn-primary mt-2" href="/wines" >Reset Filters</a >
 </div>
 
 <script>
@@ -270,7 +256,35 @@
 </script>
 
 <div class="content">
-    <h1 class="mb-4 text-center">Our Wines</h1>
+    <div class="container-fluid">
+        <div class="row">
+          
+          <div class="col-sm col-lg-8">
+            <h3 class="mb-4"> {% if search %}
+                Results for "{{ search }}"
+                    {% else %}
+                    Our Wines
+                    {% endif %}  </h3>
+          </div>
+          
+                        
+          
+          <div class="col-sm col-lg-3 mt-n2 ml-5 p-0 ">
+            <form id="sort-form" method="GET" action="{{ url_for('wines') }}">
+                <div class="form-group">
+                    <label for="sort" class="mb-n2">Sort by</label>
+                    <select id="sort" name="sort" class="form-control" onchange="document.getElementById('sort-form').submit();">
+                        <option value="default" {% if request.args.get('sort') == 'default' %} selected {% endif %}>Default</option>
+                        <option value="ascending" {% if request.args.get('sort') == 'ascending' %} selected {% endif %}>Price ascending</option>
+                        <option value="descending" {% if request.args.get('sort') == 'descending' %} selected {% endif %}>Price descending</option>
+                    </select>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      
     <div class="row">
         {% for wine in data %}
         <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
