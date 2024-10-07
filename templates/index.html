@@ -3,11 +3,182 @@
 {% block title %}Wines - GrapeGuide{% endblock %}
 
 {% block content %}
-<div class="jumbotron mt-4">
+<style>
+    .card {
+        border: none;
+        border-radius: 15px;
+        transition: transform 0.3s, box-shadow 0.3s;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        text-decoration: none;
+        color: inherit;
+        background-color: #f8f9fa;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .card-custom-width-big {
+    width: 250px; /* Set a fixed width for all cards */
+    }
+
+    .card-custom-width-small {
+    width: 180px; /* Set a fixed width for all cards */
+    }
+
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        color: #9d36add5;
+    }
+
+    .image-container {
+        height: 100px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card-img-top {
+        object-fit: contain;
+        width: auto;
+        height: 100%;
+    }
+
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+        text-align: center;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+        margin: 0.5rem 0;
+        color: #343a40;
+        font-weight: normal;
+    }
+
+    .card-subtitle {
+        font-size: 1rem;
+    }
+
+    .btn-primary {
+        background-color: #9d36add5;
+        border: none;
+        border-radius: 5px;
+    }
+</style>
+
+<div class="jumbotron mt-1" style="background-color: #9d36add5; color: #ffffff;">
     <h1 class="display-4">Welcome to GrapeGuide!</h1>
     <p class="lead">This is a website for finding your perfect wine!.</p>
-    <hr class="my-4">
-    <p>Use the navigation bar to explore all wines.</p>
-    <a class="btn btn-primary btn-lg" href="/wines" role="button">See all wines</a>
 </div>
-{% endblock %}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <!-- Card 1 -->
+        <div class="card card-custom-width-big m-2">
+            <a href="/wines?search=&sort=default&country=&region=&type=Red&price_min=&price_max=&abv_min=&abv_max=&grape=&style=&vintage=&closure=&capacity=&secondary_grape_varieties=&unit=&characteristics=&per_bottle_case_each=" class="card h-100">
+                <div class="image-container mt-4">
+                    <img class="card-img-top" src="https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046565_wines/the-guvnor-14666.jpeg" alt="Red wine">
+                </div>
+                <div class="card-body">
+                    <h6 class="font-weight-bold">Red wine</h6>
+                </div>
+            </a>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card card-custom-width-big m-2">
+            <a href="/wines?search=&sort=default&country=&region=&type=Red&price_min=&price_max=&abv_min=&abv_max=&grape=&style=&vintage=&closure=&capacity=&secondary_grape_varieties=&unit=&characteristics=&per_bottle_case_each=" class="card h-100">
+                <div class="image-container mt-4">
+                    <img class="card-img-top" src="https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046903_wines/bread-butter-chardonnay-18139.jpeg" alt="White wine">
+                </div>
+                <div class="card-body">
+                    <h6 class="font-weight-bold">White wine</h6>
+                </div>
+            </a>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card card-custom-width-big m-2">
+            <a href="/wines?search=&sort=default&country=&region=&type=Ros%C3%A9&price_min=&price_max=&abv_min=&abv_max=&grape=&style=&vintage=&closure=&capacity=&secondary_grape_varieties=&unit=&characteristics=&per_bottle_case_each=" class="card h-100">
+                <div class="image-container mt-4">
+                    <img class="card-img-top" src="https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046484_wines/domaine-la-chautarde-rose-08009.jpeg" alt="Rose">
+                </div>
+                <div class="card-body">
+                    <h6 class="font-weight-bold">Rose wine</h6>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <!-- Card 1 -->
+        <div class="card card-custom-width-small m-2">
+            <a href="/wines" class="card h-100">
+                <div class="image-container mt-4">
+                    <img class="card-img-top" src="url" alt="Tastes best with red meat">
+                </div>
+                <div class="card-body">
+                    <h6 class="font-weight-bold">Red wine</h6>
+                </div>
+            </a>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card card-custom-width-small m-2">
+            <a href="/wines" class="card h-100">
+                <div class="image-container mt-4">
+                    <img class="card-img-top" src="url" alt="Tastes best with fish">
+                </div>
+                <div class="card-body">
+                    <h6 class="font-weight-bold">White wine</h6>
+                </div>
+            </a>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card card-custom-width-small m-2">
+            <a href="/wines" class="card h-100">
+                <div class="image-container mt-4">
+                    <img class="card-img-top" src="url" alt="Tastes best with poultry">
+                </div>
+                <div class="card-body">
+                    <h6 class="font-weight-bold">Rose wine</h6>
+                </div>
+            </a>
+        </div>
+
+        <div class="card card-custom-width-small m-2">
+            <a href="/wines" class="card h-100">
+                <div class="image-container mt-4">
+                    <img class="card-img-top" src="url" alt="Tastes best with cheese">
+                </div>
+                <div class="card-body">
+                    <h6 class="font-weight-bold">Rose wine</h6>
+                </div>
+            </a>
+        </div>
+
+
+        <div class="card card-custom-width-small m-2">
+            <a href="/wines" class="card h-100">
+                <div class="image-container mt-4">
+                    <img class="card-img-top" src="url" alt="Tastes best with vegetables">
+                </div>
+                <div class="card-body">
+                    <h6 class="font-weight-bold">Rose wine</h6>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
