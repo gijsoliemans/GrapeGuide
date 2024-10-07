@@ -96,10 +96,10 @@
 </style>
 
 <div class="sidebar">
-    <form id="filter-form" method="GET" action="{{ url_for('wines') }}">    
-
-        <h5 class="filter-title">Filters</h5>
-        
+    <form id="filter-form" method="GET" action="{{ url_for('wines') }}">
+            <!-- This hidden input field makes it so that you can still filter after searching -->    
+            <input type="hidden" name="search" value="{{ request.args.get('search', '') }}">
+        <h5 class="filter-title">Filters</h5>        
         <div class="form-group">
             <label for="price_min">Price Range</label>
             <input type="number" id="price_min" name="price_min" class="form-control" placeholder="Min Price" onchange="document.getElementById('filter-form').submit();"
@@ -233,12 +233,7 @@
                 <input type="number" id="abv_max" name="abv_max" class="form-control" placeholder="Max ABV" onchange="document.getElementById('filter-form').submit();"
                        value="{{ request.args.get('abv_max', '') }}">
             </div>
-
-            
-
-            
         </div>
-
     </form>
     <a class="btn btn-primary mt-2" href="/wines" >Reset Filters</a >
 </div>
