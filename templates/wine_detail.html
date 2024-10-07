@@ -48,36 +48,34 @@
     
 
     <!-- Additional Details in a card -->
-    <div class="mt-n3">
+    <div class="mt-n2">
         <div class="card p-3 mb-3" style="background-color: #9d36add5; border:none; color: white">
-            <h5 class="mb-4">More about this wine</h5>
+            <h4 class="mb-4">More about this wine</h4>
             <div class="row">
                 <div class="col-md-6">
-                    <h6>Main Grape</h6>
+                    <h5>Main Grape</h5>
                     <p>{{ wine.Grape }}</p>
-                    <h6>Secondary Grape</h6>
+                    <h5>Secondary Grape</h5>
                     <p>{% if wine.SecondaryGrapeVarieties %}
                         {{ wine.SecondaryGrapeVarieties }}
                     {% else %}
                         No secondary grape
                     {% endif %}</p>
-                    <h6>Appellation</h6>
+                    <h5>Appellation</h5>
                     <p>{{ wine.Appellation }}</p>
-                    <h6>Style</h6>
+                    <h5>Style</h6>
                     <p>{{ wine.Style }}</p>
-                    <h6>Characteristics</h6>
+                    <h5>Characteristics</h5>
                     <p>{{ wine.Characteristics }}</p>
                 </div>
                 <div class="col-md-6">
-                    <h6>Closure</h6>
+                    <h5>Closure</h5>
                     <p>{{ wine.Closure }}</p>
-                    <h6>Capacity</h6>
+                    <h5>Capacity</h5>
                     <p>{{ wine.Capacity }}</p>
-                    <h6>Per Bottle / Case / Each</h6>
-                    <p>{{ wine['Per bottle / case / each'] }}</p>
-                    <h6>Unit</h6>
+                    <h5>Alcohol Units</h5>
                     <p>{{ wine.Unit }}</p>
-                    <h6>ABV</h6>
+                    <h5>Alcohol Percentage</h5>
                     <p>{{ wine.ABV }}%</p>
                 </div>
             </div>
