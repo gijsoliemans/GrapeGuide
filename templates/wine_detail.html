@@ -31,16 +31,16 @@
             <p>{{ wine.Description }}</p>
             
             <h6>
-                <strong><i class="fas fa-wine-glass"></i></strong> 	&ensp; {{ wine.Type }}
+                <strong><i class="fas fa-wine-glass" style="color: #87099ad5;"></i></strong> 	&ensp; <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type={{ wine.Type }}&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" style="color:black;"> {{ wine.Type }} </a> 
             </h6>
             <h6>
-                <strong><i class="fa-solid fa-wine-bottle"></i></strong> &nbsp; {{ wine.Grape }}
+                <strong><i class="fa-solid fa-wine-bottle" style="color: #87099ad5;"></i></strong> &nbsp; <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape={{ wine.Grape }}&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" style="color: black;"> {{ wine.Grape }} </a>
             </h6>
             <h6>
-                <strong><i class="fas fa-calendar"></i></strong> 	&nbsp; {{ wine.Vintage }}
+                <strong><i class="fas fa-calendar" style="color: #87099ad5;"></i></strong> 	&nbsp; <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape=&vintage={{ wine.Vintage }}&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" style="color: black;"> {{ wine.Vintage }} </a>
             </h6>
             <h6>
-                <strong><i class="fa-solid fa-utensils"></i></strong> 	&nbsp; Meat
+                <strong><i class="fa-solid fa-utensils" style="color: #87099ad5;"></i></strong> 	&nbsp; <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" style="color: black;"> Meat </a> 
             </h6>
         </div>
     </div>
