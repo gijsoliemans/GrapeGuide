@@ -21,7 +21,6 @@
 <div class="container p-3">
     <h2 class="mb-5 text-center">Our Features</h2>
 
-    <!-- Feature 1: Search & Filter -->
     <div class="feature mt-5 mb-5">
         <div class="row align-items-center">
             <div class="col-md-3">
@@ -37,7 +36,20 @@
 
     <hr style="border: 1px solid #9d36add5;">
 
-    <!-- Feature 2: Food -->
+    <div class="feature mb-5 mt-5">
+        <div class="row align-items-center">
+            <div class="col-md-3">
+                <img src="{{ url_for('static', filename='images/Types.png') }}" class="img-fluid rounded" alt="Types of Wines" style="max-width: 100%; height: auto;">
+            </div>
+            <div class="col-md-9">
+                <h4>Types of Wines</h4>
+                <p>On our homepage, users can easily choose from various wine types, such as red, white, and rosé. Once a user selects a specific type of wine, they are presented with a curated list of all wines in our database that fall under the chosen category. This intuitive navigation allows users to effortlessly explore their preferred wine styles and discover new favorites.</p>
+            </div>
+        </div>
+    </div>
+
+    <hr style="border: 1px solid #9d36add5;">
+
     <div class="feature mb-5 mt-5">
         <div class="row align-items-center">
             <div class="col-md-3">
@@ -53,22 +65,6 @@
 
     <hr style="border: 1px solid #9d36add5;">
 
-    <!-- Feature 3: Types of wines -->
-    <div class="feature mb-5 mt-5">
-        <div class="row align-items-center">
-            <div class="col-md-3">
-                <img src="{{ url_for('static', filename='images/Types.png') }}" class="img-fluid rounded" alt="Types of Wines" style="max-width: 100%; height: auto;">
-            </div>
-            <div class="col-md-9">
-                <h4>Types of Wines</h4>
-                <p>On our homepage, users can easily choose from various wine types, such as red, white, and rosé. Once a user selects a specific type of wine, they are presented with a curated list of all wines in our database that fall under the chosen category. This intuitive navigation allows users to effortlessly explore their preferred wine styles and discover new favorites.</p>
-            </div>
-        </div>
-    </div>
-
-    <hr style="border: 1px solid #9d36add5;">
-
-    <!-- Feature 4: Wine Carousel -->
     <div class="feature mb-5 mt-5">
         <div class="row align-items-center">
             <div class="col-md-3">
@@ -82,7 +78,8 @@
     </div>
 
     <h2 class="mb-5 text-center">Our Dataset</h2>
-
+    <p>The dataset used for GrapeGuide comes from <a href="https://www.kaggle.com/" target="_blank" style="color: #9d36add5; font-weight: bold;">kaggle.com</a>. The specific dataset is the <a href="https://www.kaggle.com/datasets/elvinrustam/wine-dataset" target="_blank" style="color: #9d36add5; font-weight: bold;">'Wine Dataset'</a> dataset from the user <a href="https://www.kaggle.com/elvinrustam" target="_blank" style="color: #9d36add5; font-weight: bold;">Elvin Rustamov</a>.
+    </p>
 </div>
 
 {% endblock %}
