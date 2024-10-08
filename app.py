@@ -52,6 +52,7 @@ def wine_list():
     # GET filters
     sort = request.args.get('sort')
     search = request.args.get('search')
+    lead = request.args.get('lead')
 
     filters = {
         'Country': request.args.get('country'),
@@ -184,7 +185,8 @@ def wine_list():
         unique_units=unique_units,
         unique_characteristics=unique_characteristics,
         unique_per_bottle_case_each=unique_per_bottle_case_each,
-        unique_appellations=unique_appellations
+        unique_appellations=unique_appellations,
+        lead=lead
     )
 
 @app.route('/wine/<int:wine_id>')

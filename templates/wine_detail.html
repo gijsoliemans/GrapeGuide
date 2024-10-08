@@ -15,9 +15,9 @@
             <div class="ml-2">
                 <a href="http://127.0.0.1:5000/wines" style="color: black;"> Wines </a>
                 /
-                <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type={{ wine.Type }}&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" style="color:black;"> {{ wine.Type }} </a> 
+                <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type={{ wine.Type }}&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead={{ wine.Type }}" style="color:black;"> {{ wine.Type }} </a> 
                 /
-                <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape={{ wine.Grape }}&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" style="color: black;"> {{ wine.Grape }} </a>
+                <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape={{ wine.Grape }}&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead={{ wine.Grape }}" style="color: black;"> {{ wine.Grape }} </a>
             </div>
         </div>
     </div>
@@ -43,25 +43,25 @@
             <h2 class="">{{ wine.Title }}</h2>
             <div class="d-flex mb-4">
                 <h6 class="text-muted mb-0 mr-4">
-                    <a  class="text-muted mb-0" href="http://127.0.0.1:5000/wines?price_min=&price_max=&country={{ wine.Country }}&type=&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" style="color:black;"> {{ wine.Country }}  </a> 
+                    <a  class="text-muted mb-0" href="http://127.0.0.1:5000/wines?price_min=&price_max=&country={{ wine.Country }}&type=&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead={{ wine.Country }}" style="color:black;"> {{ wine.Country }}  </a> 
                     - 
-                    <a  class="text-muted mb-0" href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape=&vintage=&region={{ wine.Region }}&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" style="color:black;"> {{ wine.Region }}  </a> 
+                    <a  class="text-muted mb-0" href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape=&vintage=&region={{ wine.Region }}&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead={{ wine.Region }}" style="color:black;"> {{ wine.Region }}  </a> 
                 </h6>
                 <h6 class="text-muted mb-0">${{ wine.Price }}</h6>
             </div>
             <p>{{ wine.Description }}</p>
             
             <h6>
-                <strong><i class="fas fa-wine-glass" style="color: #87099ad5;"></i></strong> 	&ensp; <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type={{ wine.Type }}&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" style="color:black;"> {{ wine.Type }} </a> 
+                <strong><i class="fas fa-wine-glass" style="color: #87099ad5;"></i></strong> 	&ensp; <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type={{ wine.Type }}&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead={{ wine.Type }}" style="color:black;"> {{ wine.Type }} </a> 
             </h6>
             <h6>
-                <strong><i class="fa-solid fa-wine-bottle" style="color: #87099ad5;"></i></strong> &nbsp; <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape={{ wine.Grape }}&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" style="color: black;"> {{ wine.Grape }} </a>
+                <strong><i class="fa-solid fa-wine-bottle" style="color: #87099ad5;"></i></strong> &nbsp; <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape={{ wine.Grape }}&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead={{ wine.Grape }}" style="color: black;"> {{ wine.Grape }} </a>
             </h6>
             <h6>
-                <strong><i class="fas fa-calendar" style="color: #87099ad5;"></i></strong> 	&nbsp; <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape=&vintage={{ wine.Vintage }}&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" style="color: black;"> {{ wine.Vintage }} </a>
+                <strong><i class="fas fa-calendar" style="color: #87099ad5;"></i></strong> 	&nbsp; <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape=&vintage={{ wine.Vintage }}&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead={{ wine.Vintage }}" style="color: black;"> {{ wine.Vintage }} </a>
             </h6>
             <h6>
-                <strong><i class="fa-solid fa-utensils" style="color: #87099ad5;"></i></strong> 	&nbsp; <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" style="color: black;"> Meat </a> 
+                <strong><i class="fa-solid fa-utensils" style="color: #87099ad5;"></i></strong> 	&nbsp; <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead={{ wine.Best }}" style="color: black;"> Meat </a> 
             </h6>
         </div>
     </div>

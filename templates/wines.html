@@ -93,19 +93,44 @@
     .pagination {
         margin-top: 20px;
     }
+
+    .scrolbar {
+    overflow-y: scroll;
+    }
+
+    .scrolbar::-webkit-scrollbar {
+    display: none;
+}
 </style>
 
-<div class="sidebar">
-    <form id="filter-form" method="GET" action="{{ url_for('wines') }}">
+<div class="sidebar scrolbar" style="height: 80%;">
+    <form class="pb-4" id="filter-form" method="GET" action="{{ url_for('wines') }}">
             <!-- This hidden input field makes it so that you can still filter after searching -->    
             <input type="hidden" name="search" value="{{ request.args.get('search', '') }}">
-        <h5 class="filter-title">Filters</h5>        
+            <div class="container">
+                <div class="row">
+                  <div class="col p-1">
+                    <h5 class="filter-title">Filters</h5>
+                  </div>
+                  <div class="mt-n2 ml-2">
+                    <a class="btn btn-primary mt-2" href="/wines" >Reset Filters</a >
+                  </div>
+                </div>
+            </div>
         <div class="form-group">
             <label for="price_min">Price Range</label>
-            <input type="number" id="price_min" name="price_min" class="form-control" placeholder="Min Price" onchange="document.getElementById('filter-form').submit();"
-                   value="{{ request.args.get('price_min', '') }}">
-            <input type="number" id="price_max" name="price_max" class="form-control" placeholder="Max Price" onchange="document.getElementById('filter-form').submit();"
-                   value="{{ request.args.get('price_max', '') }}">
+            <div class="container">
+                <div class="row">
+                  <div class="col p-1">
+                    <input type="number" id="price_min" name="price_min" class="form-control" placeholder="Min Price" onchange="document.getElementById('filter-form').submit();"
+                        value="{{ request.args.get('price_min', '') }}">
+                  </div>
+                  <div class="col-sm p-1">
+                    <input type="number" id="price_max" name="price_max" class="form-control" placeholder="Max Price" onchange="document.getElementById('filter-form').submit();"
+                        value="{{ request.args.get('price_max', '') }}">
+                  </div>
+                </div>
+            </div>
         </div>
 
         <div class="form-group">
@@ -235,7 +260,6 @@
             </div>
         </div>
     </form>
-    <a class="btn btn-primary mt-2" href="/wines" >Reset Filters</a >
 </div>
 
 <script>
@@ -255,8 +279,14 @@
         <div class="row">
           
           <div class="col-sm col-lg-8">
-            <h3 class="mb-4"> {% if search %}
-                Results for "{{ search }}"
+            <h3 class="mb-4">
+                    {% if not data %} 
+                    No results {% if search %} for "{{ search }}" {% endif %}
+                    <p class="h6">Try a different search term or change the filters</p>
+                    {% elif search %}
+                    Results for "{{ search }}"
+                    {% elif lead %}
+                    Results for {{ lead }}
                     {% else %}
                     Our Wines
                     {% endif %}  </h3>
