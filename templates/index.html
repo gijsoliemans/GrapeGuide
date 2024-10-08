@@ -3,11 +3,176 @@
 {% block title %}Wines - GrapeGuide{% endblock %}
 
 {% block content %}
-<div class="jumbotron mt-4">
+<style>
+    .card {
+        border: none;
+        border-radius: 15px;
+        transition: transform 0.3s, box-shadow 0.3s;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        text-decoration: none;
+        color: inherit;
+        background-color: #ffffff; /* Set card background to white */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Consistent box-shadow for all cards */
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Consistent hover shadow for all cards */
+        cursor: pointer;
+        color: #9d36add5;
+    }
+
+    .image-container {
+        height: 100px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card-img-top {
+        object-fit: contain;
+        width: auto;
+        height: 100%;
+    }
+
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+        text-align: center;
+    }
+
+    .emoji {
+        font-size: 3rem;
+    }
+</style>
+
+<div class="jumbotron mt-1" style="background-color: #9d36add5; color: #ffffff;">
     <h1 class="display-4">Welcome to GrapeGuide!</h1>
-    <p class="lead">This is a website for finding your perfect wine!.</p>
-    <hr class="my-4">
-    <p>Use the navigation bar to explore all wines.</p>
-    <a class="btn btn-primary btn-lg" href="/wines" role="button">See all wines</a>
+    <p class="lead">This is a website for finding your perfect wine!</p>
 </div>
-{% endblock %}
+
+<div class="container mt-4">
+    <div class="text-center"><h5>Type of wine</h5></div>
+    <div class="row justify-content-center">
+        <!-- Wine Cards with consistent shadow -->
+        <!-- Card 1 -->
+        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <a href="/wines?search=&sort=default&country=&region=&type=Red&price_min=&price_max=&abv_min=&abv_max=&grape=&style=&vintage=&closure=&capacity=&secondary_grape_varieties=&unit=&characteristics=&per_bottle_case_each=" class="card h-100">
+                    <div class="image-container mt-4">
+                        <img class="card-img-top" src="https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046565_wines/the-guvnor-14666.jpeg" alt="Red wine">
+                    </div>
+                    <div class="card-body">
+                        <h6 class="font-weight-bold">Red wine</h6>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <a href="/wines?search=&sort=default&country=&region=&type=Red&price_min=&price_max=&abv_min=&abv_max=&grape=&style=&vintage=&closure=&capacity=&secondary_grape_varieties=&unit=&characteristics=&per_bottle_case_each=" class="card h-100">
+                    <div class="image-container mt-4">
+                        <img class="card-img-top" src="https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046903_wines/bread-butter-chardonnay-18139.jpeg" alt="White wine">
+                    </div>
+                    <div class="card-body">
+                        <h6 class="font-weight-bold">White wine</h6>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <a href="/wines?search=&sort=default&country=&region=&type=Ros%C3%A9&price_min=&price_max=&abv_min=&abv_max=&grape=&style=&vintage=&closure=&capacity=&secondary_grape_varieties=&unit=&characteristics=&per_bottle_case_each=" class="card h-100">
+                    <div class="image-container mt-4">
+                        <img class="card-img-top" src="https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046484_wines/domaine-la-chautarde-rose-08009.jpeg" alt="Rose">
+                    </div>
+                    <div class="card-body">
+                        <h6 class="font-weight-bold">Rose wine</h6>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="text-center"><h5>Best paired with</h5></div>
+    <div class="row justify-content-center">
+        <!-- "Best paired with" Cards -->
+        <!-- Card 1 -->
+        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="emoji">🥩</div>
+                    <h6 class="font-weight-bold mt-2">Meat</h6>
+                </div>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="emoji">🍗</div>
+                    <h6 class="font-weight-bold mt-2">Poultry</h6>
+                </div>
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="emoji">🥦</div>
+                    <h6 class="font-weight-bold mt-2">Vegetables</h6>
+                </div>
+            </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="emoji">🧀</div>
+                    <h6 class="font-weight-bold mt-2">Cheese</h6>
+                </div>
+            </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="emoji">🐠</div>
+                    <h6 class="font-weight-bold mt-2">Seafood</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="text-center"><h5>Wines of the day</h5></div>
+<div class="row justify-content-center">
+    {% for wine in random_wines %}
+    <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+        <div class="card">
+            <a href="{{ wine.url }}" class="card h-100">
+                <div class="image-container mt-4">
+                    <img class="card-img-top" src="{{ wine.image_url }}" alt="{{ wine.Title }}">
+                </div>
+                <div class="card-body">
+                    <h6 class="font-weight-bold">{{ wine.Title }}</h6>
+                </div>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}
