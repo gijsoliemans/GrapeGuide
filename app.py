@@ -23,7 +23,10 @@ for index, wine in enumerate(wines):
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    random_wines =  np.random.choice(wines, 3, replace=False)
+    random_wines = [{'id': wine['id'], 'Title': wine['Title']} for wine in random_wines]
+    print(random_wines)
+    return render_template('index.html', random_wines=random_wines)
 
 # define the about page
 @app.route('/about')
@@ -66,33 +69,62 @@ def wine_list():
         'Appellation': request.args.get('appellation')
     }
 
-    # Get unique filter options using get_unique_values function
+    # Get unique filter options using the get_unique_values function
     unique_countries = get_unique_values(wines, 'Country')
     unique_regions = get_unique_values(wines, 'Region')
     unique_grapes = get_unique_values(wines, 'Grape')
     unique_types = get_unique_values(wines, 'Type')
     unique_styles = get_unique_values(wines, 'Style')
-    unique_vintages = get_unique_values(wines, 'Vintage')
     unique_closures = get_unique_values(wines, 'Closure')
     unique_capacities = get_unique_values(wines, 'Capacity')
     unique_secondary_grapes = get_unique_values(wines, 'Secondary Grape Varieties')
+    unique_vintages = get_unique_values(wines, 'Vintage')
     unique_units = get_unique_values(wines, 'Unit')
     unique_characteristics = get_unique_values(wines, 'Characteristics')
     unique_per_bottle_case_each = get_unique_values(wines, 'Per bottle / case / each')
     unique_appellations = get_unique_values(wines, 'Appellations')
 
-    # Additional filters (slidebars nice to have for in the future)
-    price_min = request.args.get('price_min', 0, type=float)
-    price_max = request.args.get('price_max', 1000, type=float)
-    abv_min = request.args.get('abv_min', 0, type=float)
-    abv_max = request.args.get('abv_max', 100, type=float)
+    # Split styles for wines that have multiple styles separated by ' & '
+    unique_styles = sorted({style.strip() for styles in unique_styles for style in styles.split(' & ')})
 
-    # Filter the wines
+    # Remove vintages that contain double years (e.g., '2020/2021')
+    unique_vintages = [year for year in unique_vintages if '/' not in year]
+
+    # Split wine filters for wines with multiple filters separated by ', '
+    unique_secondary_grapes = sorted({grape.strip() for varieties in unique_secondary_grapes for grape in varieties.split(', ')})
+    unique_characteristics = sorted({characteristic.strip() for characteristics in unique_characteristics for characteristic in characteristics.split(', ')})
+
+    # Additional filters (sliders that are nice to have for the future)
+    price_min = request.args.get('price_min', 0, type=float)  # Minimum price filter
+    price_max = request.args.get('price_max', 1000, type=float)  # Maximum price filter
+    abv_min = request.args.get('abv_min', 0, type=float)  # Minimum ABV filter
+    abv_max = request.args.get('abv_max', 100, type=float)  # Maximum ABV filter
+
+    # Filter the wines based on selected filters
     filtered_wines = wines
 
     for key, value in filters.items(): # Key for example country, grape. Value for example France, Chardonnay.
         if value:
-            filtered_wines = [wine for wine in filtered_wines if str(wine.get(key)) == value]
+            # Split the input value separated by ', '
+            if key in ['Secondary Grape Varieties', 'Characteristics']:
+                values = [v.strip() for v in value.split(',')]
+                filtered_wines = [
+                    wine for wine in filtered_wines
+                    if any(v.strip() in str(wine.get(key)).split(', ') for v in values)
+                ]
+            elif key == 'Style':
+                # Split the input value separated by ' & '
+                values = [v.strip() for v in value.split(' & ')]
+                filtered_wines = [
+                    wine for wine in filtered_wines
+                    if any(v.strip() in str(wine.get(key)).split(' & ') for v in values)
+                ]
+            else:
+                # Standard filtering for single values
+                filtered_wines = [
+                    wine for wine in filtered_wines
+                    if str(wine.get(key)).strip() == value
+                ]
 
     # Apply slidebar filters (price, ABV)
     filtered_wines = [wine for wine in filtered_wines if price_min <= wine.get('Price') <= price_max]
@@ -100,7 +132,10 @@ def wine_list():
 
     # If search bar is not empty:
     if search:
-        filtered_wines = [wine for wine in filtered_wines if search.lower() in wine.get('Title').lower()]
+        filtered_wines = [wine for wine in filtered_wines if search.lower() in wine.get('Title').lower() or search.lower() == wine.get('Country').lower() 
+                          or search.lower() in wine.get('Style').lower() or search.lower() == wine.get('Characteristics').lower()
+                          or search.lower() == wine.get('Region').lower() or search.lower() == wine.get('Grape').lower()
+                          or search.lower() == wine.get('Type').lower() or search.lower() == wine.get('Closure').lower()] 
 
     # Now sort the wines
     if sort == 'ascending' or sort == 'descending':

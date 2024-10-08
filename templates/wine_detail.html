@@ -4,14 +4,31 @@
 
 {% block content %}
 <!-- Sticky Back Button with Arrow Icon Positioned Below the Flag -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-1">
+            <a href="{{ url_for('wines') }}" class="btn ml-n1 px-4" style=" background-color: #9d36add5; border: none; color: white;">
+                <i class="fas fa-arrow-left-long" style="color: white;"></i> <!-- Font Awesome white arrow icon -->
+            </a>
+        </div>
+        <div class="col-lg-3 ml-n2 p-1" style="background-color:#9d36ad7b; border-radius: 5px;">
+            <div class="ml-2">
+                <a href="http://127.0.0.1:5000/wines" style="color: black;"> Wines </a>
+                /
+                <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type={{ wine.Type }}&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" style="color:black;"> {{ wine.Type }} </a> 
+                /
+                <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape={{ wine.Grape }}&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" style="color: black;"> {{ wine.Grape }} </a>
+            </div>
+        </div>
+    </div>
 
-<a href="{{ url_for('wines') }}" class="btn ml-n1 px-4" style="margin-top: 20px; background-color: #9d36add5; border: none; color: white;">
-    <i class="fas fa-arrow-left-long" style="color: white;"></i> <!-- Font Awesome white arrow icon -->
-</a>
+</div>
+
+
 
 
 <div class="container">
-    <div class="row">
+    <div class="row mt-2">
         <!-- Centered Wine Image with Country Flag -->
         <div class="col-md-4 d-flex justify-content-center position-relative">
             <img src="https://static.gall.nl/images/IMG_1760190_500.png?rev=1.3" alt="{{ wine.Title }}" class="img-fluid rounded h-75">
@@ -25,22 +42,26 @@
         <div class="col-md-6">
             <h2 class="">{{ wine.Title }}</h2>
             <div class="d-flex mb-4">
-                <h6 class="text-muted mb-0 mr-4">{{ wine.Country }} - {{ wine.Region }}</h6>
+                <h6 class="text-muted mb-0 mr-4">
+                    <a  class="text-muted mb-0" href="http://127.0.0.1:5000/wines?price_min=&price_max=&country={{ wine.Country }}&type=&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" style="color:black;"> {{ wine.Country }}  </a> 
+                    - 
+                    <a  class="text-muted mb-0" href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape=&vintage=&region={{ wine.Region }}&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" style="color:black;"> {{ wine.Region }}  </a> 
+                </h6>
                 <h6 class="text-muted mb-0">${{ wine.Price }}</h6>
             </div>
             <p>{{ wine.Description }}</p>
             
             <h6>
-                <strong><i class="fas fa-wine-glass"></i></strong> 	&ensp; {{ wine.Type }}
+                <strong><i class="fas fa-wine-glass" style="color: #87099ad5;"></i></strong> 	&ensp; <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type={{ wine.Type }}&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" style="color:black;"> {{ wine.Type }} </a> 
             </h6>
             <h6>
-                <strong><i class="fa-solid fa-wine-bottle"></i></strong> &nbsp; {{ wine.Grape }}
+                <strong><i class="fa-solid fa-wine-bottle" style="color: #87099ad5;"></i></strong> &nbsp; <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape={{ wine.Grape }}&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" style="color: black;"> {{ wine.Grape }} </a>
             </h6>
             <h6>
-                <strong><i class="fas fa-calendar"></i></strong> 	&nbsp; {{ wine.Vintage }}
+                <strong><i class="fas fa-calendar" style="color: #87099ad5;"></i></strong> 	&nbsp; <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape=&vintage={{ wine.Vintage }}&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" style="color: black;"> {{ wine.Vintage }} </a>
             </h6>
             <h6>
-                <strong><i class="fa-solid fa-utensils"></i></strong> 	&nbsp; Meat
+                <strong><i class="fa-solid fa-utensils" style="color: #87099ad5;"></i></strong> 	&nbsp; <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" style="color: black;"> Meat </a> 
             </h6>
         </div>
     </div>
@@ -48,36 +69,34 @@
     
 
     <!-- Additional Details in a card -->
-    <div class="mt-n3">
+    <div class="mt-n2">
         <div class="card p-3 mb-3" style="background-color: #9d36add5; border:none; color: white">
-            <h5 class="mb-4">More about this wine</h5>
+            <h4 class="mb-4">More about this wine</h4>
             <div class="row">
                 <div class="col-md-6">
-                    <h6>Main Grape</h6>
+                    <h5>Main Grape</h5>
                     <p>{{ wine.Grape }}</p>
-                    <h6>Secondary Grape</h6>
+                    <h5>Secondary Grape</h5>
                     <p>{% if wine.SecondaryGrapeVarieties %}
                         {{ wine.SecondaryGrapeVarieties }}
                     {% else %}
                         No secondary grape
                     {% endif %}</p>
-                    <h6>Appellation</h6>
+                    <h5>Appellation</h5>
                     <p>{{ wine.Appellation }}</p>
-                    <h6>Style</h6>
+                    <h5>Style</h6>
                     <p>{{ wine.Style }}</p>
-                    <h6>Characteristics</h6>
+                    <h5>Characteristics</h5>
                     <p>{{ wine.Characteristics }}</p>
                 </div>
                 <div class="col-md-6">
-                    <h6>Closure</h6>
+                    <h5>Closure</h5>
                     <p>{{ wine.Closure }}</p>
-                    <h6>Capacity</h6>
+                    <h5>Capacity</h5>
                     <p>{{ wine.Capacity }}</p>
-                    <h6>Per Bottle / Case / Each</h6>
-                    <p>{{ wine['Per bottle / case / each'] }}</p>
-                    <h6>Unit</h6>
+                    <h5>Alcohol Units</h5>
                     <p>{{ wine.Unit }}</p>
-                    <h6>ABV</h6>
+                    <h5>Alcohol Percentage</h5>
                     <p>{{ wine.ABV }}%</p>
                 </div>
             </div>
