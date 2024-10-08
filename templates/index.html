@@ -13,22 +13,13 @@
         height: 100%;
         text-decoration: none;
         color: inherit;
-        background-color: #f8f9fa;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: #ffffff; /* Set card background to white */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Consistent box-shadow for all cards */
     }
-    
-    .card-custom-width-big {
-    width: 250px; /* Set a fixed width for all cards */
-    }
-
-    .card-custom-width-small {
-    width: 180px; /* Set a fixed width for all cards */
-    }
-
 
     .card:hover {
         transform: scale(1.05);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Consistent hover shadow for all cards */
         cursor: pointer;
         color: #9d36add5;
     }
@@ -55,130 +46,133 @@
         text-align: center;
     }
 
-    .card-title {
-        font-size: 1.2rem;
-        margin: 0.5rem 0;
-        color: #343a40;
-        font-weight: normal;
-    }
-
-    .card-subtitle {
-        font-size: 1rem;
-    }
-
-    .btn-primary {
-        background-color: #9d36add5;
-        border: none;
-        border-radius: 5px;
+    .emoji {
+        font-size: 3rem;
     }
 </style>
 
 <div class="jumbotron mt-1" style="background-color: #9d36add5; color: #ffffff;">
     <h1 class="display-4">Welcome to GrapeGuide!</h1>
-    <p class="lead">This is a website for finding your perfect wine!.</p>
+    <p class="lead">This is a website for finding your perfect wine!</p>
 </div>
 
 <div class="container mt-4">
+    <div class="text-center"><h5>Type of wine</h5></div>
     <div class="row justify-content-center">
+        <!-- Wine Cards with consistent shadow -->
         <!-- Card 1 -->
-        <div class="card card-custom-width-big m-2">
-            <a href="/wines?search=&sort=default&country=&region=&type=Red&price_min=&price_max=&abv_min=&abv_max=&grape=&style=&vintage=&closure=&capacity=&secondary_grape_varieties=&unit=&characteristics=&per_bottle_case_each=" class="card h-100">
-                <div class="image-container mt-4">
-                    <img class="card-img-top" src="https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046565_wines/the-guvnor-14666.jpeg" alt="Red wine">
-                </div>
-                <div class="card-body">
-                    <h6 class="font-weight-bold">Red wine</h6>
-                </div>
-            </a>
+        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <a href="/wines?search=&sort=default&country=&region=&type=Red&price_min=&price_max=&abv_min=&abv_max=&grape=&style=&vintage=&closure=&capacity=&secondary_grape_varieties=&unit=&characteristics=&per_bottle_case_each=" class="card h-100">
+                    <div class="image-container mt-4">
+                        <img class="card-img-top" src="https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046565_wines/the-guvnor-14666.jpeg" alt="Red wine">
+                    </div>
+                    <div class="card-body">
+                        <h6 class="font-weight-bold">Red wine</h6>
+                    </div>
+                </a>
+            </div>
         </div>
 
         <!-- Card 2 -->
-        <div class="card card-custom-width-big m-2">
-            <a href="/wines?search=&sort=default&country=&region=&type=Red&price_min=&price_max=&abv_min=&abv_max=&grape=&style=&vintage=&closure=&capacity=&secondary_grape_varieties=&unit=&characteristics=&per_bottle_case_each=" class="card h-100">
-                <div class="image-container mt-4">
-                    <img class="card-img-top" src="https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046903_wines/bread-butter-chardonnay-18139.jpeg" alt="White wine">
-                </div>
-                <div class="card-body">
-                    <h6 class="font-weight-bold">White wine</h6>
-                </div>
-            </a>
+        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <a href="/wines?search=&sort=default&country=&region=&type=Red&price_min=&price_max=&abv_min=&abv_max=&grape=&style=&vintage=&closure=&capacity=&secondary_grape_varieties=&unit=&characteristics=&per_bottle_case_each=" class="card h-100">
+                    <div class="image-container mt-4">
+                        <img class="card-img-top" src="https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046903_wines/bread-butter-chardonnay-18139.jpeg" alt="White wine">
+                    </div>
+                    <div class="card-body">
+                        <h6 class="font-weight-bold">White wine</h6>
+                    </div>
+                </a>
+            </div>
         </div>
 
         <!-- Card 3 -->
-        <div class="card card-custom-width-big m-2">
-            <a href="/wines?search=&sort=default&country=&region=&type=Ros%C3%A9&price_min=&price_max=&abv_min=&abv_max=&grape=&style=&vintage=&closure=&capacity=&secondary_grape_varieties=&unit=&characteristics=&per_bottle_case_each=" class="card h-100">
-                <div class="image-container mt-4">
-                    <img class="card-img-top" src="https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046484_wines/domaine-la-chautarde-rose-08009.jpeg" alt="Rose">
-                </div>
-                <div class="card-body">
-                    <h6 class="font-weight-bold">Rose wine</h6>
-                </div>
-            </a>
+        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <a href="/wines?search=&sort=default&country=&region=&type=Ros%C3%A9&price_min=&price_max=&abv_min=&abv_max=&grape=&style=&vintage=&closure=&capacity=&secondary_grape_varieties=&unit=&characteristics=&per_bottle_case_each=" class="card h-100">
+                    <div class="image-container mt-4">
+                        <img class="card-img-top" src="https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046484_wines/domaine-la-chautarde-rose-08009.jpeg" alt="Rose">
+                    </div>
+                    <div class="card-body">
+                        <h6 class="font-weight-bold">Rose wine</h6>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
 </div>
 
 <div class="container mt-4">
+    <div class="text-center"><h5>Best paired with</h5></div>
     <div class="row justify-content-center">
+        <!-- "Best paired with" Cards -->
         <!-- Card 1 -->
-        <div class="card card-custom-width-small m-2">
-            <a href="/wines" class="card h-100">
-                <div class="image-container mt-4">
-                    <img class="card-img-top" src="url" alt="Tastes best with red meat">
+        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="emoji">🥩</div>
+                    <h6 class="font-weight-bold mt-2">Meat</h6>
                 </div>
-                <div class="card-body">
-                    <h6 class="font-weight-bold">Red wine</h6>
-                </div>
-            </a>
+            </div>
         </div>
-
         <!-- Card 2 -->
-        <div class="card card-custom-width-small m-2">
-            <a href="/wines" class="card h-100">
-                <div class="image-container mt-4">
-                    <img class="card-img-top" src="url" alt="Tastes best with fish">
+        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="emoji">🍗</div>
+                    <h6 class="font-weight-bold mt-2">Poultry</h6>
                 </div>
-                <div class="card-body">
-                    <h6 class="font-weight-bold">White wine</h6>
-                </div>
-            </a>
+            </div>
         </div>
-
         <!-- Card 3 -->
-        <div class="card card-custom-width-small m-2">
-            <a href="/wines" class="card h-100">
-                <div class="image-container mt-4">
-                    <img class="card-img-top" src="url" alt="Tastes best with poultry">
+        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="emoji">🥦</div>
+                    <h6 class="font-weight-bold mt-2">Vegetables</h6>
                 </div>
-                <div class="card-body">
-                    <h6 class="font-weight-bold">Rose wine</h6>
-                </div>
-            </a>
+            </div>
         </div>
-
-        <div class="card card-custom-width-small m-2">
-            <a href="/wines" class="card h-100">
-                <div class="image-container mt-4">
-                    <img class="card-img-top" src="url" alt="Tastes best with cheese">
+        <!-- Card 4 -->
+        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="emoji">🧀</div>
+                    <h6 class="font-weight-bold mt-2">Cheese</h6>
                 </div>
-                <div class="card-body">
-                    <h6 class="font-weight-bold">Rose wine</h6>
-                </div>
-            </a>
+            </div>
         </div>
+        <!-- Card 5 -->
+        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="emoji">🐠</div>
+                    <h6 class="font-weight-bold mt-2">Seafood</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-
-        <div class="card card-custom-width-small m-2">
-            <a href="/wines" class="card h-100">
+<div class="container mt-4">
+    <div class="text-center"><h5>Wines of the day</h5></div>
+<div class="row justify-content-center">
+    {% for wine in random_wines %}
+    <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+        <div class="card">
+            <a href="{{ wine.url }}" class="card h-100">
                 <div class="image-container mt-4">
-                    <img class="card-img-top" src="url" alt="Tastes best with vegetables">
+                    <img class="card-img-top" src="{{ wine.image_url }}" alt="{{ wine.Title }}">
                 </div>
                 <div class="card-body">
-                    <h6 class="font-weight-bold">Rose wine</h6>
+                    <h6 class="font-weight-bold">{{ wine.Title }}</h6>
                 </div>
             </a>
         </div>
     </div>
+    {% endfor %}
 </div>
 
 {% endblock content %}

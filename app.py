@@ -23,7 +23,10 @@ for index, wine in enumerate(wines):
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    random_wines =  np.random.choice(wines, 3, replace=False)
+    random_wines = [{'id': wine['id'], 'Title': wine['Title']} for wine in random_wines]
+    print(random_wines)
+    return render_template('index.html', random_wines=random_wines)
 
 # define the about page
 @app.route('/about')
