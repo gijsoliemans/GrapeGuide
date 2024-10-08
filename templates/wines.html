@@ -107,6 +107,7 @@
     <form class="pb-4" id="filter-form" method="GET" action="{{ url_for('wines') }}">
             <!-- This hidden input field makes it so that you can still filter after searching -->    
             <input type="hidden" name="search" value="{{ request.args.get('search', '') }}">
+            <input type="hidden" name="sort" value="{{ request.args.get('sort', '') }}">
             <div class="container">
                 <div class="row">
                   <div class="col p-1">
@@ -296,6 +297,22 @@
           
           <div class="col-sm col-lg-3 mt-n2 ml-5 p-0 ">
             <form id="sort-form" method="GET" action="{{ url_for('wines') }}">
+                <input type="hidden" name="search" value="{{ request.args.get('search', '') }}">
+                <input type="hidden" name="price_min" value="{{ request.args.get('price_min', '') }}">
+                <input type="hidden" name="price_max" value="{{ request.args.get('price_max', '') }}">
+                <input type="hidden" name="country" value="{{ request.args.get('country', '') }}">
+                <input type="hidden" name="type" value="{{ request.args.get('type', '') }}">
+                <input type="hidden" name="grape" value="{{ request.args.get('grape', '') }}">
+                <input type="hidden" name="vintage" value="{{ request.args.get('vintage', '') }}">
+                <input type="hidden" name="region" value="{{ request.args.get('region', '') }}">
+                <input type="hidden" name="secondary_grape_varieties" value="{{ request.args.get('secondary_grape_varieties', '') }}">
+                <input type="hidden" name="style" value="{{ request.args.get('style', '') }}">
+                <input type="hidden" name="characteristics" value="{{ request.args.get('characteristics', '') }}">
+                <input type="hidden" name="closure" value="{{ request.args.get('closure', '') }}">
+                <input type="hidden" name="capacity" value="{{ request.args.get('capacity', '') }}">
+                <input type="hidden" name="unit" value="{{ request.args.get('unit', '') }}">
+                <input type="hidden" name="abv_min" value="{{ request.args.get('abv_min', '') }}">
+                <input type="hidden" name="abv_max" value="{{ request.args.get('abv_max', '') }}">
                 <div class="form-group">
                     <label for="sort" class="mb-n2">Sort by</label>
                     <select id="sort" name="sort" class="form-control" onchange="document.getElementById('sort-form').submit();">
