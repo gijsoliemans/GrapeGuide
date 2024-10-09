@@ -44,6 +44,7 @@ def wine_list():
     sort = request.args.get('sort')
     search = request.args.get('search')
     lead = request.args.get('lead')
+    this_page = request.args.get('page', 1, type=int)
 
     filters = {
         'Country': request.args.get('country'),
@@ -148,7 +149,7 @@ def wine_list():
 
     # Pagination parameters
     page = request.args.get('page', 1, type=int)
-    per_page = 15  # Number of wines to display per page
+    per_page = 12  # Number of wines to display per page
     total_wines = len(filtered_wines)
     total_pages = math.ceil(total_wines / per_page)
 
@@ -178,6 +179,7 @@ def wine_list():
         filters=filters,
         data=wines_to_display,
         page_numbers=page_numbers,
+        this_page=this_page,
         unique_countries=unique_countries,
         unique_regions=unique_regions,
         unique_grapes=unique_grapes,

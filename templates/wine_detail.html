@@ -3,23 +3,33 @@
 {% block title %}Wine Detail - GrapeGuide{% endblock %}
 
 {% block content %}
-<!-- Sticky Back Button with Arrow Icon Positioned Below the Flag -->
+<style>
+
+
+
+</style>
+
+<!-- Back button with arrow and breadcrumbs -->
 <div class="container">
-    <div class="row">
+    <div class="row ">
         <div class="col-lg-1">
             <a href="{{ url_for('wines') }}" class="btn ml-n1 px-4" style=" background-color: #9d36add5; border: none; color: white;">
                 <i class="fas fa-arrow-left-long" style="color: white;"></i> <!-- Font Awesome white arrow icon -->
             </a>
         </div>
-        <div class="col-lg-3 ml-n2 p-1" style="background-color:#9d36ad7b; border-radius: 5px;">
-            <div class="ml-2">
+        <div class="d-flex align-items-center" style="min-width: 25%; background-color:#9d36ad7b; border-radius: 5px; padding: 5px;">
+            <div class="ml-2" style="white-space: nowrap;">
                 <a href="http://127.0.0.1:5000/wines" style="color: black;"> Wines </a>
                 /
                 <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type={{ wine.Type }}&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead={{ wine.Type }}" style="color:black;"> {{ wine.Type }} </a> 
                 /
+                <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape={{ wine.Grape }}&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead={{ wine.Country }}" style="color: black;"> {{ wine.Country }} </a>
+                /
                 <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape={{ wine.Grape }}&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead={{ wine.Grape }}" style="color: black;"> {{ wine.Grape }} </a>
             </div>
         </div>
+        
+        
     </div>
 
 </div>
@@ -51,18 +61,33 @@
             </div>
             <p>{{ wine.Description }}</p>
             
+            <!-- Icons with info -->
+            <div class="tooltip">Hover over me
+                <span class="tooltiptext">Tooltip text</span>
+            </div>
             <h6>
-                <strong><i class="fas fa-wine-glass" style="color: #87099ad5;"></i></strong> 	&ensp; <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type={{ wine.Type }}&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead={{ wine.Type }}" style="color:black;"> {{ wine.Type }} </a> 
+                <strong><i class="fas fa-wine-glass" style="color: #87099ad5;"></i></strong>&ensp;
+                <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type={{ wine.Type }}&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead={{ wine.Type }}" style="color:black;"> {{ wine.Type }} </a>
             </h6>
             <h6>
                 <strong><i class="fa-solid fa-wine-bottle" style="color: #87099ad5;"></i></strong> &nbsp; <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape={{ wine.Grape }}&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead={{ wine.Grape }}" style="color: black;"> {{ wine.Grape }} </a>
             </h6>
+            
+            {% if wine.Vintage != "NV" %}
             <h6>
                 <strong><i class="fas fa-calendar" style="color: #87099ad5;"></i></strong> 	&nbsp; <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape=&vintage={{ wine.Vintage }}&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead={{ wine.Vintage }}" style="color: black;"> {{ wine.Vintage }} </a>
             </h6>
-            <h6>
-                <strong><i class="fa-solid fa-utensils" style="color: #87099ad5;"></i></strong> 	&nbsp; <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead={{ wine.Best }}" style="color: black;"> Meat </a> 
-            </h6>
+            {% else %}
+            <h6 class="mb-3"></h6> 
+            {% endif %}
+            
+            {% if wine.best_pairing != "Unknown" %}
+                <h6 class="mb-3">
+                    <strong><i class="fa-solid fa-utensils" style="color: #87099ad5;" data-toggle="tooltip" data-placement="top" title="Hooray!"></i></strong> 	&nbsp; <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead={{ wine.best_pairing[0] | capitalize }}" style="color: black;"> {{ wine.best_pairing[0] | capitalize }} </a> 
+                </h6>
+            {% else %}
+                <h6 class="mb-3"></h6> 
+            {% endif %}
         </div>
     </div>
 
@@ -93,7 +118,7 @@
                     <h5>Closure</h5>
                     <p>{{ wine.Closure }}</p>
                     <h5>Capacity</h5>
-                    <p>{{ wine.Capacity }}</p>
+                    <p>{{ wine.Capacity }} CL </p>
                     <h5>Alcohol Units</h5>
                     <p>{{ wine.Unit }}</p>
                     <h5>Alcohol Percentage</h5>
@@ -103,4 +128,6 @@
         </div>
     </div>
 </div>
+
+
 {% endblock %}

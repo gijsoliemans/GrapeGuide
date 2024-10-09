@@ -112,11 +112,11 @@
             <div class="container">
                 <div class="row">
                   <div class="col p-1">
-                    <input type="number" id="price_min" name="price_min" class="form-control" placeholder="Min Price" onchange="document.getElementById('filter-form').submit();"
+                    <input type="number" id="price_min" name="price_min" class="form-control" placeholder="Min" onchange="document.getElementById('filter-form').submit();"
                         value="{{ request.args.get('price_min', '') }}">
                   </div>
                   <div class="col-sm p-1">
-                    <input type="number" id="price_max" name="price_max" class="form-control" placeholder="Max Price" onchange="document.getElementById('filter-form').submit();"
+                    <input type="number" id="price_max" name="price_max" class="form-control" placeholder="Max" onchange="document.getElementById('filter-form').submit();"
                         value="{{ request.args.get('price_max', '') }}">
                   </div>
                 </div>
@@ -255,10 +255,23 @@
 
             <div class="form-group">
                 <label for="abv_min">Alcohol Percentage Range</label>
-                <input type="number" id="abv_min" name="abv_min" class="form-control" placeholder="Min ABV" onchange="document.getElementById('filter-form').submit();"
-                       value="{{ request.args.get('abv_min', '') }}">
-                <input type="number" id="abv_max" name="abv_max" class="form-control" placeholder="Max ABV" onchange="document.getElementById('filter-form').submit();"
-                       value="{{ request.args.get('abv_max', '') }}">
+                <div class="container">
+                    <div class="row">
+                      <div class="col p-1">
+                        <input type="number" id="abv_min" name="abv_min" class="form-control" placeholder="Min" onchange="document.getElementById('filter-form').submit();"
+                            value="{{ request.args.get('abv_min', '') }}">
+                      </div>
+                      <div class="col-sm p-1">
+                        <input type="number" id="abv_max" name="abv_max" class="form-control" placeholder="Max" onchange="document.getElementById('filter-form').submit();"
+                            value="{{ request.args.get('abv_max', '') }}">
+                      </div>
+                    </div>
+                </div>
+
+
+
+                
+                
             </div>
         </div>
     </form>
@@ -381,9 +394,11 @@
     <div class="row">
         {% for wine in data %}
         <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
-            <a href="{{ url_for('wine_detail', wine_id=wine.id) }}" class="card h-100" style="text-decoration: none;">
-                <div class="image-container mt-4">
-                    <img class="card-img-top" src="{{ wine.image_source }}" alt="{{ wine.Title }}" style="mix-blend-mode: multiply;">
+            <a href="{{ url_for('wine_detail', wine_id=wine.id) }}" class="card" style="text-decoration: none; max-height: 550px;"> <!-- Reduced the max-width -->
+                <!-- Slightly smaller image container -->
+                <div class="image-container mt-3" style="height: auto; overflow: hidden;">
+                    <img class="card-img-top" src="{{ wine.image_source }}" alt="{{ wine.Title }}" 
+                         style="width: 100%; height: auto; max-height: 220px; object-fit: contain; mix-blend-mode: multiply;""> <!-- Reduced the max-height -->
                 </div>
                 <div class="card-body">
                     <h6 class=" font-weight-bold">{{ wine.Title }}</h6>
@@ -401,23 +416,40 @@
                 </div>
             </a>
         </div>
+        
+        
         {% endfor %}
     </div>
-    <!-- Pagination Controls -->
+
     <!-- Pagination -->
-<nav aria-label="Page navigation">
-    <ul class="pagination">
-        {% for page in page_numbers %}
-            {% if page == '...' %}
-                <li class="page-item"><span class="page-link">{{ page }}</span></li>
-            {% else %}
-                <li class="page-item {% if page == this_page %}active{% endif %}">
-                    <a class="page-link" href="{{ url_for('wines', pairing=pairing, page=page, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], unit=filters.Unit, characteristics=filters.Characteristics) }}">{{ page }}</a>
-                </li>
-            {% endif %}
-        {% endfor %}
-    </ul>
-</nav>
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <!-- Previous arrow -->
+            <li class="page-item {% if this_page == 1 %}disabled{% endif %}">
+                <a class="page-link" href="{{ url_for('wines', pairing=pairing, page=this_page - 1, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], unit=filters.Unit, characteristics=filters.Characteristics) }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+    
+            <!-- Page numbers -->
+            {% for page in page_numbers %}
+                {% if page == '...' %}
+                    <li class="page-item"><span class="page-link">{{ page }}</span></li>
+                {% else %}
+                    <li class="page-item {% if page == this_page %}active{% endif %}">
+                        <a class="page-link" href="{{ url_for('wines', pairing=pairing, page=page, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], unit=filters.Unit, characteristics=filters.Characteristics) }}">{{ page }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+    
+            <!-- Next arrow -->
+            <li class="page-item {% if this_page == page_numbers|length %}disabled{% endif %}">
+                <a class="page-link" href="{{ url_for('wines', pairing=pairing, page=this_page + 1, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], unit=filters.Unit, characteristics=filters.Characteristics, lead=lead) }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>    
 </div>
 
 {% endblock %}
