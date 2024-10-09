@@ -12,10 +12,7 @@
         width: 250px; /* Adjust the width of the sidebar */
         padding: 20px;
         background-color: #f8f9fa;
-        position: fixed; /* Fixes the sidebar to the left */
-        height: 100%; /* Make the sidebar full height */
-        overflow-y: auto; /* Allows scrolling if the content is too long */
-        padding-bottom: 100px; /* Temp fix so that I can see the button */
+        position: absolute; /* Fixes the sidebar to the left */
     }
 
     .content {
@@ -93,17 +90,9 @@
     .pagination {
         margin-top: 20px;
     }
-
-    .scrolbar {
-    overflow-y: scroll;
-    }
-
-    .scrolbar::-webkit-scrollbar {
-    display: none;
-}
 </style>
 
-<div class="sidebar scrolbar" style="height: 80%;">
+<div class="sidebar scrolbar">
     <form class="pb-4" id="filter-form" method="GET" action="{{ url_for('wines') }}">
             <!-- This hidden input field makes it so that you can still filter after searching -->    
             <input type="hidden" name="search" value="{{ request.args.get('search', '') }}">
@@ -113,8 +102,8 @@
                   <div class="col p-1">
                     <h5 class="filter-title">Filters</h5>
                   </div>
-                  <div class="mt-n2 ml-2">
-                    <a class="btn btn-primary mt-2" href="/wines" >Reset Filters</a >
+                  <div id="reset_filters_button" class="mt-n2 ml-2" style="display:none">
+                    <a class="btn btn-primary mt-2" href="/wines" onclick="collapseAdvancedFilters()"> Reset Filters </a>
                   </div>
                 </div>
             </div>
@@ -132,6 +121,18 @@
                   </div>
                 </div>
             </div>
+        </div>
+
+        <div class="form-group">
+            <label for="pairing">Tastes best with:</label>
+            <select id="pairing" name="pairing" class="form-control" onchange="document.getElementById('filter-form').submit();">
+                <option value="">All</option>
+                <option value="meat" {% if request.args.get('pairing') == 'meat' %} selected {% endif %}>Meat</option>
+                <option value="poultry" {% if request.args.get('pairing') == 'poultry' %} selected {% endif %}>Poultry</option>
+                <option value="fish" {% if request.args.get('pairing') == 'fish' %} selected {% endif %}>Fish</option>
+                <option value="cheese" {% if request.args.get('pairing') == 'cheese' %} selected {% endif %}>Cheese</option>
+                <option value="vegetables" {% if request.args.get('pairing') == 'vegetables' %} selected {% endif %}>Vegetables</option>
+            </select>            
         </div>
 
         <div class="form-group">
@@ -168,7 +169,7 @@
 
         <!-- Advanced Filters Section -->
 
-        <button type="button" class="btn btn-primary" onclick="toggleCollapse()">Advanced Filters ↕️ </button>
+        <button type="button" id="advanced_filters_button" class="btn btn-primary" onclick="toggleCollapse()">Advanced Filters ▼</button>
         <div id="collapsibleFilters" style="display: none">
             <div class="form-group">
                 <label for="vintage">Year</label>
@@ -264,16 +265,65 @@
 </div>
 
 <script>
-    // JavaScript to toggle the visibility of the advanced filters section
+    window.onbeforeunload = function() {
+        // Save scroll position
+        localStorage.setItem('scrollPosition', window.scrollY); 
+    };
+    
+    window.onload = function() {
+        // Scroll back to old position
+        if (localStorage.getItem('scrollPosition') !== null) {
+            window.scrollTo(0, parseInt(localStorage.getItem('scrollPosition')));
+        }
+
+        var content = document.getElementById('collapsibleFilters');
+        var button = document.getElementById('advanced_filters_button'); // Define the button variable
+        var resetButton = document.getElementById('reset_filters_button');
+    
+        // If filters state is 'open', ensure the section is visible
+        if (localStorage.getItem('filtersOpen') === 'true') {
+            content.style.display = "block"; 
+            button.innerHTML = 'Advanced Filters ▲'; // Change to upward arrow
+        } else {
+            content.style.display = "none"; 
+            button.innerHTML = 'Advanced Filters ▼'; // Change to downward arrow
+        }
+    
+        // Check if the current URL is not '/wines' and then show reset filters button
+        if (window.location.href !== 'http://127.0.0.1:5000/wines') {
+            if (resetButton) {
+                resetButton.style.display = "block"; 
+            }
+        }
+    };
+
+    // Collapse Advanced Filters button if the Reset Button is clicked
+    function collapseAdvancedFilters() {
+        var content = document.getElementById('collapsibleFilters');
+        content.style.display = "none";
+        localStorage.setItem('filtersOpen', 'false'); 
+
+        var button = document.getElementById('advanced_filters_button');
+        button.innerHTML = 'Advanced Filters ▼'; // Set button text to downward arrow
+    }
+    
+    // Toggle the Advanced Filter button
     function toggleCollapse() {
         var content = document.getElementById('collapsibleFilters');
+        var button = document.getElementById('advanced_filters_button'); // Define the button variable
+
         if (content.style.display === "none" || content.style.display === "") {
-            content.style.display = "block"; // Show content
+            content.style.display = "block"; 
+            localStorage.setItem('filtersOpen', 'true'); 
+            button.innerHTML = 'Advanced Filters ▲'; // Change to upward arrow
         } else {
-            content.style.display = "none"; // Hide content
+            content.style.display = "none"; 
+            localStorage.setItem('filtersOpen', 'false'); 
+            button.innerHTML = 'Advanced Filters ▼'; // Change to downward arrow
         }
     }
 </script>
+
 
 <div class="content">
     <div class="container-fluid">
@@ -293,13 +343,12 @@
                     {% endif %}  </h3>
           </div>
           
-                        
-          
           <div class="col-sm col-lg-3 mt-n2 ml-5 p-0 ">
             <form id="sort-form" method="GET" action="{{ url_for('wines') }}">
                 <input type="hidden" name="search" value="{{ request.args.get('search', '') }}">
                 <input type="hidden" name="price_min" value="{{ request.args.get('price_min', '') }}">
                 <input type="hidden" name="price_max" value="{{ request.args.get('price_max', '') }}">
+                <input type="hidden" name="pairing" value="{{ request.args.get('pairing', '') }}">
                 <input type="hidden" name="country" value="{{ request.args.get('country', '') }}">
                 <input type="hidden" name="type" value="{{ request.args.get('type', '') }}">
                 <input type="hidden" name="grape" value="{{ request.args.get('grape', '') }}">
@@ -361,7 +410,7 @@
                 <li class="page-item"><span class="page-link">{{ page }}</span></li>
             {% else %}
                 <li class="page-item {% if page == this_page %}active{% endif %}">
-                    <a class="page-link" href="{{ url_for('wines', page=page, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], unit=filters.Unit, characteristics=filters.Characteristics) }}">{{ page }}</a>
+                    <a class="page-link" href="{{ url_for('wines', pairing=pairing, page=page, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], unit=filters.Unit, characteristics=filters.Characteristics) }}">{{ page }}</a>
                 </li>
             {% endif %}
         {% endfor %}

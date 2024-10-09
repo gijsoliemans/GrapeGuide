@@ -33,15 +33,6 @@ def home():
 def about():
     return render_template('about.html')
 
-# define the search page
-@app.route('/search', methods=['POST', 'GET'])
-def search():
-    if request.method == 'POST':
-        search = request.form['search']
-        return redirect(url_for('search_results', search=search))
-    else:
-        return render_template('search.html')
-
 # Function to extract unique values out the json for the filters on wines.html
 def get_unique_values(data, key):
     return sorted(set([wine.get(key) for wine in data if wine.get(key)]))
@@ -104,6 +95,14 @@ def wine_list():
     # Filter the wines based on selected filters
     filtered_wines = wines
 
+    pairing_filter = request.args.get('pairing')  # Get the selected pairing from the query parameters
+
+    if pairing_filter:  # If a pairing is selected
+        filtered_wines = [
+            wine for wine in wines 
+            if pairing_filter in wine.get('best_pairing', [])
+        ]
+
     for key, value in filters.items(): # Key for example country, grape. Value for example France, Chardonnay.
         if value:
             # Split the input value separated by ', '
@@ -144,7 +143,7 @@ def wine_list():
 
     # Pagination parameters
     page = request.args.get('page', 1, type=int)
-    per_page = 12  # Number of wines to display per page
+    per_page = 15  # Number of wines to display per page
     total_wines = len(filtered_wines)
     total_pages = math.ceil(total_wines / per_page)
 
@@ -168,6 +167,7 @@ def wine_list():
     # Pass all the data needed to build the webpage
     return render_template(
         'wines.html',
+        path=request.path,
         sort=sort,
         search=search,
         filters=filters,
