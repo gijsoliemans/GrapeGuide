@@ -9,7 +9,7 @@ app = Flask(__name__, template_folder=os.path.join(os.path.dirname(__file__), 't
 app.config['DEBUG'] = True  # Enable debug mode
 
 # Construct the absolute path to the JSON file
-json_file_path = os.path.join(os.path.dirname(__file__), 'WineDataset.json')
+json_file_path = os.path.join(os.path.dirname(__file__), 'WineDataset_with_Dishes_with_Images.json')
 
 # Read the JSON file into a DataFrame
 df = pd.read_json(json_file_path)
