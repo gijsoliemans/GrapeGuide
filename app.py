@@ -139,7 +139,12 @@ def wine_list():
 
     # Now sort the wines
     if sort == 'ascending' or sort == 'descending':
+        # Sort by Price
         filtered_wines.sort(key=lambda x: x['Price'], reverse=(sort == 'descending'))
+    elif sort == 'a-z' or sort == 'z-a':
+        # Sort by Name
+        filtered_wines.sort(key=lambda x: x['Title'], reverse=(sort == 'z-a'))
+
 
     # Pagination parameters
     page = request.args.get('page', 1, type=int)

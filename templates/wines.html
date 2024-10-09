@@ -366,8 +366,10 @@
                     <label for="sort" class="mb-n2">Sort by</label>
                     <select id="sort" name="sort" class="form-control" onchange="document.getElementById('sort-form').submit();">
                         <option value="default" {% if request.args.get('sort') == 'default' %} selected {% endif %}>Default</option>
-                        <option value="ascending" {% if request.args.get('sort') == 'ascending' %} selected {% endif %}>Price ascending</option>
-                        <option value="descending" {% if request.args.get('sort') == 'descending' %} selected {% endif %}>Price descending</option>
+                        <option value="ascending" {% if request.args.get('sort') == 'ascending' %} selected {% endif %}>Price: ascending</option>
+                        <option value="descending" {% if request.args.get('sort') == 'descending' %} selected {% endif %}>Price: descending</option>
+                        <option value="a-z" {% if request.args.get('sort') == 'a-z' %} selected {% endif %}>Name: A - Z</option>
+                        <option value="z-a" {% if request.args.get('sort') == 'z-a' %} selected {% endif %}>Name: Z - A</option>
                     </select>
                 </div>
             </form>
