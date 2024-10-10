@@ -4,7 +4,7 @@
 
 {% block content %}
 <head>
-    
+
 </head>
 <!-- Back button with arrow and breadcrumbs -->
 <div class="container">
@@ -37,7 +37,7 @@
 <div class="container">
     <div class="row mt-2">
         <!-- Centered Wine Image with Country Flag -->
-        <div class="col-md-4 d-flex justify-content-center position-relative">
+        <div class="col-md-4  d-flex justify-content-center position-relative">
             <img src="{{ wine.image_source }}" alt="{{ wine.Title }}" class="img-fluid rounded h-75" style="mix-blend-mode: multiply;">
             <!-- Move the flag to the right side -->
             <div class="position-absolute" style="top: 10px; right: 10px;">
@@ -59,9 +59,6 @@
             <p>{{ wine.Description }}</p>
             
             <!-- Icons with info -->
-            <div class="tooltip">Hover over me
-                <span class="tooltiptext">Tooltip text</span>
-            </div>
             <h6>
                 <strong><i class="fas fa-wine-glass" style="color: #87099ad5;"></i></strong>&ensp;
                 <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type={{ wine.Type }}&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead={{ wine.Type }}" style="color:black;"> {{ wine.Type }} </a>
@@ -79,11 +76,11 @@
             {% endif %}
             
             {% if wine.best_pairing != "Unknown" %}
-                <h6 class="mb-3">
+                <h6 class="mb-5">
                     <strong><i class="fa-solid fa-utensils" style="color: #87099ad5;" data-toggle="tooltip" data-placement="top" title="Hooray!"></i></strong> 	&nbsp; <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead={{ wine.best_pairing[0] | capitalize }}" style="color: black;"> {{ wine.best_pairing[0] | capitalize }} </a> 
                 </h6>
             {% else %}
-                <h6 class="mb-3"></h6> 
+                <h6 class="mb-5"></h6> 
             {% endif %}
         </div>
     </div>
