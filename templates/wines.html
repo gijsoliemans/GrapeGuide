@@ -90,7 +90,40 @@
     .pagination {
         margin-top: 20px;
     }
+
+
+/* Purple buttons and numbers for pagination */
+.pagination .page-link {
+    color: #9d36add5; /* Purple text */
+    background-color: white; /* White background for default state */
+    border: 1px solid #9d36add5; /* Purple border */
+}
+
+.pagination .page-link:hover {
+    color: white; /* White text on hover */
+    background-color: #9d36add5; /* Purple background on hover */
+    border-color: #9d36add5; /* Purple border on hover */
+}
+
+.pagination .page-item.active .page-link {
+    color: white; /* White text for active page */
+    background-color: #9d36add5; /* Purple background for active page */
+    border-color: #9d36add5; /* Purple border for active page */
+}
+
+.pagination .page-item.disabled .page-link {
+    background-color: #f1f1f1; /* Disabled state background */
+    color: #6c757d; /* Grayed-out text */
+}
+
+/* Ensure the numbers are purple */
+.pagination .page-link {
+    font-weight: bold; /* Makes the numbers stand out */
+
+}
 </style>
+
+
 
 <div class="sidebar scrolbar">
     <form class="pb-4" id="filter-form" method="GET" action="{{ url_for('wines') }}">
