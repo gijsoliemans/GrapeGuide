@@ -25,7 +25,7 @@
     }
 
     .image-container {
-        height: 100px;
+        height: 100%;
         overflow: hidden;
         display: flex;
         justify-content: center;
@@ -65,7 +65,7 @@
             <div class="card">
                 <a href="/wines?search=&sort=default&country=&region=&type=Red&price_min=&price_max=&abv_min=&abv_max=&grape=&style=&vintage=&closure=&capacity=&secondary_grape_varieties=&unit=&characteristics=&per_bottle_case_each=&lead=Red Wines" class="card h-100">
                     <div class="image-container mt-4">
-                        <img class="card-img-top" src="https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046565_wines/the-guvnor-14666.jpeg" alt="Red wine">
+                        <img src="{{ url_for('static', filename='images/Rood.jpg') }}" class="img-fluid rounded" alt="Types of Wines" style="max-width: 100%; height: auto;">
                     </div>
                     <div class="card-body">
                         <h6 class="font-weight-bold">Red wine</h6>
@@ -79,7 +79,7 @@
             <div class="card">
                 <a href="/wines?search=&sort=default&country=&region=&type=White&price_min=&price_max=&abv_min=&abv_max=&grape=&style=&vintage=&closure=&capacity=&secondary_grape_varieties=&unit=&characteristics=&per_bottle_case_each=&lead=White wines" class="card h-100">
                     <div class="image-container mt-4">
-                        <img class="card-img-top" src="https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046903_wines/bread-butter-chardonnay-18139.jpeg" alt="White wine">
+                        <img src="{{ url_for('static', filename='images/Wit.jpg') }}" class="img-fluid rounded" alt="Types of Wines" style="max-width: 100%; height: auto;">
                     </div>
                     <div class="card-body">
                         <h6 class="font-weight-bold">White wine</h6>
@@ -93,7 +93,7 @@
             <div class="card">
                 <a href="/wines?search=&sort=default&country=&region=&type=Ros%C3%A9&price_min=&price_max=&abv_min=&abv_max=&grape=&style=&vintage=&closure=&capacity=&secondary_grape_varieties=&unit=&characteristics=&per_bottle_case_each=&lead=Rose Wines" class="card h-100">
                     <div class="image-container mt-4">
-                        <img class="card-img-top" src="https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046484_wines/domaine-la-chautarde-rose-08009.jpeg" alt="Rose">
+                        <img src="{{ url_for('static', filename='images/Rose.jpg') }}" class="img-fluid rounded" alt="Types of Wines" style="max-width: 100%; height: auto;">
                     </div>
                     <div class="card-body">
                         <h6 class="font-weight-bold">Rose wine</h6>
