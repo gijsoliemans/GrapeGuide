@@ -24,7 +24,7 @@ for index, wine in enumerate(wines):
 @app.route('/')
 def home():
     random_wines =  np.random.choice(wines, 3, replace=False)
-    random_wines = [{'id': wine['id'], 'Title': wine['Title']} for wine in random_wines]
+    random_wines = [{'id': wine['id'], 'Title': wine['Title'], 'Image': wine['image_source'] } for wine in random_wines]
     print(random_wines)
     return render_template('index.html', random_wines=random_wines)
 
