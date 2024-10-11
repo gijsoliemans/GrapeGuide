@@ -77,7 +77,7 @@
             
             {% if wine.best_pairing != "Unknown" %}
                 <h6 class="mb-5">
-                    <strong><i class="fa-solid fa-utensils" style="color: #87099ad5;" data-toggle="tooltip" data-placement="top" title="Hooray!"></i></strong> 	&nbsp; <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type=&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead={{ wine.best_pairing[0] | capitalize }}" style="color: black;"> {{ wine.best_pairing[0] | capitalize }} </a> 
+                    <strong><i class="fa-solid fa-utensils" style="color: #87099ad5;"></i></strong> 	&nbsp; <a href="http://127.0.0.1:5000/wines?search=&sort=&price_min=&price_max=&pairing={{ wine.best_pairing[0] }}&country=&type=&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead={{ wine.best_pairing[0] | capitalize }}" style="color: black;"> {{ wine.best_pairing[0] | capitalize }} </a> 
                 </h6>
             {% else %}
                 <h6 class="mb-5"></h6> 
