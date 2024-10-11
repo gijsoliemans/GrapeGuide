@@ -481,7 +481,7 @@ function toggleCollapse() {
         {% endfor %}
 
         <!-- Next arrow: Only show if not on the last page -->
-        {% if this_page < page_numbers|length %}
+        {% if this_page < page_numbers[-1] %}
             <li class="page-item">
                 <a class="page-link" href="{{ url_for('wines', pairing=request.args.get('pairing', ''), page=this_page + 1, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], unit=filters.Unit, characteristics=filters.Characteristics, lead=lead) }}" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
