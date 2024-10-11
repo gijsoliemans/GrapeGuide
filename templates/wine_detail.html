@@ -38,7 +38,7 @@
     <div class="row mt-2">
         <!-- Centered Wine Image with Country Flag -->
         <div class="col-md-4  d-flex justify-content-center position-relative">
-            <img src="{{ wine.image_source }}" alt="{{ wine.Title }}" class="img-fluid rounded h-75" style="mix-blend-mode: multiply;">
+            <img src="{{ wine.image_source }}" alt="{{ wine.Title }}" class="img-fluid rounded h-75 mt-3" style="mix-blend-mode: multiply;">
             <!-- Move the flag to the right side -->
             <div class="position-absolute" style="top: 10px; right: 10px;">
                 <img src="https://flagcdn.com/w320/{{ wine.CountryCode | lower }}.png" alt="{{ wine.Country }}" style="width: 70px; height: 46px; border-radius: 10%;">
@@ -60,7 +60,7 @@
             
             <!-- Icons with info -->
             <h6>
-                <strong><i class="fas fa-wine-glass" style="color: #87099ad5;"></i></strong>&ensp;
+                <strong><i class="fas fa-wine-glass" style="color: #87099ad5;"></i></strong>&ensp;&ensp;
                 <a href="http://127.0.0.1:5000/wines?price_min=&price_max=&country=&type={{ wine.Type }}&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead={{ wine.Type }}" style="color:black;"> {{ wine.Type }} </a>
             </h6>
             <h6>
