@@ -300,27 +300,36 @@
 </div>
 
 <script>
-window.onbeforeunload = function() {
     // Save scroll position
+window.onbeforeunload = function() {
     localStorage.setItem('scrollPosition', window.scrollY); 
 };
 
 window.onload = function() {
-    // Scroll back to old position
+    // Get the filter form and set up scroll saving for filter use
+    var filterForm = document.getElementById('filter-form');
+    
+    // Save scroll position when the filter form is submitted
+    if (filterForm) {
+        filterForm.addEventListener('submit', function() {
+            localStorage.setItem('scrollPosition', window.scrollY);  // Save scroll position on filter submit
+        });
+    }
+
+    // Restore the scroll position when the page reloads (for filters)
     if (localStorage.getItem('scrollPosition') !== null) {
         window.scrollTo(0, parseInt(localStorage.getItem('scrollPosition')));
     }
 
-    // If you press a button in the pagination, scroll back to the top of the page
-    var pagination = document.getElementById('pagination');
+    // Add event listener for all links to scroll to the top
+    var allLinks = document.querySelectorAll('a');
 
-    if (pagination) {
-        pagination.addEventListener('click', function(event) {
-            if (event.target.tagName === 'A') {
-                window.scrollTo(0, 0); 
-            }
+    allLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+            localStorage.removeItem('scrollPosition');  
+            window.scrollTo(0, 0); 
         });
-    }
+    });
 
     var content = document.getElementById('collapsibleFilters');
     var button = document.getElementById('advanced_filters_button'); 
