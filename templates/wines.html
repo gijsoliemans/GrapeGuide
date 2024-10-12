@@ -1,138 +1,494 @@
 {% extends "base.html" %}
 
+{% block title %}Wines - GrapeGuide{% endblock %}
+
 {% block content %}
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
 <style>
-    .content-wrapper {
-        background-color: #f3e5f5; /* Light purple background */
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    header {
-        background: #6a1b9a; /* Dark purple background */
-        color: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        text-align: center;
-    }
-    header h1 {
-        margin: 0;
-        text-transform: uppercase;
-    }
-    section {
-        padding: 20px;
-        margin: 20px 0;
-    }
-    h2 {
-        color: #6a1b9a; /* Dark purple text */
-    }
-    .form-container {
-        background: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 250px; /* Adjust the width of the sidebar */
+    padding: 20px;
+    background-color: #f8f9fa;
+    position: absolute; /* Fixes the sidebar to the left */
+}
+
+.content {
+    margin-left: 250px; /* Add margin to the left to accommodate the sidebar */
+    flex-grow: 1; /* Allow content to grow */
+    padding: 20px; /* Add padding to the content */
+}
+
+.filter-title {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    color: #9d36add5;
+}
+
+.image-container {
+    height: 100px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-img-top {
+    object-fit: contain;
+    width: auto;
+    height: 100%;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: #343a40;
+    font-weight: normal;
+}
+
+.card-subtitle {
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: #9d36add5;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Pagination styles */
+.pagination {
+    margin-top: 20px;
+}
+
+/* Purple buttons and numbers for pagination */
+.pagination .page-link {
+    color: #9d36add5; /* Purple text */
+    background-color: white; /* White background for default state */
+    border: 1px solid #9d36add5; /* Purple border */
+}
+
+.pagination .page-link:hover {
+    color: white; /* White text on hover */
+    background-color: #9d36add5; /* Purple background on hover */
+    border-color: #9d36add5; /* Purple border on hover */
+}
+
+.pagination .page-item.active .page-link {
+    color: white; /* White text for active page */
+    background-color: #9d36add5; /* Purple background for active page */
+    border-color: #9d36add5; /* Purple border for active page */
+}
+
+.pagination .page-item.disabled .page-link {
+    background-color: #f1f1f1; /* Disabled state background */
+    color: #6c757d; /* Grayed-out text */
+}
+
+/* Ensure the numbers are purple */
+.pagination .page-link {
+    font-weight: bold; /* Makes the numbers stand out */
+
+}
 </style>
 
-<div class="container mt-3">
-    <h1>Welcome to the Grape Guide</h1>
-    <p>Use the form below to find the perfect wine based on your preferences.</p>
-</div>
-<div class="container mt-5 form-container">
-    <form id="filter-form" action="{{ url_for('guide') }}" method="GET">
+<div class="sidebar scrolbar">
+    <form class="pb-4" id="filter-form" method="GET" action="{{ url_for('wines') }}">
+        <!-- This hidden input field makes it so that you can still filter after searching -->    
+        <input type="hidden" name="search" value="{{ request.args.get('search', '') }}">
+        <input type="hidden" name="sort" value="{{ request.args.get('sort', '') }}">
+        <div class="container">
+            <div class="row">
+                <div class="col p-1">
+                <h5 class="filter-title">Filters</h5>
+                </div>
+                <div id="reset_filters_button" class="mt-n2 ml-2" style="display:none">
+                <a class="btn btn-primary mt-2" href="/wines" onclick="collapseAdvancedFilters()"> Reset Filters </a>
+                </div>
+            </div>
+        </div>
         <div class="form-group">
-            <label for="wine-type">Wine Type:</label>
-            <select class="form-control" id="wine-type" name="wine_type" onchange="document.getElementById('filter-form').submit();">
+            <label for="price_min">Price Range</label>
+            <div class="container">
+                <div class="row">
+                  <div class="col p-1">
+                    <input type="number" id="price_min" name="price_min" class="form-control" placeholder="Min" onchange="document.getElementById('filter-form').submit();"
+                        value="{{ request.args.get('price_min', '') }}">
+                  </div>
+                  <div class="col-sm p-1">
+                    <input type="number" id="price_max" name="price_max" class="form-control" placeholder="Max" onchange="document.getElementById('filter-form').submit();"
+                        value="{{ request.args.get('price_max', '') }}">
+                  </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="pairing">Tastes best with:</label>
+            <select id="pairing" name="pairing" class="form-control" onchange="document.getElementById('filter-form').submit();">
                 <option value="">All</option>
-                <option value="red" {% if request.args.get('wine_type') == 'red' %} selected {% endif %}>Red</option>
-                <option value="white" {% if request.args.get('wine_type') == 'white' %} selected {% endif %}>White</option>
-                <option value="rose" {% if request.args.get('wine_type') == 'rose' %} selected {% endif %}>Rosé</option>
-                <option value="sparkling" {% if request.args.get('wine_type') == 'sparkling' %} selected {% endif %}>Sparkling</option>
-                <option value="dessert" {% if request.args.get('wine_type') == 'dessert' %} selected {% endif %}>Dessert</option>
-                <option value="fortified" {% if request.args.get('wine_type') == 'fortified' %} selected {% endif %}>Fortified</option>
+                <option value="meat" {% if request.args.get('pairing') == 'meat' %} selected {% endif %}>Meat</option>
+                <option value="poultry" {% if request.args.get('pairing') == 'poultry' %} selected {% endif %}>Poultry</option>
+                <option value="fish" {% if request.args.get('pairing') == 'fish' %} selected {% endif %}>Fish</option>
+                <option value="cheese" {% if request.args.get('pairing') == 'cheese' %} selected {% endif %}>Cheese</option>
+                <option value="vegetables" {% if request.args.get('pairing') == 'vegetables' %} selected {% endif %}>Vegetables</option>
+            </select>            
+        </div>
+
+        <div class="form-group">
+            <label for="country">Country</label>
+            <select id="country" name="country" class="form-control" onchange="document.getElementById('filter-form').submit();">
+                <option value="">All</option>
+                {% for country in unique_countries %}
+                    <option value="{{ country }}" {% if request.args.get('country') == country %} selected {% endif %}>{{ country }}</option>
+                {% endfor %}
             </select>
         </div>
+
         <div class="form-group">
-            <label for="price-range">Price Range:</label>
-            <select class="form-control" id="price-range" name="price_range" onchange="document.getElementById('filter-form').submit();">
+            <label for="type">Type</label>
+            <select id="type" name="type" class="form-control" onchange="document.getElementById('filter-form').submit();">
                 <option value="">All</option>
-                <option value="under-20" {% if request.args.get('price_range') == 'under-20' %} selected {% endif %}>$ Under $20</option>
-                <option value="20-50" {% if request.args.get('price_range') == '20-50' %} selected {% endif %}>$20 - $50</option>
-                <option value="50-100" {% if request.args.get('price_range') == '50-100' %} selected {% endif %}>$50 - $100</option>
-                <option value="over-100" {% if request.args.get('price_range') == 'over-100' %} selected {% endif %}>$ Over $100</option>
+                {% for type in unique_types %}
+                    <option value="{{ type }}" {% if request.args.get('type') == type %} selected {% endif %}>{{ type }}</option>
+                {% endfor %}
             </select>
         </div>
+
         <div class="form-group">
-            <label for="food-pairing">Food Pairing:</label>
-            <input type="text" class="form-control" id="food-pairing" name="food_pairing" placeholder="e.g., steak, seafood" value="{{ request.args.get('food_pairing', '') }}" onchange="document.getElementById('filter-form').submit();">
+            <label for="grape">Grape Variety</label>
+            <select id="grape" name="grape" class="form-control" onchange="document.getElementById('filter-form').submit();">
+                <option value="">All</option>
+                {% for grape in unique_grapes %}
+                    <option value="{{ grape }}" {% if request.args.get('grape') == grape %} selected {% endif %}>{{ grape }}</option>
+                {% endfor %}
+            </select>
         </div>
-        <button type="submit" class="btn btn-primary">Find My Wine</button>
+
+        <!-- Advanced Filters Section -->
+
+        <button type="button" id="advanced_filters_button" class="btn btn-primary" onclick="toggleCollapse()">Advanced Filters ▼</button>
+        <div id="collapsibleFilters" style="display: none">
+            <div class="form-group">
+                <label for="vintage">Year</label>
+                <select id="vintage" name="vintage" class="form-control" onchange="document.getElementById('filter-form').submit();">
+                    <option value="">All</option>
+                    {% for vintage in unique_vintages %}
+                        <option value="{{ vintage }}" {% if request.args.get('vintage') == vintage %} selected {% endif %}>{{ vintage }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="region">Region</label>
+                <select id="region" name="region" class="form-control" onchange="document.getElementById('filter-form').submit();">
+                    <option value="">All</option>
+                    {% for region in unique_regions %}
+                        <option value="{{ region }}" {% if request.args.get('region') == region %} selected {% endif %}>{{ region }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="secondary_grape_varieties">Secondary Grape Varieties</label>
+                <select id="secondary_grape_varieties" name="secondary_grape_varieties" class="form-control" onchange="document.getElementById('filter-form').submit();">
+                    <option value="">All</option>
+                    {% for grape in unique_secondary_grapes %}
+                        <option value="{{ grape }}" {% if request.args.get('secondary_grape_varieties') == grape %} selected {% endif %}>{{ grape }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="style">Style</label>
+                <select id="style" name="style" class="form-control" onchange="document.getElementById('filter-form').submit();">
+                    <option value="">All</option>
+                    {% for style in unique_styles %}
+                        <option value="{{ style }}" {% if request.args.get('style') == style %} selected {% endif %}>{{ style }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="characteristics">Characteristics</label>
+                <select id="characteristics" name="characteristics" class="form-control" onchange="document.getElementById('filter-form').submit();">
+                    <option value="">All</option>
+                    {% for characteristic in unique_characteristics %}
+                        <option value="{{ characteristic }}" {% if request.args.get('characteristics') == characteristic %} selected {% endif %}>{{ characteristic }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="closure">Closure</label>
+                <select id="closure" name="closure" class="form-control" onchange="document.getElementById('filter-form').submit();">
+                    <option value="">All</option>
+                    {% for closure in unique_closures %}
+                        <option value="{{ closure }}" {% if request.args.get('closure') == closure %} selected {% endif %}>{{ closure }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="capacity">Capacity</label>
+                <select id="capacity" name="capacity" class="form-control" onchange="document.getElementById('filter-form').submit();">
+                    <option value="">All</option>
+                    {% for capacity in unique_capacities %}
+                        <option value="{{ capacity }}" {% if request.args.get('capacity') == capacity %} selected {% endif %}>{{ capacity }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="unit">Alcohol Units</label>
+                <select id="unit" name="unit" class="form-control" onchange="document.getElementById('filter-form').submit();">
+                    <option value="">All</option>
+                    {% for unit in unique_units %}
+                        <option value="{{ unit }}" {% if request.args.get('unit') == unit %} selected {% endif %}>{{ unit }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="abv_min">Alcohol Percentage Range</label>
+                <div class="container">
+                    <div class="row">
+                      <div class="col p-1">
+                        <input type="number" id="abv_min" name="abv_min" class="form-control" placeholder="Min" onchange="document.getElementById('filter-form').submit();"
+                            value="{{ request.args.get('abv_min', '') }}">
+                      </div>
+                      <div class="col-sm p-1">
+                        <input type="number" id="abv_max" name="abv_max" class="form-control" placeholder="Max" onchange="document.getElementById('filter-form').submit();"
+                            value="{{ request.args.get('abv_max', '') }}">
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </form>
 </div>
 
-<div class="container mt-5 content-wrapper">
-    <header>
-        <h1>The Beginner's Guide to Wine</h1>
-    </header>
-    <section id="introduction">
-        <h2>Introduction</h2>
-        <p>Welcome to the beginner's guide to wine. This guide will help you understand the basics of wine, from types and tasting to pairing and buying.</p>
-    </section>
-    <section id="types-of-wines">
-        <h2>Types of Wines</h2>
-        <p>There are several types of wines, each with its own unique characteristics:</p>
-        <ul>
-            <li><strong>Red Wine:</strong> Made from dark-colored grape varieties.</li>
-            <li><strong>White Wine:</strong> Made from green or yellowish-colored grapes.</li>
-            <li><strong>Rosé Wine:</strong> Made from red grapes but with minimal skin contact.</li>
-            <li><strong>Sparkling Wine:</strong> Contains significant levels of carbon dioxide, making it fizzy.</li>
-            <li><strong>Dessert Wine:</strong> Sweet wines typically served with dessert.</li>
-        </ul>
-    </section>
-    <section id="wine-tasting-basics">
-        <h2>Wine Tasting Basics</h2>
-        <p>Here are the basic steps to tasting wine:</p>
-        <ul>
-            <li><strong>Look:</strong> Observe the color and clarity of the wine.</li>
-            <li><strong>Smell:</strong> Swirl the wine in your glass and take a deep sniff to identify aromas.</li>
-            <li><strong>Taste:</strong> Take a small sip and let it roll around your mouth to identify flavors.</li>
-        </ul>
-    </section>
-    <section id="pairing-wine-with-food">
-        <h2>Pairing Wine with Food</h2>
-        <p>Here are some basic guidelines for pairing wine with food:</p>
-        <ul>
-            <li><strong>Red Wine:</strong> Pairs well with red meat, pasta, and strong cheeses.</li>
-            <li><strong>White Wine:</strong> Pairs well with fish, poultry, and light cheeses.</li>
-            <li><strong>Rosé Wine:</strong> Pairs well with salads, seafood, and light pasta dishes.</li>
-            <li><strong>Sparkling Wine:</strong> Pairs well with appetizers, seafood, and desserts.</li>
-            <li><strong>Dessert Wine:</strong> Pairs well with sweet desserts and strong cheeses.</li>
-        </ul>
-    </section>
-    <section id="buying-wine">
-        <h2>Buying Wine</h2>
-        <p>When buying wine, consider the following tips:</p>
-        <ul>
-            <li>Know your budget and stick to it.</li>
-            <li>Consider the occasion and what food will be served.</li>
-            <li>Don't be afraid to ask for recommendations from store staff.</li>
-            <li>Read reviews and ratings online.</li>
-        </ul>
-    </section>
-    <section id="storing-wine">
-        <h2>Storing Wine</h2>
-        <p>Here are some basic tips for storing wine:</p>
-        <ul>
-            <li>Store wine in a cool, dark place.</li>
-            <li>Keep the bottle on its side to keep the cork moist.</li>
-            <li>Avoid temperature fluctuations.</li>
-            <li>Store wine away from strong odors.</li>
-        </ul>
-    </section>
-    <section id="conclusion">
-        <h2>Conclusion</h2>
-        <p>We hope this guide has helped you understand the basics of wine. Enjoy exploring the world of wine and discovering your preferences!</p>
-    </section>
+<script>
+    // Save scroll position
+window.onbeforeunload = function() {
+    localStorage.setItem('scrollPosition', window.scrollY); 
+};
+
+window.onload = function() {
+    // Get the filter form and set up scroll saving for filter use
+    var filterForm = document.getElementById('filter-form');
+    
+    // Save scroll position when the filter form is submitted
+    if (filterForm) {
+        filterForm.addEventListener('submit', function() {
+            localStorage.setItem('scrollPosition', window.scrollY);  // Save scroll position on filter submit
+        });
+    }
+
+    // Restore the scroll position when the page reloads (for filters)
+    if (localStorage.getItem('scrollPosition') !== null) {
+        window.scrollTo(0, parseInt(localStorage.getItem('scrollPosition')));
+    }
+
+    // Add event listener for all links to scroll to the top
+    var allLinks = document.querySelectorAll('a');
+
+    allLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+            localStorage.removeItem('scrollPosition');  
+            window.scrollTo(0, 0); 
+        });
+    });
+
+    var content = document.getElementById('collapsibleFilters');
+    var button = document.getElementById('advanced_filters_button'); 
+    var resetButton = document.getElementById('reset_filters_button');
+
+    // Change filter button arrow 
+    if (localStorage.getItem('filtersOpen') === 'true') {
+        content.style.display = "block"; 
+        button.innerHTML = 'Advanced Filters ▲'; 
+    } else {
+        content.style.display = "none"; 
+        button.innerHTML = 'Advanced Filters ▼'; 
+    }
+
+    // Check if the current URL is not '/wines' and then show reset filters button
+    if (window.location.href !== 'http://127.0.0.1:5000/wines') {
+        if (resetButton) {
+            resetButton.style.display = "block"; 
+        }
+    }
+};
+
+// Collapse Advanced Filters if the Reset Button is clicked
+function collapseAdvancedFilters() {
+    var content = document.getElementById('collapsibleFilters');
+    content.style.display = "none";
+    localStorage.setItem('filtersOpen', 'false'); 
+
+    var button = document.getElementById('advanced_filters_button');
+    button.innerHTML = 'Advanced Filters ▼'; 
+}
+
+// Toggle the Advanced Filter button
+function toggleCollapse() {
+    var content = document.getElementById('collapsibleFilters');
+    var button = document.getElementById('advanced_filters_button'); 
+
+    if (content.style.display === "none" || content.style.display === "") {
+        content.style.display = "block"; 
+        localStorage.setItem('filtersOpen', 'true'); 
+        button.innerHTML = 'Advanced Filters ▲'; 
+    } else {
+        content.style.display = "none"; 
+        localStorage.setItem('filtersOpen', 'false'); 
+        button.innerHTML = 'Advanced Filters ▼'; 
+    }
+}
+</script>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm col-lg-8">
+                <h3 class="mb-4">
+                        {% if not data %} 
+                        No results {% if search %} for "{{ search }}" {% endif %}
+                        <p class="h6">Try a different search term or change the filters</p>
+                        {% elif search %}
+                        Results for "{{ search }}"
+                        {% elif lead %}
+                        Results for {{ lead }}
+                        {% else %}
+                        Our Wines
+                        {% endif %}  </h3>
+            </div>
+            <div class="col-sm col-lg-3 mt-n2 ml-5 p-0 ">
+                <form id="sort-form" method="GET" action="{{ url_for('wines') }}">
+                    <input type="hidden" name="search" value="{{ request.args.get('search', '') }}">
+                    <input type="hidden" name="price_min" value="{{ request.args.get('price_min', '') }}">
+                    <input type="hidden" name="price_max" value="{{ request.args.get('price_max', '') }}">
+                    <input type="hidden" name="pairing" value="{{ request.args.get('pairing', '') }}">
+                    <input type="hidden" name="country" value="{{ request.args.get('country', '') }}">
+                    <input type="hidden" name="type" value="{{ request.args.get('type', '') }}">
+                    <input type="hidden" name="grape" value="{{ request.args.get('grape', '') }}">
+                    <input type="hidden" name="vintage" value="{{ request.args.get('vintage', '') }}">
+                    <input type="hidden" name="region" value="{{ request.args.get('region', '') }}">
+                    <input type="hidden" name="secondary_grape_varieties" value="{{ request.args.get('secondary_grape_varieties', '') }}">
+                    <input type="hidden" name="style" value="{{ request.args.get('style', '') }}">
+                    <input type="hidden" name="characteristics" value="{{ request.args.get('characteristics', '') }}">
+                    <input type="hidden" name="closure" value="{{ request.args.get('closure', '') }}">
+                    <input type="hidden" name="capacity" value="{{ request.args.get('capacity', '') }}">
+                    <input type="hidden" name="unit" value="{{ request.args.get('unit', '') }}">
+                    <input type="hidden" name="abv_min" value="{{ request.args.get('abv_min', '') }}">
+                    <input type="hidden" name="abv_max" value="{{ request.args.get('abv_max', '') }}">
+                <div class="form-group">
+                    <label for="sort" class="mb-n2">Sort by</label>
+                    <select id="sort" name="sort" class="form-control" onchange="document.getElementById('sort-form').submit();">
+                        <option value="default" {% if request.args.get('sort') == 'default' %} selected {% endif %}>Default</option>
+                        <option value="ascending" {% if request.args.get('sort') == 'ascending' %} selected {% endif %}>Price: ascending</option>
+                        <option value="descending" {% if request.args.get('sort') == 'descending' %} selected {% endif %}>Price: descending</option>
+                        <option value="a-z" {% if request.args.get('sort') == 'a-z' %} selected {% endif %}>Name: A - Z</option>
+                        <option value="z-a" {% if request.args.get('sort') == 'z-a' %} selected {% endif %}>Name: Z - A</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
+      
+<div class="row">
+    {% for wine in data %}
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+        <a href="{{ url_for('wine_detail', wine_id=wine.id) }}" class="card" style="text-decoration: none; max-height: 550px;"> <!-- Reduced the max-width -->
+            <!-- Slightly smaller image container -->
+            <div class="image-container mt-3" style="height: auto; overflow: hidden;">
+                <img class="card-img-top" src="{{ wine.image_source }}" alt="{{ wine.Title }}" 
+                        style="width: 100%; height: auto; max-height: 220px; object-fit: contain; mix-blend-mode: multiply;"> <!-- Reduced the max-height -->
+            </div>
+            <div class="card-body">
+                <h6 class=" font-weight-bold">{{ wine.Title }}</h6>
+                <div class="d-flex align-items-center justify-content-between w-100">
+                    <div class="text-center" style="flex: 0 0 50px;">
+                        <img src="https://flagcdn.com/w320/{{ wine.CountryCode | lower }}.png" alt="{{ wine.Country }}" style="width: 40px; height: 26px; border-radius: 10%;">
+                    </div>
+                    <div class="text-center" style="flex-grow: 1;">
+                        <p class="card-subtitle text-muted" style="font-size: 14px; margin-bottom: 0;">{{ wine.Country }}, {{ wine.Region }}</p>
+                    </div>
+                    <div class="text-center" style="flex: 0 0 50px;">
+                        <h6 class="card-subtitle text-muted">${{ wine.Price }}</h6>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Pagination -->
+<nav aria-label="Page navigation">
+    <ul class="pagination" id="pagination">
+        <!-- Previous arrow: Only show if not on the first page -->
+        {% if this_page > 1 %}
+            <li class="page-item">
+                <a class="page-link" href="{{ url_for('wines', pairing=request.args.get('pairing', ''), page=this_page - 1, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], unit=filters.Unit, characteristics=filters.Characteristics) }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        {% endif %}
+
+        <!-- Page numbers -->
+        {% for page in page_numbers %}
+            {% if page == '...' %}
+                <li class="page-item"><span class="page-link">{{ page }}</span></li>
+            {% else %}
+                <li class="page-item {% if page == this_page %}active{% endif %}">
+                    <a class="page-link" href="{{ url_for('wines', pairing=request.args.get('pairing', ''), page=page, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], unit=filters.Unit, characteristics=filters.Characteristics) }}">{{ page }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+        <!-- Next arrow: Only show if not on the last page -->
+        {% if page_numbers and this_page < page_numbers[-1] %}
+            <li class="page-item">
+                <a class="page-link" href="{{ url_for('wines', pairing=request.args.get('pairing', ''), page=this_page + 1, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], unit=filters.Unit, characteristics=filters.Characteristics, lead=lead) }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
+  
 {% endblock %}

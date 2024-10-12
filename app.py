@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import os
 import math
+import datetime
 
 app = Flask(__name__, template_folder=os.path.join(os.path.dirname(__file__), 'templates'))
 app.config['DEBUG'] = True  # Enable debug mode
@@ -27,7 +28,10 @@ def get_unique_values(data, key):
 
 @app.route('/')
 def home():
-    random_wines =  np.random.choice(wines, 3, replace=False)
+    # Seed of the random 3 wines (based on datetime)
+    np.random.seed(int(datetime.datetime.now().strftime('%Y%m%d')))
+    # Randomly choose 3 wines from the dataset 
+    random_wines = np.random.choice(wines, 3, replace=False)
     random_wines = [{'id': wine['id'], 'Title': wine['Title'], 'Image': wine['image_source'] } for wine in random_wines]
     print(random_wines)
     return render_template('index.html', random_wines=random_wines)

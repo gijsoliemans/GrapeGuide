@@ -3,7 +3,33 @@
 {% block title %}Home - GrapeGuide{% endblock %}
 
 {% block content %}
+
 <style>
+        body {
+        margin: 0; 
+        background-image: url("{{ url_for('static', filename='images/background.jpg') }}");
+        background-size: cover; 
+        background-position: center; 
+        background-repeat: no-repeat;
+        height: 100vh; 
+    }
+        .welcome-container {
+        height: 100vh; 
+        display: flex; 
+        justify-content: flex-start; 
+        align-items: flex-start;
+        padding: 160px 20px; /* position of text */
+        color: white; 
+    }
+
+    .bg-light {
+        background-color: transparent !important;
+    }
+
+    .nav-link {
+        color: #9d36add5 !important;
+    }
+
     .card {
         border: none;
         border-radius: 15px;
@@ -51,9 +77,9 @@
     }
 </style>
 
-<div class="jumbotron mt-1" style="background-color: #9d36add5; color: #ffffff;">
-    <h1 class="display-4">Welcome to GrapeGuide!</h1>
-    <p class="lead">This is a website for finding your perfect wine!</p>
+<!-- Welcome section -->
+<div class="welcome-container">
+    <h1>Welcome to GrapeGuide</h1>
 </div>
 
 <div class="container mt-4">
@@ -172,7 +198,7 @@
     {% for wine in random_wines %}
     <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
         <div class="card">
-            <a href="{{ wine.url }}" class="card h-100">
+            <a href="wine/{{ wine.id }}" class="card h-100">
                 <div class="image-container mt-4">
                     <img class="card-img-top" src="{{ wine.Image }}" alt="{{ wine.Title }}" style="width: 100%; height: auto; max-height: 220px; object-fit: contain; mix-blend-mode: multiply;">
                 </div>
