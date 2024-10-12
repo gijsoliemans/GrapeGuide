@@ -34,13 +34,15 @@
                     <li class="nav-item {% if request.path == '/' %}active{% endif %}">
                         <a class="nav-link" href="/">Home</a>
                     </li>
+                    <li class="nav-item {% if request.path == '/guide' %}active{% endif %}">
+                        <a class="nav-link" href="/guide">Guide</a>
+                    <li>
                     <li class="nav-item {% if request.path == '/about' %}active{% endif %}">
                         <a class="nav-link" href="/about">About</a>
                     </li>
                     <li class="nav-item {% if request.path == '/wines' %}active{% endif %}">
                         <a class="nav-link" href="/wines">Wines</a>
                     </li>
-                    <li>
                         <form id="filter-form2" method="GET" action="{{ url_for('wines') }}">
                             <input type="hidden" name="sort" value="{{ request.args.get('sort', '') }}">
                             <input type="hidden" name="price_min" value="{{ request.args.get('price_min', '') }}">
