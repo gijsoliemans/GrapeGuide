@@ -21,6 +21,10 @@ wines = df.to_dict(orient='records')
 for index, wine in enumerate(wines):
     wine['id'] = index  # Use lowercase 'id'
 
+# Function to extract unique values out the json for the filters on wines.html
+def get_unique_values(data, key):
+    return sorted(set([wine.get(key) for wine in data if wine.get(key)]))
+
 @app.route('/')
 def home():
     random_wines =  np.random.choice(wines, 3, replace=False)
@@ -32,10 +36,6 @@ def home():
 @app.route('/about')
 def about():
     return render_template('about.html')
-
-# Function to extract unique values out the json for the filters on wines.html
-def get_unique_values(data, key):
-    return sorted(set([wine.get(key) for wine in data if wine.get(key)]))
 
 @app.route('/wines', methods=['GET'], endpoint='wines')
 def wine_list():
@@ -201,6 +201,10 @@ def wine_detail(wine_id):
     # Logic to fetch the wine detail from wines based on wine_id
     wine = wines[wine_id]  # This assumes wine_id corresponds to the index
     return render_template('wine_detail.html', wine=wine)
+
+@app.route('/guide')
+def guide():
+    return render_template('guide.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
