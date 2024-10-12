@@ -3,6 +3,8 @@ import os
 import random
 import string
 import re
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.decomposition import LatentDirichletAllocation
 from src.country_codes import country_codes
 
 # Construct the absolute path to the CSV file
@@ -60,6 +62,34 @@ df['ID'] = df.apply(add_id, axis=1)
 
 # Create a column with country codes with the imported country codes
 df['CountryCode'] = df['Country'].map(country_codes)
+
+# create a CountVectorizer object
+count_vectorizer = CountVectorizer(stop_words='english')
+
+# fit and transform the data
+count_data = count_vectorizer.fit_transform(df['Description'])
+
+# create a LatentDirichletAllocation object
+lda = LatentDirichletAllocation(n_components=5, random_state=0)
+
+# fit the data
+lda.fit(count_data)
+
+# get the topics
+def get_topics(model, count_vectorizer, n_top_words):
+    words = count_vectorizer.get_feature_names_out()
+    topics = []
+    for topic_idx, topic in enumerate(model.components_):
+        topic = [words[i] for i in topic.argsort()[:-n_top_words - 1:-1]]
+        topics.append(topic)
+    return topics
+
+# Example usage
+topics = get_topics(lda, count_vectorizer, 10)
+
+# Add the topics to the DataFrame
+df['Topics'] = lda.transform(count_data).argmax(axis=1)
+df['Topics'] = df['Topics'].apply(lambda x: topics[x])
 
 # Construct the absolute path to save the JSON file
 json_file_path = os.path.join(os.path.dirname(__file__), 'WineDataset.json')
