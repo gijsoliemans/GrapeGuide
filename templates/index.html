@@ -4,6 +4,8 @@
 
 {% block content %}
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 <style>
     body {
         margin: 0; 
@@ -70,14 +72,61 @@
     .emoji {
         font-size: 3rem;
     }
+    
+    .welcome-container {
+        height: 100vh; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        position: relative; /* Set relative position for absolute positioning of the icon */
+        color: white; 
+    }
+
+    .scroll-icon {
+        position: absolute; /* Use absolute positioning */
+        bottom: 20%; /* 20px from the bottom of the container */
+        left: 50%; /* Center horizontally */
+        transform: translateX(-50%); /* Adjust to truly center */
+        width: 60px; /* Width of the circle */
+        height: 60px; /* Height of the circle */
+        background-color: rgba(157, 54, 173, 0.8); /* Background color with transparency */
+        border-radius: 50%; /* Make it circular */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition for animation */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+    }
+
+    .scroll-icon:hover {
+        background-color: rgba(123, 42, 140, 0.8); /* Darker shade on hover */
+        transform: translate(-50%, -10px); /* Move up on hover */
+    }
+
+    .scroll-icon i {
+        color: white; /* Color of the icon */
+        font-size: 28px; /* Size of the icon */
+        transition: transform 0.3s ease; /* Add transition to icon for smoother effect */
+    }
+
+    .scroll-icon:hover i {
+        transform: translateY(2px); /* Move the icon down slightly on hover */
+    }
+
+
 </style>
 
 <!-- Welcome section -->
 <div class="welcome-container">
     <h1>Welcome to GrapeGuide</h1>
+    <div class="scroll-icon" id="scrollIcon">
+        <i class="fas fa-chevron-down"></i>
+    </div>
 </div>
 
-<div class="container mt-4">
+<div id="content" class="pt-5">
+    <div class="container mt-5" >
     <div class="text-center"><h5>Types of wine</h5></div>
     <div class="row justify-content-center">
         <!-- Wine Cards with consistent shadow -->
@@ -123,8 +172,8 @@
             </div>
         </div>
     </div>
+    </div>
 </div>
-
 <div class="container mt-4">
     <div class="text-center"><h5>Wines that are best paired with</h5></div>
     <div class="row justify-content-center">
@@ -215,5 +264,11 @@
     </div>
     {% endfor %}
 </div>
+
+<script>
+    document.getElementById("scrollIcon").onclick = function() {
+        document.getElementById("content").scrollIntoView({ behavior: 'smooth' });
+    };
+</script>
 
 {% endblock content %}
