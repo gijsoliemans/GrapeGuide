@@ -5,29 +5,24 @@
 {% block content %}
 
 <style>
-        body {
+    body {
         margin: 0; 
-        background-image: url("{{ url_for('static', filename='images/background.jpg') }}");
+        background-image: url("{{ url_for('static', filename='images/background.png') }}");
         background-size: cover; 
         background-position: center; 
         background-repeat: no-repeat;
-        height: 100vh; 
+        height: calc(100vh - 60px); /* Subtracts the height of the header from the viewport */
+        width: 100vw; 
+        overflow-x: hidden; /* Prevents horizontal scrollbar */
     }
-        .welcome-container {
+
+    .welcome-container {
         height: 100vh; 
         display: flex; 
         justify-content: flex-start; 
         align-items: flex-start;
         padding: 160px 20px; /* position of text */
         color: white; 
-    }
-
-    .bg-light {
-        background-color: transparent !important;
-    }
-
-    .nav-link {
-        color: #9d36add5 !important;
     }
 
     .card {
