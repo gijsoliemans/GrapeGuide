@@ -205,7 +205,9 @@
                 <select id="vintage" name="vintage" class="form-control" onchange="document.getElementById('filter-form').submit();">
                     <option value="">All</option>
                     {% for vintage in unique_vintages %}
-                        <option value="{{ vintage }}" {% if request.args.get('vintage') == vintage %} selected {% endif %}>{{ vintage }}</option>
+                        {% if vintage != 'NV' %}
+                            <option value="{{ vintage }}" {% if request.args.get('vintage') == vintage %} selected {% endif %}>{{ vintage }}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
             </div>
@@ -265,17 +267,9 @@
                 <select id="capacity" name="capacity" class="form-control" onchange="document.getElementById('filter-form').submit();">
                     <option value="">All</option>
                     {% for capacity in unique_capacities %}
-                        <option value="{{ capacity }}" {% if request.args.get('capacity') == capacity %} selected {% endif %}>{{ capacity }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="unit">Alcohol Units</label>
-                <select id="unit" name="unit" class="form-control" onchange="document.getElementById('filter-form').submit();">
-                    <option value="">All</option>
-                    {% for unit in unique_units %}
-                        <option value="{{ unit }}" {% if request.args.get('unit') == unit %} selected {% endif %}>{{ unit }}</option>
+                        <option value="{{ capacity | string }}" {% if request.args.get('capacity') == capacity|string %} selected {% endif %}>
+                            {{ capacity }} CL
+                        </option>
                     {% endfor %}
                 </select>
             </div>
@@ -411,7 +405,6 @@ function toggleCollapse() {
                     <input type="hidden" name="characteristics" value="{{ request.args.get('characteristics', '') }}">
                     <input type="hidden" name="closure" value="{{ request.args.get('closure', '') }}">
                     <input type="hidden" name="capacity" value="{{ request.args.get('capacity', '') }}">
-                    <input type="hidden" name="unit" value="{{ request.args.get('unit', '') }}">
                     <input type="hidden" name="abv_min" value="{{ request.args.get('abv_min', '') }}">
                     <input type="hidden" name="abv_max" value="{{ request.args.get('abv_max', '') }}">
                 <div class="form-group">
@@ -463,7 +456,7 @@ function toggleCollapse() {
         <!-- Previous arrow: Only show if not on the first page -->
         {% if this_page > 1 %}
             <li class="page-item">
-                <a class="page-link" href="{{ url_for('wines', pairing=request.args.get('pairing', ''), page=this_page - 1, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], unit=filters.Unit, characteristics=filters.Characteristics) }}" aria-label="Previous">
+                <a class="page-link" href="{{ url_for('wines', pairing=pairing, page=this_page - 1, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], characteristics=filters.Characteristics) }}" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
@@ -475,7 +468,7 @@ function toggleCollapse() {
                 <li class="page-item"><span class="page-link">{{ page }}</span></li>
             {% else %}
                 <li class="page-item {% if page == this_page %}active{% endif %}">
-                    <a class="page-link" href="{{ url_for('wines', pairing=request.args.get('pairing', ''), page=page, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], unit=filters.Unit, characteristics=filters.Characteristics) }}">{{ page }}</a>
+                    <a class="page-link" href="{{ url_for('wines', pairing=pairing, page=page, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], characteristics=filters.Characteristics) }}">{{ page }}</a>
                 </li>
             {% endif %}
         {% endfor %}
@@ -483,7 +476,7 @@ function toggleCollapse() {
         <!-- Next arrow: Only show if not on the last page -->
         {% if page_numbers and this_page < page_numbers[-1] %}
             <li class="page-item">
-                <a class="page-link" href="{{ url_for('wines', pairing=request.args.get('pairing', ''), page=this_page + 1, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], unit=filters.Unit, characteristics=filters.Characteristics, lead=lead) }}" aria-label="Next">
+                <a class="page-link" href="{{ url_for('wines', pairing=pairing, page=this_page + 1, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], characteristics=filters.Characteristics, lead=lead) }}" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
             </li>

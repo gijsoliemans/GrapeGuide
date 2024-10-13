@@ -7,76 +7,73 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <link rel="icon" type="image/x-icon" href="..\static\images\Favicon.png">
+    
+
 
     <style>
-        body {
-            padding-top: 70px; /* Adjust this value based on the height of your navbar */
-        }
-        .navbar {
-            background-color: #ffffff; /* Dark purple background */
-            opacity: 1; /* Ensure the navbar is fully opaque */
-        }
-        .navbar-nav .nav-link {
-            color: #6a1b9a !important; /* Ensure the text color is white */
-        }
-    </style>
+        /* Add padding to the top of the body to prevent content from being hidden behind the fixed navbar */
+            body {
+                padding-top: 70px; /* Adjust this value based on the height of your navbar */
+            }
+        </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
             <a class="navbar-brand p-0 m-0" href="/" style="max-width: 12%;">
                 <img src="{{ url_for('static', filename='images/Logo.png') }}" class="img-fluid rounded" alt="Logo" style="width: 100%; height: auto;">
             </a>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarResponsive">
-    <ul class="navbar-nav ml-auto d-flex align-items-center">
-        <li class="nav-item {% if request.path == '/' %}active{% endif %}">
-            <a class="nav-link" href="/">Home</a>
-        </li>
-        <li class="nav-item {% if request.path == '/guide' %}active{% endif %}">
-            <a class="nav-link" href="/guide">Guide</a>
-        <li>
-        <li class="nav-item {% if request.path == '/about' %}active{% endif %}">
-            <a class="nav-link" href="/about">About</a>
-        </li>
-        <li class="nav-item {% if request.path == '/wines' %}active{% endif %}">
-            <a class="nav-link" href="/wines">Wines</a>
-        </li>
-        <form id="filter-form2" method="GET" action="{{ url_for('wines') }}" class="form-inline my-2 my-lg-0">
-            <input type="hidden" name="sort" value="{{ request.args.get('sort', '') }}">
-            <input type="hidden" name="price_min" value="{{ request.args.get('price_min', '') }}">
-            <input type="hidden" name="price_max" value="{{ request.args.get('price_max', '') }}">
-            <input type="hidden" name="country" value="{{ request.args.get('country', '') }}">
-            <input type="hidden" name="type" value="{{ request.args.get('type', '') }}">
-            <input type="hidden" name="grape" value="{{ request.args.get('grape', '') }}">
-            <input type="hidden" name="vintage" value="{{ request.args.get('vintage', '') }}">
-            <input type="hidden" name="region" value="{{ request.args.get('region', '') }}">
-            <input type="hidden" name="secondary_grape_varieties" value="{{ request.args.get('secondary_grape_varieties', '') }}">
-            <input type="hidden" name="style" value="{{ request.args.get('style', '') }}">
-            <input type="hidden" name="characteristics" value="{{ request.args.get('characteristics', '') }}">
-            <input type="hidden" name="closure" value="{{ request.args.get('closure', '') }}">
-            <input type="hidden" name="capacity" value="{{ request.args.get('capacity', '') }}">
-            <input type="hidden" name="unit" value="{{ request.args.get('unit', '') }}">
-            <input type="hidden" name="abv_min" value="{{ request.args.get('abv_min', '') }}">
-            <input type="hidden" name="abv_max" value="{{ request.args.get('abv_max', '') }}">
-            <div class="form-group mt-2">
-                <input type="text" class="form-control mt-n1 ml-2" id="search" name="search" maxlength="32" placeholder="Search" onchange="document.getElementById('filter-form2').submit();">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse container-fluid" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto align-items-center">
+                    <li class="nav-item {% if request.path == '/' %}active{% endif %}">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item {% if request.path == '/guide' %}active{% endif %}">
+                        <a class="nav-link" href="/guide">Guide</a>
+                    <li>
+                    <li class="nav-item {% if request.path == '/about' %}active{% endif %}">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    <li class="nav-item {% if request.path == '/wines' %}active{% endif %}">
+                        <a class="nav-link" href="/wines">Wines</a>
+                    </li>
+                        <form id="filter-form2" method="GET" action="{{ url_for('wines') }}">
+                            <input type="hidden" name="sort" value="{{ request.args.get('sort', '') }}">
+                            <input type="hidden" name="price_min" value="{{ request.args.get('price_min', '') }}">
+                            <input type="hidden" name="price_max" value="{{ request.args.get('price_max', '') }}">
+                            <input type="hidden" name="pairing" value="{{ request.args.get('pairing', '') }}">
+                            <input type="hidden" name="country" value="{{ request.args.get('country', '') }}">
+                            <input type="hidden" name="type" value="{{ request.args.get('type', '') }}">
+                            <input type="hidden" name="grape" value="{{ request.args.get('grape', '') }}">
+                            <input type="hidden" name="vintage" value="{{ request.args.get('vintage', '') }}">
+                            <input type="hidden" name="region" value="{{ request.args.get('region', '') }}">
+                            <input type="hidden" name="secondary_grape_varieties" value="{{ request.args.get('secondary_grape_varieties', '') }}">
+                            <input type="hidden" name="style" value="{{ request.args.get('style', '') }}">
+                            <input type="hidden" name="characteristics" value="{{ request.args.get('characteristics', '') }}">
+                            <input type="hidden" name="closure" value="{{ request.args.get('closure', '') }}">
+                            <input type="hidden" name="capacity" value="{{ request.args.get('capacity', '') }}">
+                            <input type="hidden" name="abv_min" value="{{ request.args.get('abv_min', '') }}">
+                            <input type="hidden" name="abv_max" value="{{ request.args.get('abv_max', '') }}">
+                            <div class="form-group mt-4">
+                                <input type="text" class="form-control mt-n1 ml-2 " id="search" name="search" maxlength="32" placeholder="Search" onchange="document.getElementById('filter-form2').submit();">
+                            </div>
+                        </form>
+                    </li>
+                </ul>
             </div>
-        </form>
-    </ul>
-</div>
-</div>
-</nav>
+        </div>
+    </nav>
 
-<!-- Page Content -->
-<div class="container mt-5">
-    {% block content %}{% endblock %}
-</div>
+    <!-- Page Content -->
+    <div class="container mt-5">
+        {% block content %}{% endblock %}
+    </div>
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

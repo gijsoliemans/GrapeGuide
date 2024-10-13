@@ -4,13 +4,13 @@
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 <style>
     .content-wrapper {
-        background-color: #f3e5f5; /* Light purple background */
+        background-color: #f3e5f5; 
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
     header {
-        background: #6a1b9a; /* Dark purple background */
+        background: #6a1b9a; 
         color: #fff;
         padding: 20px;
         border-radius: 8px;
@@ -25,7 +25,7 @@
         margin: 20px 0;
     }
     h2 {
-        color: #6a1b9a; /* Dark purple text */
+        color: #6a1b9a; 
     }
     .form-container {
         background: #fff;
@@ -33,7 +33,14 @@
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
+    .question {
+        display: none; 
+    }
+    .question.active {
+        display: block; 
+    }
 </style>
+
 <div class="container mt-3">
     <h1>Welcome to the Grape Guide</h1>
     <p>
@@ -43,16 +50,11 @@
         Use the form below to find the perfect wine based on your preferences.
     </p>
 </div>
+
 <div class="container mt-5 form-container">
-    <form class="pb-4" id="filter-form" method="GET" action="{{ url_for('wines') }}">   
-        <div class="container">
-            <div class="row">
-                <div id="reset_filters_button" class="mt-n2 ml-2" style="display:none">
-                    <a class="btn btn-primary mt-2" href="/wines" onclick="collapseAdvancedFilters()"> Reset Filters </a>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
+    <form class="pb-4" id="filter-form" method="GET" action="{{ url_for('wines') }}">
+        <!-- Question 1 -->
+        <div class="question active" id="question1">
             <h5><strong>What type of wine are you looking for?</strong></h5>
             <p>Select from a variety of options, including reds, whites, rosés, sparkling, and more.</p>
             <select id="type" name="type" class="form-control">
@@ -61,9 +63,11 @@
                     <option value="{{ type }}" {% if request.args.get('type') == type %} selected {% endif %}>{{ type }}</option>
                 {% endfor %}
             </select>
+            <button type="button" class="btn btn-primary mt-3" onclick="nextQuestion(1)">Next</button>
         </div>
 
-        <div class="form-group">
+        <!-- Question 2 -->
+        <div class="question" id="question2">
             <h5><strong>What dish are you pairing with your wine?</strong></h5>
             <p>Whether it's a hearty main course, a light salad, or a decadent dessert, we’ll suggest wines that bring out the best in your meal.</p>
             <select id="pairing" name="pairing" class="form-control">
@@ -74,49 +78,30 @@
                 <option value="cheese" {% if request.args.get('pairing') == 'cheese' %} selected {% endif %}>Cheese</option>
                 <option value="vegetables" {% if request.args.get('pairing') == 'vegetables' %} selected {% endif %}>Vegetables</option>
             </select>            
+            <button type="button" class="btn btn-primary mt-3" onclick="nextQuestion(2)">Next</button>
         </div>
 
-        <div class="form-group">
+        <!-- Question 3 -->
+        <div class="question" id="question3">
             <h5><strong>What is your price range?</strong></h5>
             <p>Set your minimum and maximum price to find wines that fit your budget, from affordable everyday bottles to premium vintages.</p>
             <div class="container">
                 <div class="row">
-                  <div class="col p-1">
-                    <input type="number" id="price_min" name="price_min" class="form-control" placeholder="Min"
-                        value="{{ request.args.get('price_min', '') }}">
-                  </div>
-                  <div class="col-sm p-1">
-                    <input type="number" id="price_max" name="price_max" class="form-control" placeholder="Max"
-                        value="{{ request.args.get('price_max', '') }}">
-                  </div>
+                    <div class="col p-1">
+                        <input type="number" id="price_min" name="price_min" class="form-control" placeholder="Min"
+                               value="{{ request.args.get('price_min', '') }}">
+                    </div>
+                    <div class="col-sm p-1">
+                        <input type="number" id="price_max" name="price_max" class="form-control" placeholder="Max"
+                               value="{{ request.args.get('price_max', '') }}">
+                    </div>
                 </div>
             </div>
+            <button type="submit" class="btn btn-primary mt-3">Find My Wine</button>
         </div>
-
-<!-- 
-        <div class="form-group">
-            <label for="country">Country</label>
-            <select id="country" name="country" class="form-control">
-                <option value="">All</option>
-                {% for country in unique_countries %}
-                    <option value="{{ country }}" {% if request.args.get('country') == country %} selected {% endif %}>{{ country }}</option>
-                {% endfor %}
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="grape">Grape Variety</label>
-            <select id="grape" name="grape" class="form-control">
-                <option value="">All</option>
-                {% for grape in unique_grapes %}
-                    <option value="{{ grape }}" {% if request.args.get('grape') == grape %} selected {% endif %}>{{ grape }}</option>
-                {% endfor %}
-            </select>
-        </div> -->
-
-        <button type="submit" class="btn btn-primary">Find My Wine</button>
     </form>
 </div>
+
 <div class="container mt-5">
     <h2>How to Use Our Wine Finder</h2>
     <p><strong>Explore by Occasion:</strong> Are you selecting a wine for a dinner party, a quiet evening at home, or a special celebration? Use our guide to find the best match for any event.</p>
@@ -126,5 +111,14 @@
     <p><strong>Flexible Pricing Options:</strong> No matter your budget, we make it easy to discover excellent wines that won’t break the bank. Just set your preferred price range and let us do the rest.</p>
 </div>
 
+<script>
+    function nextQuestion(current) {
+        // Hide the current question
+        document.getElementById('question' + current).classList.remove('active');
+        
+        // Show the next question
+        document.getElementById('question' + (current + 1)).classList.add('active');
+    }
+</script>
 
 {% endblock %}
