@@ -208,7 +208,36 @@ def wine_detail(wine_id):
 
 @app.route('/guide')
 def guide():
-    return render_template('guide.html')
+    unique_countries = get_unique_values(wines, 'Country')
+    unique_regions = get_unique_values(wines, 'Region')
+    unique_grapes = get_unique_values(wines, 'Grape')
+    unique_types = get_unique_values(wines, 'Type')
+    unique_styles = get_unique_values(wines, 'Style')
+    unique_closures = get_unique_values(wines, 'Closure')
+    unique_capacities = get_unique_values(wines, 'Capacity')
+    unique_secondary_grapes = get_unique_values(wines, 'Secondary Grape Varieties')
+    unique_vintages = get_unique_values(wines, 'Vintage')
+    unique_units = get_unique_values(wines, 'Unit')
+    unique_characteristics = get_unique_values(wines, 'Characteristics')
+    unique_per_bottle_case_each = get_unique_values(wines, 'Per bottle / case / each')
+    unique_appellations = get_unique_values(wines, 'Appellations')
+    
+    return render_template(
+        'guide.html',
+        unique_countries=unique_countries,
+        unique_regions=unique_regions,
+        unique_grapes=unique_grapes,
+        unique_types=unique_types,
+        unique_styles=unique_styles,
+        unique_vintages=unique_vintages,
+        unique_closures=unique_closures,
+        unique_capacities=unique_capacities,
+        unique_secondary_grapes=unique_secondary_grapes,
+        unique_units=unique_units,
+        unique_characteristics=unique_characteristics,
+        unique_per_bottle_case_each=unique_per_bottle_case_each,
+        unique_appellations=unique_appellations
+        )
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -7,13 +7,13 @@
 <style>
     body {
         margin: 0; 
-        background-image: url("{{ url_for('static', filename='images/background.png') }}");
+        background-image: url("{{ url_for('static', filename='images/background.jpg') }}");
         background-size: cover; 
         background-position: center; 
         background-repeat: no-repeat;
-        height: calc(100vh - 60px); /* Subtracts the height of the header from the viewport */
-        width: 100vw; 
-        overflow-x: hidden; /* Prevents horizontal scrollbar */
+        min-height: 100vh; /* Changed from height to min-height */
+        display: flex;
+        flex-direction: column;
     }
 
     .welcome-container {
@@ -73,12 +73,12 @@
 </style>
 
 <!-- Welcome section -->
-<div class="welcome-container">
+<!-- <div class="welcome-container">
     <h1>Welcome to GrapeGuide</h1>
-</div>
+</div> -->
 
 <div class="container mt-4">
-    <div class="text-center"><h5>Types of wine</h5></div>
+    <div class="text-center"><h5 style="color: white;">Type of wine</h5></div>
     <div class="row justify-content-center">
         <!-- Wine Cards with consistent shadow -->
         <!-- Card 1 -->
@@ -126,7 +126,7 @@
 </div>
 
 <div class="container mt-4">
-    <div class="text-center"><h5>Best paired with</h5></div>
+    <div class="text-center" style="color: white;"><h5>Best paired with</h5></div>
     <div class="row justify-content-center">
         <!-- "Best paired with" Cards -->
         <!-- Card 1 -->
@@ -197,8 +197,9 @@
     </div>
 </div>
 
-<div class="container mt-5">
-    <div class="text-center"><h5>Wines of the day</h5></div>
+
+<div class="container mt-4">
+    <div class="text-center" style="color: white;"><h5>Wines of the day</h5></div>
 <div class="row justify-content-center">
     {% for wine in random_wines %}
     <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
