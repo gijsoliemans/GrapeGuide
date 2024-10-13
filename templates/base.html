@@ -23,14 +23,14 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
-            <a class="navbar-brand p-0 m-0" href="/" style="max-width: 15%;">
+            <a class="navbar-brand p-0 m-0" href="/" style="max-width: 12%;">
                 <img src="{{ url_for('static', filename='images/Logo.png') }}" class="img-fluid rounded" alt="Logo" style="width: 100%; height: auto;">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
+            <div class="collapse navbar-collapse container-fluid" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto align-items-center">
                     <li class="nav-item {% if request.path == '/' %}active{% endif %}">
                         <a class="nav-link" href="/">Home</a>
                     </li>
@@ -60,7 +60,7 @@
                             <input type="hidden" name="unit" value="{{ request.args.get('unit', '') }}">
                             <input type="hidden" name="abv_min" value="{{ request.args.get('abv_min', '') }}">
                             <input type="hidden" name="abv_max" value="{{ request.args.get('abv_max', '') }}">
-                            <div class="form-group mt-2">
+                            <div class="form-group mt-4">
                                 <input type="text" class="form-control mt-n1 ml-2 " id="search" name="search" maxlength="32" placeholder="Search" onchange="document.getElementById('filter-form2').submit();">
                             </div>
                         </form>

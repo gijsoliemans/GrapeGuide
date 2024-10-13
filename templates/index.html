@@ -78,18 +78,18 @@
 </div>
 
 <div class="container mt-4">
-    <div class="text-center"><h5>Type of wine</h5></div>
+    <div class="text-center"><h5>Types of wine</h5></div>
     <div class="row justify-content-center">
         <!-- Wine Cards with consistent shadow -->
         <!-- Card 1 -->
         <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-            <div class="card">
-                <a href="/wines?search=&sort=default&country=&region=&type=Red&price_min=&price_max=&abv_min=&abv_max=&grape=&style=&vintage=&closure=&capacity=&secondary_grape_varieties=&unit=&characteristics=&per_bottle_case_each=&lead=Red Wines" class="card h-100">
-                    <div class="image-container mt-4">
+            <div class="">
+                <a href="/wines?search=&sort=default&country=&region=&type=Red&price_min=&price_max=&abv_min=&abv_max=&grape=&style=&vintage=&closure=&capacity=&secondary_grape_varieties=&unit=&characteristics=&per_bottle_case_each=&lead=Red Wines" class="card h-100" style="text-decoration: none;">
+                    <div class="">
                         <img src="{{ url_for('static', filename='images/Rood.jpg') }}" class="img-fluid rounded" alt="Types of Wines" style="max-width: 100%; height: auto;">
                     </div>
-                    <div class="card-body">
-                        <h6 class="font-weight-bold">Red wine</h6>
+                    <div class="container-fluid mt-n5 bg-white pt-1 pb-0">
+                        <h6 class="text-center font-weight-bold">Red wines</h6>
                     </div>
                 </a>
             </div>
@@ -97,13 +97,13 @@
 
         <!-- Card 2 -->
         <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-            <div class="card">
-                <a href="/wines?search=&sort=default&country=&region=&type=White&price_min=&price_max=&abv_min=&abv_max=&grape=&style=&vintage=&closure=&capacity=&secondary_grape_varieties=&unit=&characteristics=&per_bottle_case_each=&lead=White wines" class="card h-100">
-                    <div class="image-container mt-4">
-                        <img src="{{ url_for('static', filename='images/Wit.jpg') }}" class="img-fluid rounded" alt="Types of Wines" style="max-width: 100%; height: auto;">
+            <div class="">
+                <a href="/wines?search=&sort=default&country=&region=&type=White&price_min=&price_max=&abv_min=&abv_max=&grape=&style=&vintage=&closure=&capacity=&secondary_grape_varieties=&unit=&characteristics=&per_bottle_case_each=&lead=White wines" class="card h-100" style="text-decoration: none;">
+                    <div class="">
+                        <img src="{{ url_for('static', filename='images/Wit.jpg') }}" class="img-fluid rounded m-0" alt="Types of Wines" style="max-width: 100%; height: auto;">
                     </div>
-                    <div class="card-body">
-                        <h6 class="font-weight-bold">White wine</h6>
+                    <div class="container-fluid mt-n5 bg-white pt-1 pb-0">
+                        <h6 class="text-center font-weight-bold">White wines</h6>
                     </div>
                 </a>
             </div>
@@ -111,13 +111,13 @@
 
         <!-- Card 3 -->
         <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-            <div class="card">
-                <a href="/wines?search=&sort=default&country=&region=&type=Ros%C3%A9&price_min=&price_max=&abv_min=&abv_max=&grape=&style=&vintage=&closure=&capacity=&secondary_grape_varieties=&unit=&characteristics=&per_bottle_case_each=&lead=Rose Wines" class="card h-100">
-                    <div class="image-container mt-4">
-                        <img src="{{ url_for('static', filename='images/Rose.jpg') }}" class="img-fluid rounded" alt="Types of Wines" style="max-width: 100%; height: auto;">
+            <div class="">
+                <a href="/wines?search=&sort=default&country=&region=&type=Ros%C3%A9&price_min=&price_max=&abv_min=&abv_max=&grape=&style=&vintage=&closure=&capacity=&secondary_grape_varieties=&unit=&characteristics=&per_bottle_case_each=&lead=Rose Wines" class="card h-100" style="text-decoration: none;">
+                    <div class="">
+                        <img src="{{ url_for('static', filename='images/Rose.jpg') }}" class="img-fluid rounded m-0" alt="Types of Wines" style="width: 100%; height: 100%;">
                     </div>
-                    <div class="card-body">
-                        <h6 class="font-weight-bold">Rose wine</h6>
+                    <div class="container-fluid mt-n5 bg-white pt-1 pb-0">
+                        <h6 class="text-center font-weight-bold">Rosé wines</h6>
                     </div>
                 </a>
             </div>
@@ -130,56 +130,66 @@
     <div class="row justify-content-center">
         <!-- "Best paired with" Cards -->
         <!-- Card 1 -->
-        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-            <div class="card">
-                <a href="/wines?search=&sort=&price_min=&price_max=&pairing=meat&country=&type=&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" class="card h-100">
-                    <div class="card-body text-center">
-                        <div><img src="{{ url_for('static', filename='images/Meat.jpg') }}" class="img-fluid rounded" alt="Types of Wines" style="max-width: 100%; height: auto;"></div>
-                        <h6 class="font-weight-bold mt-2">Meat</h6>
+        <div class="col-lg-2 col-md-3 col-sm-6 p-0 pl-3">
+            <div class="">
+                <a href="/wines?search=&sort=&price_min=&price_max=&pairing=meat&country=&type=&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead=Meat" class="card h-100" style="text-decoration: none;">
+                    <div class="">
+                        <div><img src="{{ url_for('static', filename='images/Meat.jpg') }}" class="img-fluid rounded m-0" alt="Types of Wines" style="width: 100%; height: 100%;"></div>
+                        <div class="container-fluid mt-n5 bg-white p-1" style="z-index: 1; position: relative;">
+                            <h6 class="text-center font-weight-bold m-0">Meat</h6>
+                        </div>
                     </div>
                 </a>
             </div>
         </div>
         <!-- Card 2 -->
-        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-            <div class="card">
-                <a href="/wines?search=&sort=&price_min=&price_max=&pairing=poultry&country=&type=&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" class="card h-100">
-                    <div class="card-body text-center">
-                        <div><img src="{{ url_for('static', filename='images/Poultry.jpg') }}" class="img-fluid rounded" alt="Types of Wines" style="max-width: 100%; height: auto;"></div>
-                        <h6 class="font-weight-bold mt-2">Poultry</h6>
+        <div class="col-lg-2 col-md-3 col-sm-6 p-0 pl-3">
+            <div class="w-100">
+                <a href="/wines?search=&sort=&price_min=&price_max=&pairing=poultry&country=&type=&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead=Poultry" class="card h-100" style="text-decoration: none;">
+                    <div class="text-center">
+                        <div><img src="{{ url_for('static', filename='images/Poultry.jpg') }}" class="img-fluid rounded m-0" alt="Types of Wines" style="width: 100%; height: 100%;"></div>
+                        <div class="container-fluid mt-n5 bg-white p-1" style="z-index: 1; position: relative;">
+                            <h6 class="text-center font-weight-bold m-0">Poultry</h6>
+                        </div>
                     </div>
                 </a>
             </div>
         </div>
         <!-- Card 3 -->
-        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-            <div class="card">
-                <a href="/wines?search=&sort=&price_min=&price_max=&pairing=cheese&country=&type=&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" class="card h-100">
-                    <div class="card-body text-center">
-                        <div><img src="{{ url_for('static', filename='images/Cheese.jpg') }}" class="img-fluid rounded" alt="Types of Wines" style="max-width: 100%; height: auto;"></div>
-                        <h6 class="font-weight-bold mt-2">Cheese</h6>
+        <div class="col-lg-2 col-md-3 col-sm-6 p-0 pl-3">
+            <div class="">
+                <a href="/wines?search=&sort=&price_min=&price_max=&pairing=cheese&country=&type=&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead=Cheese" class="card h-100" style="text-decoration: none;">
+                    <div class="text-center">
+                        <div><img src="{{ url_for('static', filename='images/Cheese.jpg') }}" class="img-fluid rounded" alt="Types of Wines" style="width: 100%; height: 100%;"></div>
+                        <div class="container-fluid mt-n5 bg-white p-1" style="z-index: 1; position: relative;">
+                            <h6 class="text-center font-weight-bold m-0">Cheese</h6>
+                        </div>
                     </div>
                 </a>
             </div>
         </div>
         <!-- Card 4 -->
-        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-            <div class="card">
-                <a href="/wines?search=&sort=&price_min=&price_max=&pairing=fish&country=&type=&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" class="card h-100">
-                    <div class="card-body text-center">
-                        <div><img src="{{ url_for('static', filename='images/Fish.jpg') }}" class="img-fluid rounded" alt="Types of Wines" style="max-width: 100%; height: auto;"></div>
-                        <h6 class="font-weight-bold mt-2">Fish</h6>
+        <div class="col-lg-2 col-md-3 col-sm-6 p-0 pl-3">
+            <div class="">
+                <a href="/wines?search=&sort=&price_min=&price_max=&pairing=fish&country=&type=&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead=Fish" class="card h-100" style="text-decoration: none;">
+                    <div class="text-center">
+                        <div><img src="{{ url_for('static', filename='images/Fish.jpg') }}" class="img-fluid rounded" alt="Types of Wines" style="width: 100%; height: 100%;"></div>
+                        <div class="container-fluid mt-n5 bg-white p-1" style="z-index: 1; position: relative;">
+                            <h6 class="text-center font-weight-bold m-0">Fish</h6>
+                        </div>
                     </div>
                 </a>
             </div>
         </div>
         <!-- Card 5 -->
-        <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-            <div class="card">
-                <a href="/wines?search=&sort=&price_min=&price_max=&pairing=vegetables&country=&type=&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=" class="card h-100">
-                    <div class="card-body text-center">
-                        <div><img src="{{ url_for('static', filename='images/Vegetables.jpg') }}" class="img-fluid rounded" alt="Types of Wines" style="max-width: 100%; height: auto;"></div>
-                        <h6 class="font-weight-bold mt-2">Vegetables</h6>
+        <div class="col-lg-2 col-md-3 col-sm-6 p-0 pl-3">
+            <div class="">
+                <a href="/wines?search=&sort=&price_min=&price_max=&pairing=vegetables&country=&type=&grape=&vintage=&region=&secondary_grape_varieties=&style=&characteristics=&closure=&capacity=&unit=&abv_min=&abv_max=&lead=Vegetables" class="card h-100" style="text-decoration: none;">
+                    <div class="text-center">
+                        <div><img src="{{ url_for('static', filename='images/Vegetables.jpg') }}" class="img-fluid rounded" alt="Types of Wines" style="width: 100%; height: 100%;"></div>
+                        <div class="container-fluid mt-n5 bg-white p-1" style="z-index: 1; position: relative;">
+                            <h6 class="text-center font-weight-bold m-0">Vegetables</h6>
+                        </div>  
                     </div>
                 </a>
             </div>
@@ -187,7 +197,7 @@
     </div>
 </div>
 
-<div class="container mt-4">
+<div class="container mt-5">
     <div class="text-center"><h5>Wines of the day</h5></div>
 <div class="row justify-content-center">
     {% for wine in random_wines %}
