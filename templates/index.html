@@ -25,6 +25,8 @@
         align-items: flex-start;
         padding: 160px 20px; /* position of text */
         color: white; 
+        flex-direction: column; /* Arrange elements vertically */
+
     }
 
     .card {
@@ -103,18 +105,39 @@
 
     .scroll-icon:hover i {
         transform: translateY(2px); /* Move the icon down slightly on hover */
+
+    }
+    .purple-button {
+        background-color: #9d36ad; /* Rich purple background */
+        color: white; /* White text */
+        padding: 10px 25px; /* Padding for button-like appearance */
+        border: none;
+        border-radius: 30px; /* Rounded corners */
+        font-size: 18px;
+        text-decoration: none; /* Remove underline */
+        font-weight: bold;
+        transition: background-color 0.3s, transform 0.3s ease; /* Smooth transitions */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    }
+
+    .purple-button:hover {
+        background-color: #7a2c88; /* Darker purple on hover */
+        transform: scale(1.05); /* Slight zoom on hover */
+        color: white; /* Keep text white on hover */ 
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* More shadow on hover */
     }
 
 
 </style>
 
 <!-- Welcome section -->
-<div class="welcome-container">
-    <h1>Welcome to GrapeGuide</h1>
-    <div class="scroll-icon" id="scrollIcon">
-        <i class="fas fa-chevron-down"></i>
+    <div class="welcome-container">
+        <h1>Welcome to GrapeGuide</h1>
+        <h2><a href="/guide" class="purple-button" style="text-decoration: none;">Guide me</a></h2>
+        <div class="scroll-icon" id="scrollIcon">
+            <i class="fas fa-chevron-down"></i>
+        </div>
     </div>
-</div>
 
 <div id="content" class="pt-5">
     <div class="container mt-5" >
