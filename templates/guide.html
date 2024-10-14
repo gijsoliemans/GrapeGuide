@@ -41,7 +41,7 @@
     }
 </style>
 
-<div class="container mt-3">
+<div class="container mt-3 mb-0">
     <h1>Welcome to the Grape Guide</h1>
     <p>
         Finding the right wine can be challenging with so many options available. 
@@ -51,12 +51,20 @@
     </p>
 </div>
 
-<div class="container mt-5 form-container">
+<div class="container mt-1">
+    <h2>How to Use Our Wine Finder</h2>
+
+    <p><strong>Food Pairings Made Simple:</strong> Choosing the right wine to pair with your meal can elevate the dining experience. Whether it's a delicate seafood dish, a cheese platter, or a grilled steak, our guide helps you find the perfect complement.</p>
+    
+    <p><strong>Flexible Pricing Options:</strong> No matter your budget, we make it easy to discover excellent wines that won’t break the bank. Just set your preferred price range and let us do the rest.</p>
+</div>
+
+<div class="container mt-4 pb-4 form-container">
     <form class="pb-4" id="filter-form" method="GET" action="{{ url_for('wines') }}">
         <!-- Question 1 -->
         <div class="question active" id="question1">
             <h5><strong>What type of wine are you looking for?</strong></h5>
-            <p>Select from a variety of options, including reds, whites, rosés, sparkling, and more.</p>
+            <p>Select from a variety of options, including reds, whites and rosés.</p>
             <select id="type" name="type" class="form-control">
                 <option value="">All</option>
                 {% for type in unique_types %}
@@ -78,6 +86,7 @@
                 <option value="cheese" {% if request.args.get('pairing') == 'cheese' %} selected {% endif %}>Cheese</option>
                 <option value="vegetables" {% if request.args.get('pairing') == 'vegetables' %} selected {% endif %}>Vegetables</option>
             </select>            
+            <button type="button" class="btn btn-primary mt-3" onclick="prevQuestion(2)">Previous</button>
             <button type="button" class="btn btn-primary mt-3" onclick="nextQuestion(2)">Next</button>
         </div>
 
@@ -97,19 +106,12 @@
                     </div>
                 </div>
             </div>
+            <button type="button" class="btn btn-primary mt-3" onclick="prevQuestion(3)">Previous</button>
             <button type="submit" class="btn btn-primary mt-3">Find My Wine</button>
         </div>
     </form>
 </div>
 
-<div class="container mt-5">
-    <h2>How to Use Our Wine Finder</h2>
-    <p><strong>Explore by Occasion:</strong> Are you selecting a wine for a dinner party, a quiet evening at home, or a special celebration? Use our guide to find the best match for any event.</p>
-    
-    <p><strong>Food Pairings Made Simple:</strong> Choosing the right wine to pair with your meal can elevate the dining experience. Whether it's a delicate seafood dish, a cheese platter, or a grilled steak, our guide helps you find the perfect complement.</p>
-    
-    <p><strong>Flexible Pricing Options:</strong> No matter your budget, we make it easy to discover excellent wines that won’t break the bank. Just set your preferred price range and let us do the rest.</p>
-</div>
 
 <script>
     function nextQuestion(current) {
@@ -118,6 +120,14 @@
         
         // Show the next question
         document.getElementById('question' + (current + 1)).classList.add('active');
+    }
+
+    function prevQuestion(current) {
+        // Hide the current question
+        document.getElementById('question' + current).classList.remove('active');
+        
+        // Show the next question
+        document.getElementById('question' + (current - 1)).classList.add('active');
     }
 </script>
 
