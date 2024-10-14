@@ -407,6 +407,7 @@ function toggleCollapse() {
                     <input type="hidden" name="capacity" value="{{ request.args.get('capacity', '') }}">
                     <input type="hidden" name="abv_min" value="{{ request.args.get('abv_min', '') }}">
                     <input type="hidden" name="abv_max" value="{{ request.args.get('abv_max', '') }}">
+                    <input type="hidden" name="lead" value="{{ request.args.get('lead', '') }}">
                 <div class="form-group">
                     <label for="sort" class="mb-n2">Sort by</label>
                     <select id="sort" name="sort" class="form-control" onchange="document.getElementById('sort-form').submit();">
