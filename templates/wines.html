@@ -276,16 +276,14 @@
 
             <div class="form-group">
                 <label for="abv_min">Alcohol Percentage Range</label>
-                <div class="container">
-                    <div class="row">
-                      <div class="col p-1">
+                <div class="row">
+                    <div class="col p-1">
                         <input type="number" id="abv_min" name="abv_min" class="form-control" placeholder="Min" onchange="document.getElementById('filter-form').submit();"
                             value="{{ request.args.get('abv_min', '') }}">
-                      </div>
-                      <div class="col-sm p-1">
+                    </div>
+                    <div class="col-sm p-1">
                         <input type="number" id="abv_max" name="abv_max" class="form-control" placeholder="Max" onchange="document.getElementById('filter-form').submit();"
                             value="{{ request.args.get('abv_max', '') }}">
-                      </div>
                     </div>
                 </div>
             </div>
@@ -457,7 +455,7 @@ function toggleCollapse() {
         <!-- Previous arrow: Only show if not on the first page -->
         {% if this_page > 1 %}
             <li class="page-item">
-                <a class="page-link" href="{{ url_for('wines', lead=lead, pairing=request.args.get('pairing'), price_min=request.args.get('price_min'), price_max=request.args.get('price_max'), page=this_page - 1, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], characteristics=filters.Characteristics) }}">
+                <a class="page-link" href="{{ url_for('wines', lead=lead, abv_min=request.args.get('abv_min'), abv_max=request.args.get('abv_max'), pairing=request.args.get('pairing'), price_min=request.args.get('price_min'), price_max=request.args.get('price_max'), page=page, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], characteristics=filters.Characteristics) }}">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
@@ -469,7 +467,7 @@ function toggleCollapse() {
                 <li class="page-item"><span class="page-link">{{ page }}</span></li>
             {% else %}
                 <li class="page-item {% if page == this_page %}active{% endif %}">
-                    <a class="page-link" href="{{ url_for('wines', pairing=request.args.get('pairing'), lead=lead, price_min=request.args.get('price_min'), price_max=request.args.get('price_max'), page=page, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], characteristics=filters.Characteristics) }}">
+                    <a class="page-link" href="{{ url_for('wines', lead=lead, abv_min=request.args.get('abv_min'), abv_max=request.args.get('abv_max'), pairing=request.args.get('pairing'), price_min=request.args.get('price_min'), price_max=request.args.get('price_max'), page=page, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], characteristics=filters.Characteristics) }}">
                         {{ page }}
                     </a>
                 </li>
@@ -479,7 +477,7 @@ function toggleCollapse() {
         <!-- Next arrow: Only show if not on the last page -->
         {% if page_numbers and this_page < page_numbers[-1] %}
             <li class="page-item">
-                <a class="page-link" href="{{ url_for('wines', pairing=request.args.get('pairing'), lead=lead, price_min=request.args.get('price_min'), price_max=request.args.get('price_max'), page=this_page + 1, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], characteristics=filters.Characteristics) }}">
+                <a class="page-link" href="{{ url_for('wines', lead=lead, abv_min=request.args.get('abv_min'), abv_max=request.args.get('abv_max'), pairing=request.args.get('pairing'), price_min=request.args.get('price_min'), price_max=request.args.get('price_max'), page=page, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], characteristics=filters.Characteristics) }}">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
             </li>
