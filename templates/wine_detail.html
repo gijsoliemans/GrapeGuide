@@ -108,9 +108,11 @@
                     <h5>Appellation</h5>
                     <p>{{ wine.Appellation }}</p>
                     <h5>Style</h6>
-                    <p>{{ wine.Style }}</p>
+                    <p>{{ wine.Style[0] }}{% if wine.Style[1] %},{% endif %} {{ wine.Style[1] | capitalize }}</p>
+
+
                     <h5>Characteristics</h5>
-                    <p>{{ wine.Characteristics }}</p>
+                    <p>{{ wine.Characteristics[0] }}{% if wine.Characteristics[1] %},{% endif %} {{ wine.Characteristics[1] | capitalize }}{% if wine.Characteristics[2] %},{% endif %} {{ wine.Characteristics[2] | capitalize }}{% if wine.Characteristics[3] %},{% endif %} {{ wine.Characteristics[3] | capitalize }}{% if wine.Characteristics[4] %},{% endif %} {{ wine.Characteristics[4] | capitalize }}{% if wine.Characteristics[5] %},{% endif %} {{ wine.Characteristics[5] | capitalize }}{% if wine.Characteristics[6] %},{% endif %} {{ wine.Characteristics[6] | capitalize }}{% if wine.Characteristics[7] %},{% endif %} {{ wine.Characteristics[7] | capitalize }}{% if wine.Characteristics[8] %},{% endif %} {{ wine.Characteristics[8] | capitalize }}{% if wine.Characteristics[9] %},{% endif %} {{ wine.Characteristics[9] | capitalize }}</p>
                 </div>
                 <div class="col-md-6">
                     <h5>Closure</h5>
