@@ -36,7 +36,8 @@
         "tastes best with fish": 0.0008781024,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046903_wines/bread-butter-chardonnay-18139.jpeg",
         "best_pairing": [
-            "poultry"
+            "poultry",
+            "cheese"
         ],
         "Topics": [
             "wine",
@@ -186,10 +187,7 @@
         "tastes best with vegetables": 0.3414910436,
         "tastes best with fish": 0.0607641786,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046897_wines/bread-butter-pinot-noir-18128.jpeg",
-        "best_pairing": [
-            "meat",
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "white",
@@ -1100,9 +1098,7 @@
         "tastes best with vegetables": 0.2293229997,
         "tastes best with fish": 0.5578573942,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046484_wines/domaine-la-chautarde-rose-08009.jpeg",
-        "best_pairing": [
-            "fish"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "white",
@@ -1751,6 +1747,7 @@
         "tastes best with fish": 0.5551219583,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0049335_sparkling-wines/chapel-down-english-rose-23290.jpeg",
         "best_pairing": [
+            "meat",
             "fish"
         ],
         "Topics": [
@@ -2647,10 +2644,7 @@
         "tastes best with vegetables": 0.2344129533,
         "tastes best with fish": 0.1094773263,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0047131_wines/mayu-carmenere-apassimento-39407.jpeg",
-        "best_pairing": [
-            "cheese",
-            "meat"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
@@ -3511,10 +3505,7 @@
         "tastes best with vegetables": 0.2607610226,
         "tastes best with fish": 0.1839756966,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0048059_wines/peyrassol-rose-magnum-08279.jpeg",
-        "best_pairing": [
-            "cheese",
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "notes",
@@ -5621,10 +5612,7 @@
         "tastes best with vegetables": 0.2776280344,
         "tastes best with fish": 0.098240301,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0049707.jpeg",
-        "best_pairing": [
-            "meat",
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
@@ -5920,9 +5908,7 @@
         "tastes best with vegetables": 0.1104748026,
         "tastes best with fish": 0.5967966318,
         "image_source": "https://img-majestic-live.mncdn.com/mnpadding/400/400/ffffff/Content/Images/Originals/0053119_0.jpeg",
-        "best_pairing": [
-            "fish"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "sauvignon",
@@ -6405,10 +6391,7 @@
         "tastes best with vegetables": 0.3040337861,
         "tastes best with fish": 0.0554961301,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0048441_wines/chosen-by-majestic-beaujolais-villages-07222.jpeg",
-        "best_pairing": [
-            "cheese",
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
@@ -7269,10 +7252,7 @@
         "tastes best with vegetables": 0.2940384448,
         "tastes best with fish": 0.1015817523,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0048232_wines/bruce-jack-res-stream-20480.jpeg",
-        "best_pairing": [
-            "cheese",
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
@@ -7320,10 +7300,7 @@
         "tastes best with vegetables": 0.3702864647,
         "tastes best with fish": 0.0812093094,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0048088_wines/greco-san-gregorio-73040.jpeg",
-        "best_pairing": [
-            "cheese",
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "white",
@@ -7725,7 +7702,8 @@
         "tastes best with fish": 0.0011932292,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0048406_wines/les-saules-vacqueyras-06629.jpeg",
         "best_pairing": [
-            "poultry"
+            "poultry",
+            "cheese"
         ],
         "Topics": [
             "wine",
@@ -7920,7 +7898,8 @@
         "tastes best with fish": 0.0145905251,
         "image_source": "https://img-majestic-live.mncdn.com/mnpadding/400/400/ffffff/Content/Images/Originals/0046990_0.jpeg",
         "best_pairing": [
-            "poultry"
+            "poultry",
+            "meat"
         ],
         "Topics": [
             "wine",
@@ -8071,10 +8050,7 @@
         "tastes best with vegetables": 0.3129611313,
         "tastes best with fish": 0.1024495438,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0047326_wines/stags-leap-hands-of-time-chardonnay-18769.jpeg",
-        "best_pairing": [
-            "cheese",
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "white",
@@ -8168,6 +8144,7 @@
         "tastes best with fish": 0.0026217736,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0048490_wines/brunello-mondocg-piccini-73115.jpeg",
         "best_pairing": [
+            "cheese",
             "meat"
         ],
         "Topics": [
@@ -8970,10 +8947,7 @@
         "tastes best with vegetables": 0.3667375743,
         "tastes best with fish": 0.1057871729,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0048277_wines/tommasi-le-fornaci-rose-08297.jpeg",
-        "best_pairing": [
-            "cheese",
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "white",
@@ -9081,9 +9055,7 @@
         "tastes best with vegetables": 0.0940532312,
         "tastes best with fish": 0.5783157349,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0047249_wines/rock-angel-rose-08295.jpeg",
-        "best_pairing": [
-            "fish"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "sauvignon",
@@ -9385,9 +9357,7 @@
         "tastes best with vegetables": 0.0945615247,
         "tastes best with fish": 0.5252037048,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046856_wines/graham-beck-rose-vintage-23319.jpeg",
-        "best_pairing": [
-            "fish"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "notes",
@@ -9693,6 +9663,7 @@
         "tastes best with fish": 0.0029637744,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0047039_wines/rupert-rothschild-classique-20388.jpeg",
         "best_pairing": [
+            "poultry",
             "meat"
         ],
         "Topics": [
@@ -10923,6 +10894,7 @@
         "tastes best with fish": 0.0026551508,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046974_wines/roaring-meg-pinot-noir-37179.jpeg",
         "best_pairing": [
+            "poultry",
             "meat"
         ],
         "Topics": [
@@ -11019,7 +10991,8 @@
         "tastes best with fish": 0.0098786922,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0053565_wines/definition-by-majestic-pouilly-fume-37604.jpeg",
         "best_pairing": [
-            "poultry"
+            "poultry",
+            "meat"
         ],
         "Topics": [
             "wine",
@@ -11658,7 +11631,8 @@
         "tastes best with fish": 0.0003275519,
         "image_source": "https://img-majestic-live.mncdn.com/mnresize/400/400/Content/Images/Originals/0047581_0.jpeg",
         "best_pairing": [
-            "poultry"
+            "poultry",
+            "meat"
         ],
         "Topics": [
             "wine",
@@ -11754,6 +11728,7 @@
         "tastes best with fish": 0.5950250626,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0047866_wines/villiera-merlot-20458.jpeg",
         "best_pairing": [
+            "meat",
             "fish"
         ],
         "Topics": [
@@ -12534,9 +12509,7 @@
         "tastes best with vegetables": 0.0204467233,
         "tastes best with fish": 0.0225797296,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046320_wines/domaine-pardon-julienas-07009.jpeg",
-        "best_pairing": [
-            "meat"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
@@ -12735,10 +12708,7 @@
         "tastes best with vegetables": 0.1323636621,
         "tastes best with fish": 0.2666887939,
         "image_source": "https://img-majestic-live.mncdn.com/mnpadding/400/400/ffffff/Content/Images/Originals/0047182_0.jpeg",
-        "best_pairing": [
-            "cheese",
-            "fish"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "white",
@@ -14675,6 +14645,7 @@
         "tastes best with fish": 0.0005905305,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046451_wines/rioja-reserva-vina-ardanza-la-rioja-alta-14270.jpeg",
         "best_pairing": [
+            "poultry",
             "meat"
         ],
         "Topics": [
@@ -14820,10 +14791,7 @@
         "tastes best with vegetables": 0.2506428957,
         "tastes best with fish": 0.1302963197,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046364_wines/pietrariccia-fiano-13266.jpeg",
-        "best_pairing": [
-            "cheese",
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "white",
@@ -14870,10 +14838,7 @@
         "tastes best with vegetables": 0.3460913301,
         "tastes best with fish": 0.2961072922,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0053571_wines/def-by-maj-barrel-ferm-chenin-20279.jpeg",
-        "best_pairing": [
-            "vegetables",
-            "fish"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "white",
@@ -15327,10 +15292,7 @@
         "tastes best with vegetables": 0.2985137701,
         "tastes best with fish": 0.0851065964,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0048090_wines/chardborghetti-73025.jpeg",
-        "best_pairing": [
-            "cheese",
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "white",
@@ -15538,9 +15500,7 @@
         "tastes best with vegetables": 0.5685450435,
         "tastes best with fish": 0.077622503,
         "image_source": "https://img-majestic-live.mncdn.com/mnresize/400/400/Content/Images/Originals/0046893_0.jpeg",
-        "best_pairing": [
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "sauvignon",
@@ -16387,10 +16347,7 @@
         "tastes best with vegetables": 0.1747160703,
         "tastes best with fish": 0.0746120587,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046562_wines/beronia-crianza-14638.jpeg",
-        "best_pairing": [
-            "cheese",
-            "meat"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
@@ -16884,10 +16841,7 @@
         "tastes best with vegetables": 0.3728629649,
         "tastes best with fish": 0.1111139059,
         "image_source": "https://img-majestic-live.mncdn.com/mnresize/400/400/Content/Images/Originals/0054107_0.jpeg",
-        "best_pairing": [
-            "cheese",
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
@@ -17279,7 +17233,8 @@
         "tastes best with fish": 0.0005491332,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0048041_wines/pinot-noir-naudin-09112.jpeg",
         "best_pairing": [
-            "poultry"
+            "poultry",
+            "meat"
         ],
         "Topics": [
             "wine",
@@ -17476,7 +17431,8 @@
         "tastes best with fish": 0.4841442406,
         "image_source": "https://cdn.webshopapp.com/shops/255839/files/405982387/650x750x2/rimapere-sauvignon-blanc-2019.jpg",
         "best_pairing": [
-            "meat"
+            "meat",
+            "fish"
         ],
         "Topics": [
             "wine",
@@ -17672,9 +17628,7 @@
         "tastes best with vegetables": 0.5558150411,
         "tastes best with fish": 0.1124395728,
         "image_source": "https://img-majestic-live.mncdn.com/mnresize/400/400/Content/Images/Originals/0048271_0.jpeg",
-        "best_pairing": [
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "white",
@@ -17874,9 +17828,7 @@
         "tastes best with vegetables": 0.590720892,
         "tastes best with fish": 0.076420486,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0047136_wines/marea-syrah-39430.jpeg",
-        "best_pairing": [
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
@@ -18622,9 +18574,7 @@
         "tastes best with vegetables": 0.1101602092,
         "tastes best with fish": 0.5706253052,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046443_wines/rueda-blanco-14209.jpeg",
-        "best_pairing": [
-            "fish"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "white",
@@ -19071,10 +19021,7 @@
         "tastes best with vegetables": 0.299947679,
         "tastes best with fish": 0.1143276095,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0047463_wines/creation-chardonnay-20432.jpeg",
-        "best_pairing": [
-            "cheese",
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "white",
@@ -19168,9 +19115,7 @@
         "tastes best with vegetables": 0.5679795742,
         "tastes best with fish": 0.0778006837,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0048515_wines/domaine-wachau-gruner-veltliner-smaragd-12113.jpeg",
-        "best_pairing": [
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "sauvignon",
@@ -19220,9 +19165,7 @@
         "tastes best with vegetables": 0.5990900397,
         "tastes best with fish": 0.0362926386,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0047119_wines/santa-rita-120-carmenere-39248.jpeg",
-        "best_pairing": [
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "sauvignon",
@@ -19323,10 +19266,7 @@
         "tastes best with vegetables": 0.2561319768,
         "tastes best with fish": 0.1962235868,
         "image_source": "https://img-majestic-live.mncdn.com/mnpadding/400/400/ffffff/Content/Images/Originals/0053300_0.jpeg",
-        "best_pairing": [
-            "cheese",
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "white",
@@ -19758,10 +19698,7 @@
         "tastes best with vegetables": 0.1750986427,
         "tastes best with fish": 0.1245660633,
         "image_source": "https://www.vinello-wijn.nl/media/image/fd/fc/99/marques-de-altillo-blanco-rioja-doca-pagos-del-rey.png",
-        "best_pairing": [
-            "cheese",
-            "meat"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
@@ -20309,10 +20246,7 @@
         "tastes best with vegetables": 0.1945768148,
         "tastes best with fish": 0.0976587757,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0047933_wines/vina-albali-caber-tempranillo-14798.jpeg",
-        "best_pairing": [
-            "cheese",
-            "meat"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "white",
@@ -21643,7 +21577,8 @@
         "tastes best with fish": 0.0082209213,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046743_wines/incanta-pinot-noir-21011.jpeg",
         "best_pairing": [
-            "cheese"
+            "cheese",
+            "meat"
         ],
         "Topics": [
             "wine",
@@ -21749,6 +21684,7 @@
         "tastes best with fish": 0.5933629274,
         "image_source": "https://cdn.webshopapp.com/shops/27329/files/407954470/chateau-desclans-garrus-rose-2020.jpg",
         "best_pairing": [
+            "vegetables",
             "fish"
         ],
         "Topics": [
@@ -22045,7 +21981,8 @@
         "tastes best with fish": 0.4302313328,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046630_wines/domaine-de-la-metairie-dalon-chardonnay-le-village-10037.jpeg",
         "best_pairing": [
-            "poultry"
+            "poultry",
+            "fish"
         ],
         "Topics": [
             "wine",
@@ -22452,10 +22389,7 @@
         "tastes best with vegetables": 0.2663693726,
         "tastes best with fish": 0.1832352281,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046496_wines/rioja-rosado-08101.jpeg",
-        "best_pairing": [
-            "meat",
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
@@ -23043,10 +22977,7 @@
         "tastes best with vegetables": 0.3225004375,
         "tastes best with fish": 0.0890083089,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046381_wines/ammazza-montepulciano-13494.jpeg",
-        "best_pairing": [
-            "cheese",
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
@@ -23679,6 +23610,7 @@
         "tastes best with fish": 0.0064435457,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046406_wines/amarone-classico-vigneti-di-roccolo-13675.jpeg",
         "best_pairing": [
+            "cheese",
             "meat"
         ],
         "Topics": [
@@ -24415,9 +24347,7 @@
         "tastes best with vegetables": 0.2331749946,
         "tastes best with fish": 0.0214754287,
         "image_source": "https://img-majestic-live.mncdn.com/mnpadding/400/400/ffffff/Content/Images/Originals/0050191_0.jpeg",
-        "best_pairing": [
-            "meat"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "sauvignon",
@@ -24572,7 +24502,8 @@
         "tastes best with fish": 0.0008486753,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0047237_wines/pesquie-edition-red-1912-2018-06625.jpeg",
         "best_pairing": [
-            "poultry"
+            "poultry",
+            "vegetables"
         ],
         "Topics": [
             "wine",
@@ -25016,9 +24947,7 @@
         "tastes best with vegetables": 0.5380680561,
         "tastes best with fish": 0.0481663533,
         "image_source": "https://www.degoudenton.nl/media/catalog/product/cache/8a3aa17d36fa7f2fc32db952c8f1c5da/3/6/36304030000000_10000.png",
-        "best_pairing": [
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
@@ -25319,10 +25248,7 @@
         "tastes best with vegetables": 0.1917272359,
         "tastes best with fish": 0.1189585254,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0047061_wines/de-morgenzon-chenin-blanc-2015-stellenbosch-20248.jpeg",
-        "best_pairing": [
-            "cheese",
-            "meat"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "white",
@@ -25369,9 +25295,7 @@
         "tastes best with vegetables": 0.0880089924,
         "tastes best with fish": 0.0782101229,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046838_wines/devils-creek-merlot-37469.jpeg",
-        "best_pairing": [
-            "poultry"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "notes",
@@ -25769,6 +25693,7 @@
         "tastes best with fish": 0.0025529496,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0047848_wines/domaine-faiveley-nuits-st-g-63066.jpeg",
         "best_pairing": [
+            "poultry",
             "meat"
         ],
         "Topics": [
@@ -25967,9 +25892,7 @@
         "tastes best with vegetables": 0.1670321077,
         "tastes best with fish": 0.5137707591,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046811_wines/domaine-chatelain-chablis-64001.jpeg",
-        "best_pairing": [
-            "fish"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "white",
@@ -26666,7 +26589,8 @@
         "tastes best with fish": 0.3994033039,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0047148_wines/errazuriz-estate-series-pinot-noir-39164.jpeg",
         "best_pairing": [
-            "meat"
+            "meat",
+            "fish"
         ],
         "Topics": [
             "wine",
@@ -26764,6 +26688,7 @@
         "tastes best with fish": 0.001019966,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046970_wines/escarpment-pinot-noir-37167.jpeg",
         "best_pairing": [
+            "poultry",
             "meat"
         ],
         "Topics": [
@@ -27261,9 +27186,7 @@
         "tastes best with vegetables": 0.5563682318,
         "tastes best with fish": 0.0235470869,
         "image_source": "https://img-majestic-live.mncdn.com/mnresize/400/400/Content/Images/Originals/0047490_0.jpeg",
-        "best_pairing": [
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
@@ -27993,7 +27916,8 @@
         "tastes best with fish": 0.002593949,
         "image_source": "https://img-majestic-live.mncdn.com/mnresize/400/400/Content/Images/Originals/0046408_0.jpeg",
         "best_pairing": [
-            "cheese"
+            "cheese",
+            "meat"
         ],
         "Topics": [
             "wine",
@@ -28343,10 +28267,7 @@
         "tastes best with vegetables": 0.1265497059,
         "tastes best with fish": 0.1391824782,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046554_wines/rioja-blanco-14561.jpeg",
-        "best_pairing": [
-            "cheese",
-            "meat"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
@@ -28592,10 +28513,7 @@
         "tastes best with vegetables": 0.1557963043,
         "tastes best with fish": 0.2581816316,
         "image_source": "https://img-majestic-live.mncdn.com/mnresize/400/400/Content/Images/Originals/0047542_0.jpeg",
-        "best_pairing": [
-            "cheese",
-            "fish"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
@@ -29097,7 +29015,8 @@
         "tastes best with fish": 0.0147674251,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0051113_wines/mt-difficulty-ghost-town-pn-37505.jpeg",
         "best_pairing": [
-            "poultry"
+            "poultry",
+            "meat"
         ],
         "Topics": [
             "wine",
@@ -29343,10 +29262,7 @@
         "tastes best with vegetables": 0.1530301571,
         "tastes best with fish": 0.2091806978,
         "image_source": "https://img-majestic-live.mncdn.com/mnpadding/400/400/ffffff/Content/Images/Originals/0046369_0.jpeg",
-        "best_pairing": [
-            "cheese",
-            "meat"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
@@ -29496,6 +29412,7 @@
         "tastes best with fish": 0.5717819333,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046337_wines/peter-ulrich-dry-riesling-12048.jpeg",
         "best_pairing": [
+            "vegetables",
             "fish"
         ],
         "Topics": [
@@ -29690,6 +29607,7 @@
         "tastes best with fish": 0.5779318213,
         "image_source": "https://img-majestic-live.mncdn.com/mnpadding/400/400/ffffff/Content/Images/Originals/0046411_0.jpeg",
         "best_pairing": [
+            "meat",
             "fish"
         ],
         "Topics": [
@@ -30186,10 +30104,7 @@
         "tastes best with vegetables": 0.2809680998,
         "tastes best with fish": 0.1317629814,
         "image_source": "https://img-majestic-live.mncdn.com/mnresize/400/400/Content/Images/Originals/0047088_0.jpeg",
-        "best_pairing": [
-            "cheese",
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "white",
@@ -30285,7 +30200,8 @@
         "tastes best with fish": 0.4468479455,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0031738_wines/saint-clair-pioneer-block-pinot-noir-37180.jpeg",
         "best_pairing": [
-            "meat"
+            "meat",
+            "fish"
         ],
         "Topics": [
             "wine",
@@ -30431,9 +30347,7 @@
         "tastes best with vegetables": 0.1680900007,
         "tastes best with fish": 0.0731473342,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0047113_wines/santa-rita-medalla-real-chardonnay-39240.jpeg",
-        "best_pairing": [
-            "cheese"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "white",
@@ -30534,9 +30448,7 @@
         "tastes best with vegetables": 0.0423294194,
         "tastes best with fish": 0.536850214,
         "image_source": "https://img-majestic-live.mncdn.com/mnpadding/400/400/ffffff/Content/Images/Originals/0046864_0.jpeg",
-        "best_pairing": [
-            "fish"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "notes",
@@ -31749,7 +31661,8 @@
         "tastes best with fish": 0.0090736365,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046978_wines/villa-maria-cellar-selection-pinot-noir-37189.jpeg",
         "best_pairing": [
-            "poultry"
+            "poultry",
+            "meat"
         ],
         "Topics": [
             "wine",
@@ -32444,10 +32357,7 @@
         "tastes best with vegetables": 0.0354546607,
         "tastes best with fish": 0.1983858943,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046663_wines/wolf-blass-yellow-label-chardonnay-19409.jpeg",
-        "best_pairing": [
-            "poultry",
-            "meat"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "white",
@@ -33303,10 +33213,7 @@
         "tastes best with vegetables": 0.1586414129,
         "tastes best with fish": 0.2559890747,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0047177_sparkling-wines/chapel-down-sparkling-bacchus-23329.jpeg",
-        "best_pairing": [
-            "cheese",
-            "fish"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "notes",
@@ -34701,7 +34608,8 @@
         "tastes best with fish": 0.0078227855,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046936_wines/hey-malbec-40156.jpeg",
         "best_pairing": [
-            "cheese"
+            "cheese",
+            "meat"
         ],
         "Topics": [
             "wine",
@@ -35639,6 +35547,7 @@
         "tastes best with fish": 0.0030867753,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0048498_wines/raoul-clerget-beaujolais-07230.jpeg",
         "best_pairing": [
+            "cheese",
             "meat"
         ],
         "Topics": [
@@ -35841,9 +35750,7 @@
         "tastes best with vegetables": 0.3412657678,
         "tastes best with fish": 0.5777361393,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046618_wines/floracao-rose-08262.jpeg",
-        "best_pairing": [
-            "fish"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
@@ -36294,6 +36201,7 @@
         "tastes best with fish": 0.5775933862,
         "image_source": "https://img-majestic-live.mncdn.com/mnpadding/400/400/ffffff/Content/Images/Originals/0046777_0.jpeg",
         "best_pairing": [
+            "meat",
             "fish"
         ],
         "Topics": [
@@ -37376,6 +37284,7 @@
         "tastes best with fish": 0.585825026,
         "image_source": "https://img-majestic-live.mncdn.com/mnresize/400/400/Content/Images/Originals/0048036_0.jpeg",
         "best_pairing": [
+            "meat",
             "fish"
         ],
         "Topics": [
@@ -38354,9 +38263,7 @@
         "tastes best with vegetables": 0.156982407,
         "tastes best with fish": 0.5595542789,
         "image_source": "https://resources.vino.com/data/offertaFileFile/offertaFileFile-178391.jpg",
-        "best_pairing": [
-            "fish"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "notes",
@@ -38456,7 +38363,8 @@
         "tastes best with fish": 0.4593054056,
         "image_source": "https://www.tedwardwines.com/cdn/shop/files/ELISA_CREMANTDELOIRE_FR552-NV_BOTTLESHOTFRONTcopy.png?v=1697645447&width=2400",
         "best_pairing": [
-            "meat"
+            "meat",
+            "fish"
         ],
         "Topics": [
             "wine",
@@ -38701,7 +38609,8 @@
         "tastes best with fish": 0.0007130198,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0047454_wines/nobodys-hero-pinot-noir-37497.jpeg",
         "best_pairing": [
-            "poultry"
+            "poultry",
+            "meat"
         ],
         "Topics": [
             "wine",
@@ -38748,10 +38657,7 @@
         "tastes best with vegetables": 0.4721108377,
         "tastes best with fish": 0.0669329837,
         "image_source": "https://img-majestic-live.mncdn.com/mnresize/400/400/Content/Images/Originals/0046784_0.jpeg",
-        "best_pairing": [
-            "meat",
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
@@ -39293,7 +39199,8 @@
         "tastes best with fish": 0.0019138238,
         "image_source": "https://img-majestic-live.mncdn.com/mnpadding/400/400/ffffff/Content/Images/Originals/0053216_0.jpeg",
         "best_pairing": [
-            "poultry"
+            "poultry",
+            "meat"
         ],
         "Topics": [
             "wine",
@@ -40081,7 +39988,8 @@
         "tastes best with fish": 0.4042003155,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0047594_wines/famille-roux-st-aubin-1er-cru-64137.jpeg",
         "best_pairing": [
-            "meat"
+            "meat",
+            "fish"
         ],
         "Topics": [
             "wine",
@@ -40533,10 +40441,7 @@
         "tastes best with vegetables": 0.2631081045,
         "tastes best with fish": 0.0662176907,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0049888_wines/fonplegade-organic-2016-61401.jpeg",
-        "best_pairing": [
-            "meat",
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "sauvignon",
@@ -41636,6 +41541,7 @@
         "tastes best with fish": 0.5825452805,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0047572_wines/alain-jaume-condrieu-06586.jpeg",
         "best_pairing": [
+            "cheese",
             "fish"
         ],
         "Topics": [
@@ -42076,7 +41982,8 @@
         "tastes best with fish": 0.0035056502,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046402_wines/barbera-dalba-villa-de-forville-13596.jpeg",
         "best_pairing": [
-            "meat"
+            "meat",
+            "vegetables"
         ],
         "Topics": [
             "wine",
@@ -42885,10 +42792,7 @@
         "tastes best with vegetables": 0.000769538,
         "tastes best with fish": 0.000678507,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046464_wines/sancerre-rouge-c-crezancy-05036.jpeg",
-        "best_pairing": [
-            "poultry",
-            "meat"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
@@ -42990,10 +42894,7 @@
         "tastes best with vegetables": 0.3374762237,
         "tastes best with fish": 0.021986682,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0049888_wines/fonplegade-organic-2016-61401.jpeg",
-        "best_pairing": [
-            "meat",
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "white",
@@ -44191,7 +44092,8 @@
         "tastes best with fish": 0.4283813834,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046823_wines/puligny-montrachet-2018-domaine-jomain-64091.jpeg",
         "best_pairing": [
-            "poultry"
+            "poultry",
+            "fish"
         ],
         "Topics": [
             "wine",
@@ -44591,6 +44493,7 @@
         "tastes best with fish": 0.0003943729,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046308_wines/guigal-st-joseph-rouge-06208.jpeg",
         "best_pairing": [
+            "cheese",
             "meat"
         ],
         "Topics": [
@@ -44738,7 +44641,8 @@
         "tastes best with fish": 0.0007262728,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0047092_wines/erath-oregon-pinot-noir-18033.jpeg",
         "best_pairing": [
-            "poultry"
+            "poultry",
+            "meat"
         ],
         "Topics": [
             "wine",
@@ -45325,9 +45229,7 @@
         "tastes best with vegetables": 0.2964242995,
         "tastes best with fish": 0.0357912667,
         "image_source": "https://www-leshop-ch-cld-res.cloudinary.com/image/upload/w_480,h_360,d_mo-default-product-detail.png,c_pad,g_center,fl_lossy,b_rgb:fff/f_auto/e_unsharp_mask:99/q_auto/v1579644915/prod/catalog/product/product-5074115",
-        "best_pairing": [
-            "meat"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
@@ -46277,9 +46179,7 @@
         "tastes best with vegetables": 0.5336716771,
         "tastes best with fish": 0.0525557175,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046599_wines/lb7-lisboa-red-15044.jpeg",
-        "best_pairing": [
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
@@ -47323,10 +47223,7 @@
         "tastes best with vegetables": 0.1789399087,
         "tastes best with fish": 0.0764204785,
         "image_source": "https://img-majestic-live.mncdn.com/mnresize/400/400/Content/Images/Originals/0031738_0.jpeg",
-        "best_pairing": [
-            "cheese",
-            "meat"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "sauvignon",
@@ -47863,10 +47760,7 @@
         "tastes best with vegetables": 0.2899326682,
         "tastes best with fish": 0.2676139474,
         "image_source": "https://www.mayacamas.com/wp-content/uploads/2024/01/2022-Mayacamas-Chardonnay.png",
-        "best_pairing": [
-            "vegetables",
-            "fish"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "sauvignon",
@@ -48262,10 +48156,7 @@
         "tastes best with vegetables": 0.1215201467,
         "tastes best with fish": 0.3173688948,
         "image_source": "https://www.decantalo.nl/60783/muga-prado-enea-gran-reserva.jpg",
-        "best_pairing": [
-            "meat",
-            "fish"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
@@ -48365,10 +48256,7 @@
         "tastes best with vegetables": 0.2882710099,
         "tastes best with fish": 0.1429715455,
         "image_source": "https://www.wijnservice.nl/media/catalog/product/cache/ba99fdcb1808b5a08ed654806f80346a/n/a/nautilus_chardonnay.jpg",
-        "best_pairing": [
-            "cheese",
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "notes",
@@ -48467,7 +48355,8 @@
         "tastes best with fish": 0.0009322236,
         "image_source": "https://www.vinfoli.be/media/producten/xl/1099/00-nos_terroirs_bio_vacqueyras.png",
         "best_pairing": [
-            "poultry"
+            "poultry",
+            "meat"
         ],
         "Topics": [
             "wine",
@@ -48612,6 +48501,7 @@
         "tastes best with fish": 0.0023607654,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0056044.png",
         "best_pairing": [
+            "cheese",
             "meat"
         ],
         "Topics": [
@@ -48858,10 +48748,7 @@
         "tastes best with vegetables": 0.259883821,
         "tastes best with fish": 0.2315068692,
         "image_source": "https://continental-food.co.uk/wp-content/uploads/2017/11/8624101-1.jpg",
-        "best_pairing": [
-            "poultry",
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "notes",
@@ -49117,9 +49004,7 @@
         "tastes best with vegetables": 0.5104051232,
         "tastes best with fish": 0.1707758754,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046205_wines/petaluma-yellow-label-hanlin-hill-riesling-59095.jpeg",
-        "best_pairing": [
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "notes",
@@ -49319,9 +49204,7 @@
         "tastes best with vegetables": 0.0865439028,
         "tastes best with fish": 0.5212867856,
         "image_source": "https://www.peterlehmannwines.com/cdn/shop/files/2017-masters-wigan-riesling-757648_grande.png?v=1725927007",
-        "best_pairing": [
-            "fish"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "sauvignon",
@@ -50259,6 +50142,7 @@
         "tastes best with fish": 0.0006095532,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046444_wines/rioja-reserva-14210.jpeg",
         "best_pairing": [
+            "cheese",
             "meat"
         ],
         "Topics": [
@@ -50807,6 +50691,7 @@
         "tastes best with fish": 0.5487287641,
         "image_source": "https://img-majestic-live.mncdn.com/Content/Images/Thumbs/0046985_wines/st-clair-pioneers-chardon-37237.jpeg",
         "best_pairing": [
+            "vegetables",
             "fish"
         ],
         "Topics": [
@@ -51710,10 +51595,7 @@
         "tastes best with vegetables": 0.136321336,
         "tastes best with fish": 0.2833256721,
         "image_source": "https://www.wijnimportbart.nl/media/catalog/product/cache/8913d490076881145b93bbe354d3d656/7/2/72857-2019-F.png",
-        "best_pairing": [
-            "meat",
-            "fish"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
@@ -51861,9 +51743,7 @@
         "tastes best with vegetables": 0.5710207224,
         "tastes best with fish": 0.1739292592,
         "image_source": "https://thedukesofwine.nl/wp-content/uploads/2021/05/Terradora-CORTE-DI-GISO-Falanghina-Irpinia-DOC.jpg",
-        "best_pairing": [
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
@@ -52360,10 +52240,7 @@
         "tastes best with vegetables": 0.1576989293,
         "tastes best with fish": 0.251093924,
         "image_source": "https://img-majestic-live.mncdn.com/mnpadding/400/400/ffffff/Content/Images/Originals/0048040_0.jpeg",
-        "best_pairing": [
-            "poultry",
-            "fish"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "white",
@@ -52508,10 +52385,7 @@
         "tastes best with vegetables": 0.1134614125,
         "tastes best with fish": 0.3059304357,
         "image_source": "https://tablewineasheville.com/cdn/shop/files/2.23-11.jpg?v=1708719477",
-        "best_pairing": [
-            "poultry",
-            "fish"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "notes",
@@ -52661,6 +52535,7 @@
         "tastes best with fish": 0.0005224695,
         "image_source": "https://img-majestic-live.mncdn.com/mnpadding/400/400/ffffff/Content/Images/Originals/0048472_0.jpeg",
         "best_pairing": [
+            "poultry",
             "meat"
         ],
         "Topics": [
@@ -52711,10 +52586,7 @@
         "tastes best with vegetables": 0.1247681528,
         "tastes best with fish": 0.2658371329,
         "image_source": "https://img-majestic-live.mncdn.com/mnresize/400/400/Content/Images/Originals/0047298_0.jpeg",
-        "best_pairing": [
-            "meat",
-            "fish"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "notes",
@@ -52909,9 +52781,7 @@
         "tastes best with vegetables": 0.5912938714,
         "tastes best with fish": 0.0813272074,
         "image_source": "https://img-majestic-live.mncdn.com/mnpadding/400/400/ffffff/Content/Images/Originals/0047019_0.jpeg",
-        "best_pairing": [
-            "vegetables"
-        ],
+        "best_pairing": "Unknown",
         "Topics": [
             "wine",
             "flavours",
