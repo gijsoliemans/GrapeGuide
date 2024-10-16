@@ -49,16 +49,28 @@ def clean_vintage(year: str) -> int:
     else:
         return int(year)
 
-def add_id(row):
-    # create a unique ID of 8 random characters
-    return ''.join(random.choices(string.ascii_letters + string.digits, k=8))
+def convert_to_list(text):
+    if pd.isna(text):
+        return None  
+    items = [item.strip() for item in text.split(',')]
+    return items if items else None  
+
+# Special function to split Style based on the '&' separator
+def convert_style_to_list(text):
+    if pd.isna(text):
+        return None  # Return None if the value is NaN
+    items = [item.strip() for item in text.split('&')]
+    return items if items else None 
 
 # apply al cleaning funcitons to the DataFrame
 df['Title'] = df['Title'].apply(clean_title)
 df['Capacity'] = df['Capacity'].apply(clean_capacity)
 df['Price'] = df['Price'].apply(clean_price)
 df['ABV'] = df['ABV'].apply(clean_ABV)
-df['ID'] = df.apply(add_id, axis=1)
+
+df['Secondary Grape Varieties'] = df['Secondary Grape Varieties'].apply(convert_to_list)
+df['Characteristics'] = df['Characteristics'].apply(convert_to_list)
+df['Style'] = df['Style'].apply(convert_style_to_list)
 
 # Create a column with country codes with the imported country codes
 df['CountryCode'] = df['Country'].map(country_codes)
@@ -95,7 +107,7 @@ df['Topics'] = df['Topics'].apply(lambda x: topics[x])
 json_file_path = os.path.join(os.path.dirname(__file__), 'WineDataset.json')
 
 # Save the modified dataset with classification scores to a JSON file
-df.to_json(json_file_path, orient='records')
+df.to_json(json_file_path, orient='records', indent=4)
 
 # Verify if the file is saved
 if os.path.exists(json_file_path):

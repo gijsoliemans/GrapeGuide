@@ -10,7 +10,7 @@ app = Flask(__name__, template_folder=os.path.join(os.path.dirname(__file__), 't
 app.config['DEBUG'] = True  # Enable debug mode
 
 # Construct the absolute path to the JSON file
-json_file_path = os.path.join(os.path.dirname(__file__), 'WineDataset_with_Dishes_with_Images.json')
+json_file_path = os.path.join(os.path.dirname(__file__), 'WineDataset_Complete.json')
 
 # Read the JSON file into a DataFrame
 df = pd.read_json(json_file_path)
@@ -24,7 +24,15 @@ for index, wine in enumerate(wines):
 
 # Function to extract unique values out the json for the filters on wines.html
 def get_unique_values(data, key):
-    return sorted(set([wine.get(key) for wine in data if wine.get(key)]))
+    unique_values = set()  # Use a set to avoid duplicates
+    for wine in data:
+        values = wine.get(key)
+        if values:
+            if isinstance(values, list):  # If it's a list, add all items to the set
+                unique_values.update(values)
+            else:
+                unique_values.add(values)  # If it's a string, add directly
+    return sorted(unique_values)
 
 @app.route('/')
 def home():
@@ -82,7 +90,7 @@ def wine_list():
     unique_appellations = get_unique_values(wines, 'Appellations')
 
     # Split styles for wines that have multiple styles separated by ' & '
-    unique_styles = sorted({style.strip() for styles in unique_styles for style in styles.split(' & ')})
+    # unique_styles = sorted({style.strip() for styles in unique_styles for style in styles.split(' & ')})
 
     # Remove vintages that contain double years (e.g., '2020/2021')
     unique_vintages = [year for year in unique_vintages if '/' not in year]
@@ -108,27 +116,23 @@ def wine_list():
             if pairing_filter in wine.get('best_pairing', [])
         ]
 
-    for key, value in filters.items(): # Key for example country, grape. Value for example France, Chardonnay.
+    for key, value in filters.items():  # Key for example country, grape. Value for example France, Chardonnay.
         if value:
-            # Split the input value separated by ', '
-            if key in ['Secondary Grape Varieties', 'Characteristics']:
-                values = [v.strip() for v in value.split(',')]
+            # Split the input value separated by ', ' for multiple filter options (e.g., "France, Italy")
+            values = [v.strip() for v in value.split(',')]
+
+            # If filtering on 'Secondary Grape Varieties' or 'Characteristics' or 'Style' (which are lists)
+            if key in ['Secondary Grape Varieties', 'Characteristics', 'Style']:
                 filtered_wines = [
                     wine for wine in filtered_wines
-                    if any(v.strip() in str(wine.get(key)).split(', ') for v in values)
+                    if any(v in (wine.get(key) if isinstance(wine.get(key), list) else [wine.get(key)]) for v in values)
                 ]
-            elif key == 'Style':
-                # Split the input value separated by ' & '
-                values = [v.strip() for v in value.split(' & ')]
-                filtered_wines = [
-                    wine for wine in filtered_wines
-                    if any(v.strip() in str(wine.get(key)).split(' & ') for v in values)
-                ]
+
+            # For standard single-value fields like 'Country', 'Region', 'Grape', etc.
             else:
-                # Standard filtering for single values
                 filtered_wines = [
                     wine for wine in filtered_wines
-                    if str(wine.get(key)).strip() == value
+                    if str(wine.get(key, '')).strip() == value  # Standard exact match for non-list fields
                 ]
 
     # Apply slidebar filters (price, ABV)
@@ -137,10 +141,19 @@ def wine_list():
 
     # If search bar is not empty:
     if search:
-        filtered_wines = [wine for wine in filtered_wines if search.lower() in wine.get('Title').lower() or search.lower() == wine.get('Country').lower() 
-                          or search.lower() in wine.get('Style').lower() or search.lower() == wine.get('Characteristics').lower()
-                          or search.lower() == wine.get('Region').lower() or search.lower() == wine.get('Grape').lower()
-                          or search.lower() == wine.get('Type').lower() or search.lower() == wine.get('Closure').lower()] 
+        search_lower = search.lower()
+        filtered_wines = [
+            wine for wine in filtered_wines
+            if search_lower in wine.get('Title', '').lower()
+            or search_lower == wine.get('Country', '').lower()
+            or search_lower == wine.get('Region', '').lower()
+            or search_lower == wine.get('Grape', '').lower()
+            or search_lower == wine.get('Type', '').lower()
+            or search_lower == wine.get('Closure', '').lower()
+            or any(search_lower in style.lower() for style in wine.get('Style', []))  
+            or any(search_lower in char.lower() for char in wine.get('Characteristics', [])) 
+            or any(search_lower in topic.lower() for topic in wine.get('Topics', []))
+        ]
 
     # Now sort the wines
     if sort == 'ascending' or sort == 'descending':
@@ -149,7 +162,6 @@ def wine_list():
     elif sort == 'a-z' or sort == 'z-a':
         # Sort by Name
         filtered_wines.sort(key=lambda x: x['Title'], reverse=(sort == 'z-a'))
-
 
     # Pagination parameters
     page = request.args.get('page', 1, type=int)
