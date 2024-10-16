@@ -455,7 +455,7 @@ function toggleCollapse() {
         <!-- Previous arrow: Only show if not on the first page -->
         {% if this_page > 1 %}
             <li class="page-item">
-                <a class="page-link" href="{{ url_for('wines', lead=lead, abv_min=request.args.get('abv_min'), abv_max=request.args.get('abv_max'), pairing=request.args.get('pairing'), price_min=request.args.get('price_min'), price_max=request.args.get('price_max'), page=page, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], characteristics=filters.Characteristics) }}">
+                <a class="page-link" href="{{ url_for('wines', lead=lead, abv_min=request.args.get('abv_min'), abv_max=request.args.get('abv_max'), pairing=request.args.get('pairing'), price_min=request.args.get('price_min'), price_max=request.args.get('price_max'), page=this_page - 1, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], characteristics=filters.Characteristics) }}">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
@@ -477,7 +477,7 @@ function toggleCollapse() {
         <!-- Next arrow: Only show if not on the last page -->
         {% if page_numbers and this_page < page_numbers[-1] %}
             <li class="page-item">
-                <a class="page-link" href="{{ url_for('wines', lead=lead, abv_min=request.args.get('abv_min'), abv_max=request.args.get('abv_max'), pairing=request.args.get('pairing'), price_min=request.args.get('price_min'), price_max=request.args.get('price_max'), page=page, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], characteristics=filters.Characteristics) }}">
+                <a class="page-link" href="{{ url_for('wines', lead=lead, abv_min=request.args.get('abv_min'), abv_max=request.args.get('abv_max'), pairing=request.args.get('pairing'), price_min=request.args.get('price_min'), price_max=request.args.get('price_max'), page=this_page + 1, sort=sort, search=search, country=filters.Country, region=filters.Region, grape=filters.Grape, type=filters.Type, style=filters.Style, vintage=filters.Vintage, closure=filters.Closure, capacity=filters.Capacity, secondary_grape_varieties=filters['Secondary Grape Varieties'], characteristics=filters.Characteristics) }}">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
             </li>
