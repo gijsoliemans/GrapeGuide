@@ -3,12 +3,6 @@
 {% block title %}About - GrapeGuide{% endblock %}
 
 {% block content %}
-<!-- <div class="jumbotron mt-4">
-    <h1 class="display-4">About GrapeGuide</h1>
-    <p class="lead">Learn more about GrapeGuide and our mission to help you find the perfect wine.</p>
-    <hr class="my-4">
-    <p>We are dedicated to providing the best wine recommendations and information.</p>
-</div> -->
 <div class="container p-3 mt-4 text-center">
     <h1 class="mb-5">Your Guide To Wines That Pair Perfectly</h1>
     <h3 class="mb-5">With You And Your Food</h3>
@@ -29,8 +23,7 @@
             <div class="col-md-9">
                 <h4>Food Pairing</h4>
                 <p>Discover the perfect wines to complement your favorite dishes. Find wines that pair perfectly with meat, fish, poultry, cheese, and vegetables. <br><br>
-                We leveraged Hugging Face's zero-shot classification to analyze wine descriptions and identify which dishes pair best with each wine. For every wine, the model assigns a relevance score to various dish categories, such as meat or fish, and the dish with the highest score is selected as the ideal pairing. This approach not only provides accurate and diverse food pairings but also enables users to filter wines based on specific dish types, enhancing the overall search experience.</p>
-            </div>
+                    We leveraged Hugging Face's zero-shot classification to analyze wine descriptions and identify which dishes pair best with each wine. For every wine, the model assigns a relevance score to various dish categories, such as meat or fish, and one or two types of dish with the highest scores are selected as the ideal pairing. This approach not only provides accurate and diverse food pairings but also enables users to filter wines based on specific dish types, enhancing the overall search experience.            </div>
         </div>
     </div>
 
@@ -41,7 +34,7 @@
         <div class="row align-items-center">
             <div class="col-md-9">
                 <h4>Search & Filter</h4>
-                <p>Our Search & Filter feature empowers users to find the ideal wine to complement their meals with ease. By utilizing the search bar, users can enter specific queries related to their preferences, allowing the system to search our extensive database for matching wines. <br><br>
+                <p>Our Search & Filter feature empowers users to find the ideal wine to complement their meals with ease. By utilizing the search bar, users can enter specific queries related to their preferences or search for more general descriptions, allowing the system to search our extensive database for matching wines. <br><br>
                     In addition to search queries, users can apply various filters, such as price, region, volume, ABV (alcohol by volume), and style. This enables users to narrow down their options based on individual tastes and requirements. The resulting wines displayed are carefully curated to meet the specified criteria, ensuring a seamless and personalized wine selection experience.</p>
             </div>
             <div class="col-md-3">
@@ -97,10 +90,21 @@
     <h2 class="mb-5 text-center">Our Dataset</h2>
     <p>The dataset used for GrapeGuide comes from <a href="https://www.kaggle.com/" target="_blank" style="color: #9d36add5; font-weight: bold;">kaggle.com</a>. The specific dataset is the <a href="https://www.kaggle.com/datasets/elvinrustam/wine-dataset" target="_blank" style="color: #9d36add5; font-weight: bold;">'Wine Dataset'</a> dataset from the user <a href="https://www.kaggle.com/elvinrustam" target="_blank" style="color: #9d36add5; font-weight: bold;">Elvin Rustamov</a>. To find out the reliability of the dataset, Elvin was contacted via LinkedIn to ask how he had obtained the dataset. Elvin said that he had used a scraper to scrape the information about different wines from the Majestic Wines website. <br><br>
 
-        The original dataset on Kaggle contains 17 unique columns and 1289 unique wines. To ensure the quality of the dataset for use in GrapeGuide, wines that have an empty cell in one of the following columns were dropped: 'Title', 'Description', 'Price', 'Capacity', 'Grape', 'Closure', 'Country', 'Unit', 'Characteristics', 'Type', 'ABV', 'Region', 'Style', 'Vintage'. It was deliberately chosen to keep wines with an empty cell in the columns 'Secondary Grape Varieties' and 'Appellation'. In addition to checking for empty fields, the dataset was also checked for duplicate wines. Three duplicate wines were found, but they have different volumes. It was therefore decided to keep these duplicate wines in the dataset.<br><br>
-        
-        To further expand the dataset, machine-learning (zero-shot classification) was applied to match wines with a type of dish that the wine goes well with: meat, poultry, cheese, fish, and vegetables. Furthermore, the dataset has been expanded with images of the wines. These images were obtained by using a scraper to search for the name of the wine via Google Images. The images found were added to the dataset. Subsequently, it was manually checked whether the images matched the style of the average image. For images that did not match, images that did match were manually searched for. If no good images could be found manually either, the wine was dropped from the dataset.<br><br>
-    </p>
+        The original dataset on Kaggle contains 17 unique columns and
+        1289 unique wines. To ensure the quality of the dataset for use in
+        GrapeGuide, wines that have an empty cell in one of the following columns were dropped: ’Title’, ’Description’, ’Price’, ’Capacity’,
+        ’Grape’, ’Closure’, ’Country’, ’Unit’, ’Characteristics’, ’Type’, ’ABV’,
+        ’Region’, ’Style’, ’Vintage’. It was deliberately chosen to keep wines
+        with an empty cell in the columns ’Secondary Grape Varieties’ and
+        ’Appellation’, as not all wines have a secondary grape variety or
+        an appellation. In addition to checking for empty fields, the dataset
+        was also checked for duplicate wines. Three duplicate wines were
+        found, but they have different volumes. It was therefore decided to
+        keep these duplicate wines in the dataset.
+
+    To further expand the dataset, machine learning was applied to match wines with a type of dish that the wine goes well with: meat, poultry, fish, cheese, and vegetables. More about this machine learning approach can be read in Section 6. Furthermore, the dataset has been expanded with images of the wines. The images were gathered using a custom-programmed web scraper that searched for each wine's name on Google Images. Instead of downloading the images, we linked to external websites by using the URLs. Initially, 882 wines were successfully processed by searching for the first five Google Images results and selecting the first link that led to a Majestic Wine website.</p>
+
+    However, 169 wines were not successfully processed in the first round. To address this, we created a new scraper that selected the first Google Images result, provided it was not from the website 'Vivino,' as images from Vivino often featured user-generated photos unsuitable for our website. This second attempt successfully retrieved suiting images for around 75% of the remaining wines. For the final 25% of the 169 wines without suiting images, images were manually reviewed and edited. Seven wines had to be removed because no suitable images could be found, leaving a total of 1,059 wines with images. Additionally, some websites had anti-hotlinking measures in place, which prevented us from using their images because they did not allow external linking, so we did not use those websites.</p>
 </div>
 
 {% endblock %}

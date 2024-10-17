@@ -13,9 +13,9 @@
         background-size: cover; 
         background-position: center; 
         background-repeat: no-repeat;
-        height: calc(100vh - 60px); /* Subtracts the height of the header from the viewport */
+        height: calc(100vh - 60px);
         width: 100vw; 
-        overflow-x: hidden; /* Prevents horizontal scrollbar */
+        overflow-x: hidden;
     }
 
     .welcome-container {
@@ -23,9 +23,9 @@
         display: flex; 
         justify-content: flex-start; 
         align-items: flex-start;
-        padding: 160px 20px; /* position of text */
+        padding: 160px 20px;
         color: white; 
-        flex-direction: column; /* Arrange elements vertically */
+        flex-direction: column;
 
     }
 
@@ -38,13 +38,13 @@
         height: 100%;
         text-decoration: none;
         color: inherit;
-        background-color: #ffffff; /* Set card background to white */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Consistent box-shadow for all cards */
+        background-color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .card:hover {
         transform: scale(1.05);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Consistent hover shadow for all cards */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         cursor: pointer;
         color: #9d36add5;
     }
@@ -76,61 +76,60 @@
     }
 
     .scroll-icon {
-        position: absolute; /* Use absolute positioning */
-        bottom: 8%; /* 20px from the bottom of the container */
-        left: 50%; /* Center horizontally */
-        transform: translateX(-50%); /* Adjust to truly center */
-        width: 60px; /* Width of the circle */
-        height: 60px; /* Height of the circle */
-        background-color: rgba(157, 54, 173, 0.8); /* Background color with transparency */
-        border-radius: 50%; /* Make it circular */
+        position: absolute;
+        bottom: 8%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px; 
+        height: 60px; 
+        background-color: rgba(157, 54, 173, 0.8);
+        border-radius: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
         cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition for animation */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+        transition: background-color 0.3s ease, transform 0.3s ease; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
     }
 
     .scroll-icon:hover {
-        background-color: rgba(123, 42, 140, 0.8); /* Darker shade on hover */
-        transform: translate(-50%, -10px); /* Move up on hover */
+        background-color: rgba(123, 42, 140, 0.8);
+        transform: translate(-50%, -10px); 
     }
 
     .scroll-icon i {
-        color: white; /* Color of the icon */
-        font-size: 28px; /* Size of the icon */
-        transition: transform 0.3s ease; /* Add transition to icon for smoother effect */
+        color: white;
+        font-size: 28px;
+        transition: transform 0.3s ease;
     }
 
     .scroll-icon:hover i {
-        transform: translateY(2px); /* Move the icon down slightly on hover */
+        transform: translateY(2px);
 
     }
     .purple-button {
-        background-color: #9d36ad; /* Rich purple background */
-        color: white; /* White text */
-        padding: 10px 25px; /* Padding for button-like appearance */
+        background-color: #9d36ad;
+        color: white; 
+        padding: 10px 25px; 
         border: none;
-        border-radius: 30px; /* Rounded corners */
+        border-radius: 30px; 
         font-size: 18px;
-        text-decoration: none; /* Remove underline */
+        text-decoration: none; 
         font-weight: bold;
-        transition: background-color 0.3s, transform 0.3s ease; /* Smooth transitions */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        transition: background-color 0.3s, transform 0.3s ease; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .purple-button:hover {
-        background-color: #7a2c88; /* Darker purple on hover */
-        transform: scale(1.05); /* Slight zoom on hover */
-        color: white; /* Keep text white on hover */ 
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* More shadow on hover */
+        background-color: #7a2c88;
+        transform: scale(1.05); 
+        color: white; 
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
     }
 
 
 </style>
 
-<!-- Welcome section -->
     <div class="welcome-container">
         <h1>Welcome to GrapeGuide</h1>
         <h2><a href="/guide" class="purple-button" style="text-decoration: none;">Guide me</a></h2>
@@ -141,9 +140,8 @@
 
 <div id="content" class="pt-5">
     <div class="container mt-5" >
-    <div class="text-center"><h5>Types of wine</h5></div>
+    <div class="text-center"><h4>Types of wine</h4></div>
     <div class="row justify-content-center">
-        <!-- Wine Cards with consistent shadow -->
         <!-- Card 1 -->
         <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
             <div class="">
@@ -191,7 +189,7 @@
 <hr class="mt-5 mb-5" style="border: 1px solid #9d36add5;">
 
 <div class="container mt-5 mb-5 pb-4">
-    <div class="text-center"><h5>Wines that are best paired with</h5></div>
+    <div class="text-center"><h4>Wines that are best paired with</h4></div>
     <div class="row justify-content-center">
         <!-- "Best paired with" Cards -->
         <!-- Card 1 -->
@@ -265,7 +263,7 @@
 <div ><hr class="mt-5 mb-5" style="border: 1px solid #9d36add5;"></div>
 
 <div class="container pb-3">
-    <div class="text-center"><h5>Wines of the day</h5></div>
+    <div class="text-center"><h4>Wines of the day</h4></div>
 <div class="row justify-content-center">
     {% for wine in random_wines %}
     <div class="col-lg-3 col-md-4 col-sm-6 mb-4">

@@ -72,7 +72,7 @@
         <!-- Question 2 -->
         <div class="question" id="question2">
             <h5><strong>What dish are you pairing with your wine?</strong></h5>
-            <p>Whether it's a hearty main course, a light salad, or a decadent dessert, we’ll suggest wines that bring out the best in your meal.</p>
+            <p>Whether it's a savory meat dish, rich cheese, or delicate fish, we'll recommend wines that perfectly complement your meal.</p>
             <select id="pairing" name="pairing" class="form-control w-25">
                 <option value="">All</option>
                 <option value="meat" {% if request.args.get('pairing') == 'meat' %} selected {% endif %}>Meat</option>
@@ -113,18 +113,14 @@
 
 <script>
     function nextQuestion(current) {
-        // Hide the current question
         document.getElementById('question' + current).classList.remove('active');
         
-        // Show the next question
         document.getElementById('question' + (current + 1)).classList.add('active');
     }
 
     function prevQuestion(current) {
-        // Hide the current question
         document.getElementById('question' + current).classList.remove('active');
         
-        // Show the next question
         document.getElementById('question' + (current - 1)).classList.add('active');
     }
 </script>
