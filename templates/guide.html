@@ -54,7 +54,7 @@
  </div>
  <div ><hr class="mt-2 mb-1" style="border: 1px solid #9d36add5;"></div>
 
-<div class="container mt-4 pb-4 form-container w-50">
+ <div class="container mt-4 pb-4 form-container w-50">
     <form class="pb-4" id="filter-form" method="GET" action="{{ url_for('wines') }}">
         <!-- Question 1 -->
         <div class="question active" id="question1">
@@ -63,7 +63,9 @@
             <select id="type" name="type" class="form-control w-25">
                 <option value="">All</option>
                 {% for type in unique_types %}
-                    <option value="{{ type }}" {% if request.args.get('type') == type %} selected {% endif %}>{{ type }}</option>
+                    {% if type != 'Orange' %}
+                        <option value="{{ type }}" {% if request.args.get('type') == type %} selected {% endif %}>{{ type }}</option>
+                    {% endif %}
                 {% endfor %}
             </select>
             <button type="button" class="btn btn-primary mt-3" onclick="nextQuestion(1)">Next</button>
