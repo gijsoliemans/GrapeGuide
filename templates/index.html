@@ -188,7 +188,9 @@
     </div>
     </div>
 </div>
-<div class="container mt-4 mb-4">
+<hr class="mt-5 mb-5" style="border: 1px solid #9d36add5;">
+
+<div class="container mt-5 mb-5 pb-4">
     <div class="text-center"><h5>Wines that are best paired with</h5></div>
     <div class="row justify-content-center">
         <!-- "Best paired with" Cards -->
@@ -260,17 +262,19 @@
     </div>
 </div>
 
-<div class="container mt-5">
+<div ><hr class="mt-5 mb-5" style="border: 1px solid #9d36add5;"></div>
+
+<div class="container pb-3">
     <div class="text-center"><h5>Wines of the day</h5></div>
 <div class="row justify-content-center">
     {% for wine in random_wines %}
-    <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
         <div class="card">
-            <a href="wine/{{ wine.id }}" class="card h-100">
+            <a href="wine/{{ wine.id }}" class="card h-100" style="text-decoration: none;">
                 <div class="image-container mt-4">
                     <img class="card-img-top" src="{{ wine.Image }}" alt="{{ wine.Title }}" style="width: 100%; height: auto; max-height: 220px; object-fit: contain; mix-blend-mode: multiply;">
                 </div>
-                <div class="card-body">
+                <div class="card-body pb-4">
                     <h6 class="font-weight-bold">{{ wine.Title }}</h6>
                 </div>
             </a>
