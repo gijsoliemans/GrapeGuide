@@ -24,9 +24,6 @@
         padding: 20px;
         margin: 20px 0;
     }
-    h2 {
-        color: #6a1b9a; 
-    }
     .form-container {
         background: #fff;
         padding: 20px;
@@ -41,7 +38,7 @@
     }
 </style>
 
-<div class="container mt-3 mb-0">
+<div class="container mt-3 pb-1 w-75">
     <h1>Welcome to the Grape Guide</h1>
     <p>
         Finding the right wine can be challenging with so many options available. 
@@ -50,22 +47,20 @@
         Use the form below to find the perfect wine based on your preferences.
     </p>
 </div>
+<div ><hr class="mt-2 mb-3" style="border: 1px solid #9d36add5;"></div>
 
-<div class="container mt-1">
-    <h2>How to Use Our Wine Finder</h2>
+<div class="container pt-2 pb-2  w-75 text-center">
+    <h4>Type of wine + Type of dish + Budget = Matching Wines for You</h4>
+ </div>
+ <div ><hr class="mt-2 mb-1" style="border: 1px solid #9d36add5;"></div>
 
-    <p><strong>Food Pairings Made Simple:</strong> Choosing the right wine to pair with your meal can elevate the dining experience. Whether it's a delicate seafood dish, a cheese platter, or a grilled steak, our guide helps you find the perfect complement.</p>
-    
-    <p><strong>Flexible Pricing Options:</strong> No matter your budget, we make it easy to discover excellent wines that won’t break the bank. Just set your preferred price range and let us do the rest.</p>
-</div>
-
-<div class="container mt-4 pb-4 form-container">
+<div class="container mt-4 pb-4 form-container w-50">
     <form class="pb-4" id="filter-form" method="GET" action="{{ url_for('wines') }}">
         <!-- Question 1 -->
         <div class="question active" id="question1">
             <h5><strong>What type of wine are you looking for?</strong></h5>
             <p>Select from a variety of options, including reds, whites and rosés.</p>
-            <select id="type" name="type" class="form-control">
+            <select id="type" name="type" class="form-control w-25">
                 <option value="">All</option>
                 {% for type in unique_types %}
                     <option value="{{ type }}" {% if request.args.get('type') == type %} selected {% endif %}>{{ type }}</option>
@@ -78,7 +73,7 @@
         <div class="question" id="question2">
             <h5><strong>What dish are you pairing with your wine?</strong></h5>
             <p>Whether it's a hearty main course, a light salad, or a decadent dessert, we’ll suggest wines that bring out the best in your meal.</p>
-            <select id="pairing" name="pairing" class="form-control">
+            <select id="pairing" name="pairing" class="form-control w-25">
                 <option value="">All</option>
                 <option value="meat" {% if request.args.get('pairing') == 'meat' %} selected {% endif %}>Meat</option>
                 <option value="poultry" {% if request.args.get('pairing') == 'poultry' %} selected {% endif %}>Poultry</option>
@@ -96,13 +91,16 @@
             <p>Set your minimum and maximum price to find wines that fit your budget, from affordable everyday bottles to premium vintages.</p>
             <div class="container">
                 <div class="row">
-                    <div class="col p-1">
-                        <input type="number" id="price_min" name="price_min" class="form-control" placeholder="Min"
+                    <div class="w-25 mr-3">
+                        <input type="number" id="price_min" name="price_min" class="form-control w-100" placeholder="Min (£)"
                                value="{{ request.args.get('price_min', '') }}">
                     </div>
-                    <div class="col-sm p-1">
-                        <input type="number" id="price_max" name="price_max" class="form-control" placeholder="Max"
+                    <div class="w-25">
+                        <input type="number" id="price_max" name="price_max" class="form-control w-100" placeholder="Max (£)"
                                value="{{ request.args.get('price_max', '') }}">
+                    </div>
+                    <div>
+
                     </div>
                 </div>
             </div>
