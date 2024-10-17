@@ -10,16 +10,16 @@
 }
 
 .sidebar {
-    width: 250px; /* Adjust the width of the sidebar */
+    width: 250px; 
     padding: 20px;
     background-color: #f8f9fa;
-    position: absolute; /* Fixes the sidebar to the left */
+    position: absolute; 
 }
 
 .content {
-    margin-left: 250px; /* Add margin to the left to accommodate the sidebar */
-    flex-grow: 1; /* Allow content to grow */
-    padding: 20px; /* Add padding to the content */
+    margin-left: 250px; 
+    flex-grow: 1; 
+    padding: 20px; 
 }
 
 .filter-title {
@@ -87,45 +87,41 @@
     border-radius: 5px;
 }
 
-/* Pagination styles */
 .pagination {
     margin-top: 20px;
 }
 
-/* Purple buttons and numbers for pagination */
 .pagination .page-link {
-    color: #9d36add5; /* Purple text */
-    background-color: white; /* White background for default state */
-    border: 1px solid #9d36add5; /* Purple border */
+    color: #9d36add5; 
+    background-color: white; 
+    border: 1px solid #9d36add5; 
 }
 
 .pagination .page-link:hover {
-    color: white; /* White text on hover */
-    background-color: #9d36add5; /* Purple background on hover */
-    border-color: #9d36add5; /* Purple border on hover */
+    color: white; 
+    background-color: #9d36add5; 
+    border-color: #9d36add5; 
 }
 
 .pagination .page-item.active .page-link {
-    color: white; /* White text for active page */
-    background-color: #9d36add5; /* Purple background for active page */
-    border-color: #9d36add5; /* Purple border for active page */
+    color: white; 
+    background-color: #9d36add5;
+    border-color: #9d36add5; 
 }
 
 .pagination .page-item.disabled .page-link {
-    background-color: #f1f1f1; /* Disabled state background */
-    color: #6c757d; /* Grayed-out text */
+    background-color: #f1f1f1; 
+    color: #6c757d; 
 }
 
-/* Ensure the numbers are purple */
 .pagination .page-link {
-    font-weight: bold; /* Makes the numbers stand out */
+    font-weight: bold; 
 
 }
 </style>
 
 <div class="sidebar scrolbar">
     <form class="pb-4" id="filter-form" method="GET" action="{{ url_for('wines') }}">
-        <!-- This hidden input field makes it so that you can still filter after searching -->    
         <input type="hidden" name="search" value="{{ request.args.get('search', '') }}">
         <input type="hidden" name="sort" value="{{ request.args.get('sort', '') }}">
         <div class="container">
@@ -292,28 +288,23 @@
 </div>
 
 <script>
-    // Save scroll position
 window.onbeforeunload = function() {
     localStorage.setItem('scrollPosition', window.scrollY); 
 };
 
 window.onload = function() {
-    // Get the filter form and set up scroll saving for filter use
     var filterForm = document.getElementById('filter-form');
     
-    // Save scroll position when the filter form is submitted
     if (filterForm) {
         filterForm.addEventListener('submit', function() {
-            localStorage.setItem('scrollPosition', window.scrollY);  // Save scroll position on filter submit
+            localStorage.setItem('scrollPosition', window.scrollY);  
         });
     }
 
-    // Restore the scroll position when the page reloads (for filters)
     if (localStorage.getItem('scrollPosition') !== null) {
         window.scrollTo(0, parseInt(localStorage.getItem('scrollPosition')));
     }
 
-    // Add event listener for all links to scroll to the top
     var allLinks = document.querySelectorAll('a');
 
     allLinks.forEach(function(link) {
@@ -327,7 +318,6 @@ window.onload = function() {
     var button = document.getElementById('advanced_filters_button'); 
     var resetButton = document.getElementById('reset_filters_button');
 
-    // Change filter button arrow 
     if (localStorage.getItem('filtersOpen') === 'true') {
         content.style.display = "block"; 
         button.innerHTML = 'Advanced Filters ▲'; 
@@ -336,7 +326,6 @@ window.onload = function() {
         button.innerHTML = 'Advanced Filters ▼'; 
     }
 
-    // Check if the current URL is not '/wines' and then show reset filters button
     if (window.location.href !== 'http://127.0.0.1:5000/wines') {
         if (resetButton) {
             resetButton.style.display = "block"; 
@@ -344,7 +333,6 @@ window.onload = function() {
     }
 };
 
-// Collapse Advanced Filters if the Reset Button is clicked
 function collapseAdvancedFilters() {
     var content = document.getElementById('collapsibleFilters');
     content.style.display = "none";
@@ -354,7 +342,6 @@ function collapseAdvancedFilters() {
     button.innerHTML = 'Advanced Filters ▼'; 
 }
 
-// Toggle the Advanced Filter button
 function toggleCollapse() {
     var content = document.getElementById('collapsibleFilters');
     var button = document.getElementById('advanced_filters_button'); 
@@ -424,11 +411,10 @@ function toggleCollapse() {
 <div class="row">
     {% for wine in data %}
     <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
-        <a href="{{ url_for('wine_detail', wine_id=wine.id) }}" class="card" style="text-decoration: none; max-height: 550px;"> <!-- Reduced the max-width -->
-            <!-- Slightly smaller image container -->
+        <a href="{{ url_for('wine_detail', wine_id=wine.id) }}" class="card" style="text-decoration: none; max-height: 550px;">
             <div class="image-container mt-3" style="height: auto; overflow: hidden;">
                 <img class="card-img-top" src="{{ wine.image_source }}" alt="{{ wine.Title }}" 
-                        style="width: 100%; height: auto; max-height: 220px; object-fit: contain; mix-blend-mode: multiply;"> <!-- Reduced the max-height -->
+                        style="width: 100%; height: auto; max-height: 220px; object-fit: contain; mix-blend-mode: multiply;"> 
             </div>
             <div class="card-body">
                 <h6 class=" font-weight-bold">{{ wine.Title }}</h6>
